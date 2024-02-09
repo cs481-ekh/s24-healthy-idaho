@@ -1,3 +1,3 @@
-To start basic React App:
+To start React App:
 - npm install
 - npm start
