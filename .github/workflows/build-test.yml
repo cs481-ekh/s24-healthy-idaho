@@ -9,8 +9,8 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
+      - uses: actions/checkout@v3
       - name: Run Prereq script
         run: ./prereq.sh
       - name: Run build script
