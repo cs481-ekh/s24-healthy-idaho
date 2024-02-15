@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  frontend:
+    container_name: frontend-app
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: ../docker/react/Dockerfile
+    ports: 
+      - "3000:3000"
+    networks:
+      - hh-net
+
+  backend:
+    container_name: backend-app
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: ../docker/django/Dockerfile
+    environment:
+      # TODO: setup later
+    expose:
+      - 8000
+    ports:
+      - "8000:8000"
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    networks:
+      - hh-net
+
+volumes:
+
+networks:
+  hh-net:
+    driver: bridge
