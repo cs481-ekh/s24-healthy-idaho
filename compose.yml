@@ -5,14 +5,12 @@ services:
     container_name: frontend-app
     restart: always
     build:
-      context: .
-      dockerfile: ./docker/react/Dockerfile
+      context: ./frontend
+      dockerfile: ../docker/react/Dockerfile
     ports: 
       - "3000:3000"
     environment:
       - BROWSER=none
-    volumes:
-      - ./frontend:/app
     networks:
       - hh-net
 
@@ -20,8 +18,8 @@ services:
     container_name: backend-app
     restart: always
     build:
-      context: .
-      dockerfile: ./docker/django/Dockerfile
+      context: ./backend
+      dockerfile: ../docker/django/Dockerfile
     environment:
       # TODO: setup later
     expose:
@@ -33,7 +31,7 @@ services:
       - hh-net
 
 volumes:
-  frontend:
+
 
 networks:
   hh-net:
