@@ -2,8 +2,8 @@ FROM node:21-alpine3.18
 
 WORKDIR /app/react
 
-
 COPY package.json ./
+# COPY ../../frontend/package.json ./
 
 RUN npm cache clean --force
 RUN npm install
