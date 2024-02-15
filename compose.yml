@@ -9,8 +9,6 @@ services:
       dockerfile: ../docker/react/Dockerfile
     ports: 
       - "3000:3000"
-    environment:
-      - BROWSER=none
     networks:
       - hh-net
 

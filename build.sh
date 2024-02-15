@@ -1,3 +1,3 @@
 #!/bin/bash
 podman-compose up
-exit 127
+exit 0
