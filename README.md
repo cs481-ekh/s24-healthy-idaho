@@ -25,6 +25,11 @@ WARN[0000] Error validating CNI config file /home/usr/.config/cni/net.d/s24-heal
 
 Navigate to the `/home/usr/.config/cni/net.d` directory on your host, and edit the `s24-healthy-idaho_hh-net.conflist` file that podman should have generated using your preferred text editor and change the `cniVersion` from `1.0.0` to `0.4.0`. This is supposedly a bug with podman specifically. Once that's done, use the `podman system reset --force` to reset podman and run the application again.
 
+## Notes 
+If you wish to execute sql, make sure port 3306 is currently unused. Do docker-compose up and do: `docker -exec -it <container_id> </ | //>bin/bash
+
+Use // if Windows, / else
+
 Build was tested and confirmed working on:
 - Ubuntu 22.04 LTS (WSL)
 - Ubuntu 22.04 LTS Desktop
