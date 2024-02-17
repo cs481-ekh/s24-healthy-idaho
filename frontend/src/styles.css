@@ -1,0 +1,47 @@
+/*Styling for App.js*/
+.app-container {
+    display: flex;
+}
+
+.filter-bar-container {
+    width: 300px; /* Adjust width as needed */
+    padding: 10px;
+}
+
+.map-container {
+    flex: 1; /* Grow to fill remaining space */
+    padding: 10px;
+}
+
+/*Styling for FilterBar.js*/
+.filter-bar {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.dropdown {
+    margin-bottom: 10px; /* Add space between the dropdowns */
+}
+
+/* Additional styling for dropdowns if needed */
+.dropdown select {
+    width: 100%; /* Make the dropdowns fill the width of their container */
+    padding: 5px;
+    font-size: 16px;
+}
+
+.filter-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.filter-box h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.filter-box label {
+    display: block;
+    margin-bottom: 5px;
+}
