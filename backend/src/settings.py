@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l22@6x_!cb+%v)*d8rszg)-h0=td3&k49(dpyy=#i75)$qplnd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0", "192.168.0.8", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -75,13 +75,9 @@ WSGI_APPLICATION = 'src.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'HEALTHY_IDAHO_DB',
-        'USER': 'root',
-        'PASSWORD': 'pass',
-        'HOST': 'localhost',
-        'PORT': '3306',
+    "default": {
+      'ENGINE': 'django.db.backends.sqlite3',
+      'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
