@@ -11,7 +11,7 @@ CREATE TABLE HEALTHY_IDAHO(
     ,LST_MAX        VARCHAR(20)
     ,LST_MEAN       VARCHAR(20)
     ,SMOKE          VARCHAR(20)
-    ,POPULAT        INT(5)
+    ,POPULAT        INT
     ,PM25           VARCHAR(20)
 );
 CREATE INDEX COUNTY_ID
