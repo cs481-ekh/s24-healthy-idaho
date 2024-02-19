@@ -1,5 +1,6 @@
 ## Build Status
-[![Build and Test](https://github.com/cs481-ekh/s24-healthy-idaho/actions/workflows/build-test.yml/badge.svg)](https://github.com/cs481-ekh/s24-healthy-idaho/actions/workflows/build-test.yml)
+[![Build](https://github.com/cs481-ekh/s24-healthy-idaho/actions/workflows/build.yml/badge.svg)](https://github.com/cs481-ekh/s24-healthy-idaho/actions/workflows/build.yml)
+[![Test](https://github.com/cs481-ekh/s24-healthy-idaho/actions/workflows/test.yml/badge.svg)](https://github.com/cs481-ekh/s24-healthy-idaho/actions/workflows/test.yml)
 
 # capstone-template
 BSU CS481 Capstone project template
