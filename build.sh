@@ -1,3 +1,3 @@
 #!/bin/bash
-podman-compose up
+docker-compose build
 exit 0

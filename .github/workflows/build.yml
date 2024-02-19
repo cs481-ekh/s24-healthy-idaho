@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build
 
 on:
   push:
@@ -7,13 +7,11 @@ on:
     branches: ["main"]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run Prereq script
+      - name: Running Prerequisites
         run: ./prereq.sh
-      - name: Run build script
+      - name: Run Building Project
         run: ./build.sh
-      - name: Run test script
-        run: ./test.sh

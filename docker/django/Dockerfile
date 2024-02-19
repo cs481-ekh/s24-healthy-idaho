@@ -1,16 +1,21 @@
 FROM python:3.10
 
-WORKDIR /app/django
+ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE 1
 
-COPY . /app/django/
-# COPY ../../backend /app/django/
 
-RUN pip install -r requirements.txt
-# RUN export PYTHONPATH=/usr/bin \
-#     && pip install -r requirements.txt
+WORKDIR /code
 
-COPY . . 
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 8000
+# copy
+ADD . /code
+
+EXPOSE 8001
+
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 

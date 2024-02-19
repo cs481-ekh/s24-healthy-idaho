@@ -1,10 +1,11 @@
 #!/bin/bash
 echo "Cleaning up..."
+
 echo "Stopping container.."
-podman-compose down -v
+docker-compose down -v
 
 echo "Removing containers..."
-podman rmi -a -f
+docker rmi -f $(docker images -aq)
 
 echo "Killing processes on ports..."
 fuser -n tcp -k 3000
