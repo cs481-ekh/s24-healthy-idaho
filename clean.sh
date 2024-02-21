@@ -11,6 +11,4 @@ echo "Killing processes on ports..."
 fuser -n tcp -k 3000
 fuser -n tcp -k 8000 
 
-echo "Pruning volumes"
-docker volume prune -y
 exit 0
