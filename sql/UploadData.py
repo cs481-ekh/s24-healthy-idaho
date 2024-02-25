@@ -1,14 +1,14 @@
 import csv
 import mysql.connector
 
-def insertDataIntoTable (tableName, csvFilepath):
+def insertDataIntoTable (csvFilepath):
     # Database connections, might be able to pull from elsewhere
     db_connection = {
         'user' : 'root',
-        'password' : 'pass',
+        'password' : 'rootpassword',
         'host' : 'localhost',
         'port' : '3306',
-        'database' : 'HEALTHY_IDAHO_DB'
+        'database' : 'healthy_idaho_db'
     }
     # Assignments
     connection = mysql.connector.connect (
@@ -24,7 +24,7 @@ def insertDataIntoTable (tableName, csvFilepath):
 
     # Oh ya INSERT time
     insertQuery = """
-        INSERT INTO HEALTHY_IDAHO (COUNTY, FIPS, MINSTATLANG, OVERVULN, TYPETRANS, COMPDIS, SOCIOECO, GREEN, HEATISLAND, LST_MAX, LST_MEAN, SMOKE, POPULAT, PM25)
+        INSERT INTO healthy_idaho (COUNTY, FIPS, MINSTATLANG, OVERVULN, TYPETRANS, COMPDIS, SOCIOECO, GREEN, HEATISLAND, LST_MAX, LST_MEAN, SMOKE, POPULAT, PM25)
         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     try:
@@ -32,21 +32,23 @@ def insertDataIntoTable (tableName, csvFilepath):
             csvReader = csv.reader(csvFile)
             next(csvReader) # Don't want header row
             for row in csvReader:
-                dataTuple = tuple(row)
+                dataList = list(row)
+                dataList.pop(0)
+                dataTuple = tuple(dataList)
                 cursor.execute(insertQuery, dataTuple)
 
     except Exception as e:
-        print(f"Error inserting data into {tableName}: {e}")
+        print(f"Error inserting data: {e}")
     
     finally:
     # Commit and close
         connection.commit()
         connection.close()
 
-tablesAndFiles = {
-    'HEALTHY_IDAHO_2002' : 'sql/data/Final_Census2002.csv',
-    'HEALTHY_IDAHO_2020' : 'sql/data/Final_Census2020.csv',
+files = {
+    'data/Final_Census2020.csv',
+    #'data/Final_Census2002.csv',
 }
+for filepath in files: 
+    insertDataIntoTable(filepath)
 
-for table, filePath in tablesAndFiles():
-    insertDataIntoTable(table, filePath)
