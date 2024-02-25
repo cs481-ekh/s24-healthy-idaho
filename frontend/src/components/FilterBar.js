@@ -4,6 +4,7 @@ import "../styles.css";
 const FilterBar = ({ countyOptions, fipsOptions }) => {
     const [selectedCounty, setSelectedCounty] = useState('');
     const [selectedFips, setSelectedFips] = useState('');
+    const [selectAllAttributes, setSelectAllAttributes] = useState(false);
     const [attributes, setAttributes] = useState({
         minorityStatusAndLanguage: false,
         overallVulnerability: false,
@@ -26,12 +27,36 @@ const FilterBar = ({ countyOptions, fipsOptions }) => {
         }));
     };
 
+    const handleSelectAll = () => {
+        if (selectAllAttributes) {
+            // deselect if all currently selected
+            const allAttributesFalse = Object.keys(attributes).reduce((acc, key) => {
+                acc[key] = false;
+                return acc;
+            }, {});
+            setAttributes(allAttributesFalse);
+        } else {
+            // select all attributes
+            const allAttributesTrue = Object.keys(attributes).reduce((acc, key) => {
+                acc[key] = true;
+                return acc;
+            }, {});
+            setAttributes(allAttributesTrue);
+        }
+        setSelectAllAttributes(!selectAllAttributes); // toggle
+    };
+
+    const handleSearch = () => {
+        // Implement search functionality here
+        console.log("Search button clicked");
+    };
+
     return (
         <div className="filter-bar">
             {/* County Dropdown */}
             <div className="dropdown">
-                <select value={selectedCounty} onChange={(e) => setSelectedCounty(e.target.value)}>
-                    <option value="">Select County</option>
+                <select id="county" value={selectedCounty} onChange={(e) => setSelectedCounty(e.target.value)}>
+                    <option value="" disabled>Select County</option>
                     {countyOptions.map((county, index) => (
                         <option key={index} value={county}>{county}</option>
                     ))}
@@ -40,8 +65,8 @@ const FilterBar = ({ countyOptions, fipsOptions }) => {
 
             {/* FIPS Dropdown */}
             <div className="dropdown">
-                <select value={selectedFips} onChange={(e) => setSelectedFips(e.target.value)}>
-                    <option value="">Select FIPS</option>
+                <select id="fips" value={selectedFips} onChange={(e) => setSelectedFips(e.target.value)}>
+                    <option value="" disabled>Select FIPS</option>
                     {fipsOptions.map((fips, index) => (
                         <option key={index} value={fips}>{fips}</option>
                     ))}
@@ -51,101 +76,111 @@ const FilterBar = ({ countyOptions, fipsOptions }) => {
             {/* Filters */}
             <div className="filter-box">
                 <label>
-                    Minority Status and Language:
+                    <input
+                        type="checkbox"
+                        checked={selectAllAttributes}
+                        onChange={handleSelectAll}
+                    />
+                    Select All
+                </label>
+                <label>
                     <input
                         type="checkbox"
                         checked={attributes.minorityStatusAndLanguage}
                         onChange={() => handleAttributeChange('minorityStatusAndLanguage')}
                     />
+                    Minority Status and Language:
                 </label>
                 <label>
-                    Overall Vulnerability:
                     <input
                         type="checkbox"
                         checked={attributes.overallVulnerability}
                         onChange={() => handleAttributeChange('overallVulnerability')}
                     />
+                    Overall Vulnerability:
                 </label>
                 <label>
-                    Housing Type And Transportation:
                     <input
                         type="checkbox"
                         checked={attributes.housingTypeAndTransportation}
                         onChange={() => handleAttributeChange('housingTypeAndTransportation')}
                     />
+                    Housing Type and Transportation:
                 </label>
                 <label>
-                    Household Composition And Disability:
                     <input
                         type="checkbox"
                         checked={attributes.householdCompositionAndDisability}
                         onChange={() => handleAttributeChange('householdCompositionAndDisability')}
                     />
+                    Household Composition and Disability:
                 </label>
                 <label>
-                    Socioencomic Status:
                     <input
                         type="checkbox"
                         checked={attributes.socioencomicStatus}
                         onChange={() => handleAttributeChange('socioencomicStatus')}
                     />
+                    Socioencomic Status:
                 </label>
                 <label>
-                    Greenness:
                     <input
                         type="checkbox"
                         checked={attributes.greenness}
                         onChange={() => handleAttributeChange('greenness')}
                     />
+                    Greenness:
                 </label>
                 <label>
-                    Heat Island:
                     <input
                         type="checkbox"
                         checked={attributes.heatIsland}
                         onChange={() => handleAttributeChange('heatIsland')}
                     />
+                    Heat Island:
                 </label>
                 <label>
-                    LST-Max:
                     <input
                         type="checkbox"
                         checked={attributes.lstMax}
                         onChange={() => handleAttributeChange('lstMax')}
                     />
+                    LST-Max:
                 </label>
                 <label>
-                    LST-Mean:
                     <input
                         type="checkbox"
                         checked={attributes.lstMean}
                         onChange={() => handleAttributeChange('lstMean')}
                     />
+                    LST-Mean:
                 </label>
                 <label>
-                    Smoke:
                     <input
                         type="checkbox"
                         checked={attributes.smoke}
                         onChange={() => handleAttributeChange('smoke')}
                     />
+                    Smoke:
                 </label>
                 <label>
-                    Population:
                     <input
                         type="checkbox"
                         checked={attributes.population}
                         onChange={() => handleAttributeChange('population')}
                     />
+                    Population:
                 </label>
                 <label>
-                    PM-2-5:
                     <input
                         type="checkbox"
                         checked={attributes.pm25}
                         onChange={() => handleAttributeChange('pm25')}
                     />
+                    PM-2-5:
                 </label>
+                {/* Search Button */}
+                <button onClick={handleSearch}>Search</button>
             </div>
         </div>
     );
