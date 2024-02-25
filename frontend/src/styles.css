@@ -16,22 +16,36 @@
 /*Styling for FilterBar.js*/
 .filter-bar {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid black;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
 }
 
-.dropdown {
-    margin-bottom: 10px; /* Add space between the dropdowns */
+.filter-bar .dropdown {
+    margin-bottom: 10px;
 }
 
-/* Additional styling for dropdowns if needed */
-.dropdown select {
-    width: 100%; /* Make the dropdowns fill the width of their container */
+.filter-bar select {
+    width: 100%;
     padding: 5px;
     font-size: 16px;
+    color: black;
+}
+
+.filter-bar .dropdown option:disabled {
+    color: darkgray;
+}
+
+.filter-bar select option {
+    color: black;
+}
+
+.filter-bar option[selected] {
+    color: black;
 }
 
 .filter-box {
-    border: 1px solid #ccc;
+    border: 1px solid black;
     padding: 10px;
     margin-top: 10px;
 }
@@ -42,6 +56,27 @@
 }
 
 .filter-box label {
-    display: block;
+    display: flex;
+    align-items: center;
     margin-bottom: 5px;
+}
+
+.filter-box label input[type="checkbox"] {
+    margin-right: 10px;
+    width: 15px;
+    height: 15px;
+}
+
+.filter-bar button {
+    background-color: blue;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.filter-bar button:hover {
+    background-color: darkblue;
 }
