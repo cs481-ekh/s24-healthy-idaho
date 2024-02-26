@@ -1,20 +1,23 @@
 CREATE DATABASE IF NOT EXISTS healthy_idaho_db;
 USE healthy_idaho_db;
 CREATE TABLE IF NOT EXISTS healthy_idaho(
-    COUNTY          CHAR(11) NOT NULL
-    ,FIPS           BIGINT NOT NULL PRIMARY KEY
-    ,MINSTATLANG    VARCHAR(20)
-    ,OVERVULN       VARCHAR(20)
-    ,TYPETRANS      VARCHAR(20)
-    ,COMPDIS        VARCHAR(20)
-    ,SOCIOECO       VARCHAR(20)
-    ,GREEN          VARCHAR(20)
-    ,HEATISLAND     VARCHAR(20)
-    ,LST_MAX        VARCHAR(20)
-    ,LST_MEAN       VARCHAR(20)
-    ,SMOKE          VARCHAR(20)
-    ,POPULAT        INT
-    ,PM25           VARCHAR(20)
+  id                                  INT AUTO_INCREMENT PRIMARY KEY,
+  County                              CHAR(20) NOT NULL,
+  FIPS                                BIGINT,
+  OverallVulnerability                VARCHAR(20),
+  HousingTypeandTransportation        VARCHAR(20),
+  SocioencomicStatus                  VARCHAR(20),
+  HouseholdCompositionandDisability	  VARCHAR(20),
+  MinorityStatusandLanguage	          VARCHAR(20),
+  Greenness	                          VARCHAR(20),
+  HeatIsland	                        VARCHAR(20),
+  LSTMax	                            VARCHAR(20),
+  LSTMean	                            VARCHAR(20),
+  Smoke	                              VARCHAR(20),
+  Popultatuion                        VARCHAR(20),
+  RPLTHEME3                           VARCHAR(20),
+  RPLTHEMES                           VARCHAR(20),
+  RPLTHEME4                           VARCHAR(20),
+  RPLTHEME2                           VARCHAR(20),
+  RPLTHEME1                           VARCHAR(20)
 );
-CREATE INDEX COUNTY_ID
-    ON healthy_idaho(FIPS);
