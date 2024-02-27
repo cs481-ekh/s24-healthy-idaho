@@ -10,23 +10,13 @@ services:
     ports: 
       - "3306:3306"
     volumes:
-      - /docker-entrypoint-initdb.d
+      - ./sql:/docker-entrypoint-initdb.d
     environment:
       - DB_HOST=db
       - MYSQL_DATABASE=healthy_idaho_db
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=rootpassword
-    networks:
-      - hh-net
-
-  upload:
-    container_name: upload-app
-    build:
-      context: ./sql/python-scripts
-      dockerfile: ../../docker/upload/Dockerfile
-    depends_on:
-      - database
     networks:
       - hh-net
 
