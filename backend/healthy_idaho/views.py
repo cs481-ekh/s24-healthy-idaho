@@ -1,5 +1,7 @@
 
-from django.http import HttpResponse
+from django.http import JsonResponse
+from .models import HealthyIdaho
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the healthy_idaho index.")
+    data = list(HealthyIdaho.objects.values())
+    return JsonResponse({'message': 'Backend API for Healthy Idaho Portal', 'data': data})    
