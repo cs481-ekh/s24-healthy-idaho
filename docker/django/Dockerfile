@@ -16,6 +16,6 @@ ADD . /code
 EXPOSE 8001
 
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["./wait.sh", "database:3306", "--timeout=30", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 
