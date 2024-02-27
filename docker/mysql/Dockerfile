@@ -1,3 +1,6 @@
 FROM mysql:8.3.0
 
-COPY TableCreation.sql /docker-entrypoint-initdb.d/TableCreation.sql
+# Copy the database schema to the /docker-entrypoint-initdb.d directory
+COPY ./sql-scripts /docker-entrypoint-initdb.d
+
+

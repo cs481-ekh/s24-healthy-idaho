@@ -30,7 +30,7 @@ def estCnx():
     db_connection = {
         'user' : 'root',
         'password' : 'rootpassword',
-        'host' : 'localhost',
+        'host' : 'database',
         'port' : '3306',
         'database' : 'healthy_idaho_db'
     }
@@ -81,8 +81,6 @@ def insertDataIntoTable (csvFilepath, f_sql):
         cnx.commit()
         cnx.close()
 
-
-    
 def processDataDir():
     csvPath = os.path.join(Path(__file__).parent, "data")
 
