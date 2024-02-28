@@ -1,37 +1,28 @@
 import React from 'react';
-import Map from './components/Map';
-// import Chart from './Chart';
-import FilterBar from './components/FilterBar';
-import "./styles.css";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NavBar from './NavBar';
+import Compare from "./pages/Compare";
+import About from "./pages/About";
+import Data from "./pages/Data";
+import Admin from "./pages/Admin"
 
-function App() {
-    // Define options for COUNTY and FIPS dropdown menus
-    const yearOptions = ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009',
-                                '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017',
-                                '2018', '2019', '2020'];
-    const variableOptions = ['Minority Status and Language', 'Overall Vulnerability',
-                                'Housing Type and Transportation', 'Household Composition and Disability',
-                                'Socioencomic Status', 'Greenness', 'Heat Island', 'LST-Max', 'LST-Mean',
-                                'Smoke', 'Population', 'PM-2-5'];
-
+const App = () => {
     return (
-        <div>
-            <h1>Nav Bar will go up here</h1>
-
-            <div className="app-container">
-                <div className="filter-bar-container">
-                    <FilterBar yearOptions={yearOptions} variableOptions={variableOptions} />
-                </div>
-
-                <div className="map-container">
-                    <Map />
-                </div>
+        <Router>
+            <div>
+                <NavBar />
+                <Routes>
+                    <Route path="/data" element={<Data />} />
+                    <Route path="/compare" element={<Compare />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/admin" element={<Admin />} />
+                    {/* Default route */}
+                    <Route path="/" element={<Data />} />
+                </Routes>
             </div>
-
-            {/*<Chart />*/}
-        </div>
+        </Router>
     );
-}
+};
 
 export default App;
 
