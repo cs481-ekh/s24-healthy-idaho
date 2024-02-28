@@ -9,6 +9,7 @@ const NavBar = () => {
                 <NavLink to="/data" activeClassName="active">Data</NavLink>
                 <NavLink to="/compare" activeClassName="active">Compare</NavLink>
                 <NavLink to="/about" activeClassName="active">About</NavLink>
+                <NavLink to="/admin" activeClassName="active">Admin</NavLink>
             </nav>
         </div>
     );

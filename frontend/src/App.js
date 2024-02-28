@@ -4,6 +4,7 @@ import NavBar from './NavBar';
 import Compare from "./pages/Compare";
 import About from "./pages/About";
 import Data from "./pages/Data";
+import Admin from "./pages/Admin"
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
                     <Route path="/data" element={<Data />} />
                     <Route path="/compare" element={<Compare />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/admin" element={<Admin />} />
                     {/* Default route */}
                     <Route path="/" element={<Data />} />
                 </Routes>
