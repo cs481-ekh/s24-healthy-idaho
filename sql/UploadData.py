@@ -13,7 +13,7 @@ allAttrList = ["COUNTY", "FIPS", "Overall Vulnerability", "Housing Type and Tran
                  "Socioencomic Status", "Household Composition and Disability", 
                  "Minority Status and Language", "Greenness", "Heat_Island", "LST-Max", 
                  "LST-Mean", "Smoke","Popultatuion", "RPL_THEME3", "RPL_THEMES",  
-                 "RPL_THEME4", "RPL_THEME2", "RPL_THEME1"]
+                 "RPL_THEME4", "RPL_THEME2", "RPL_THEME1", "Year"]
 
 
 def makeSQLQuery():
@@ -34,6 +34,7 @@ def estCnx():
         'port' : '3306',
         'database' : 'healthy_idaho_db'
     }
+    
     # Assignments
     connection = mysql.connector.connect (
         user = db_connection['user'],
@@ -45,11 +46,15 @@ def estCnx():
     return connection
 
 def insertDataIntoTable (csvFilepath, f_sql):
-    
     # Needed for running sql queries
     cnx = estCnx()
     cursor = cnx.cursor()
 
+    # Extract year from filename
+    filename = os.path.basename(csvFilepath)
+    year = filename[filename.index('_')+7:filename.index('.')]
+
+    # Insert data into table
     try:
         with open(csvFilepath, 'r') as csvFile:
             
@@ -61,16 +66,17 @@ def insertDataIntoTable (csvFilepath, f_sql):
           for x in headers:
               if x == "":
                   continue
-              #print("x="+str(x))
               x=x.rstrip()
               insert[allAttrList.index(x)] = count
-              #print(str(allAttrList[allAttrList.index(x)]) + "=" +str(count))
               count+=1
           vals = [""] * len(allAttrList)
           for row in csvReader:
               row = row[1:]
+
+              # append the year to the row based on the filename
               for i in range(len(row)):
                   vals[insert.index(i)] = row[i]
+              vals[allAttrList.index("Year")] = year  # Add year to the row
               valsTuple = tuple(vals)
               cursor.execute(f_sql, valsTuple) 
 

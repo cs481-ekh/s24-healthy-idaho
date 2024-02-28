@@ -21,6 +21,7 @@ class HealthyIdaho(models.Model):
     RPLTHEME4 = models.CharField(max_length=20)
     RPLTHEME2 = models.CharField(max_length=20)
     RPLTHEME1 = models.CharField(max_length=20)
+    Year = models.IntegerField()
 
     class Meta:
         db_table = 'healthy_idaho'
