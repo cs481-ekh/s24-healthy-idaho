@@ -13,6 +13,51 @@
     padding: 10px;
 }
 
+/*Styling for NavBar.js*/
+body {
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px; /* Add some margin to separate from the content above */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 18px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #D64309;
+}
+
+.navbar a.active {
+    color: #D64309;
+}
+
+.navbar a.active:hover {
+    color: #D64309;
+}
+
 /*Styling for FilterBar.js*/
 .filter-bar {
     padding: 10px;
@@ -21,12 +66,12 @@
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
+    align-items: center;
 }
 
 .filter-label {
     font-weight: bold;
-    margin-bottom: 10px; /* Add space between label and dropdown */
+    margin-bottom: 10px;
 }
 
 .filter-bar .dropdown {
@@ -53,7 +98,7 @@
 }
 
 .filter-bar button {
-    background-color: blue;
+    background-color: #0033A0;
     color: white;
     font-size: 18px;
     padding: 10px 20px;
