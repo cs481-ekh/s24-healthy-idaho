@@ -13,16 +13,69 @@
     padding: 10px;
 }
 
+/*Styling for NavBar.js*/
+body {
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: white;
+    padding: 20px;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px; /* Add some margin to separate from the content above */
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 18px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #D64309;
+}
+
+.navbar a.active {
+    color: #D64309;
+}
+
+.navbar a.active:hover {
+    color: #D64309;
+}
+
 /*Styling for FilterBar.js*/
 .filter-bar {
     padding: 10px;
-    border: 1px solid black;
+    border: white;
     font-size: 18px;
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter-label {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .filter-bar .dropdown {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .filter-bar select {
@@ -44,31 +97,8 @@
     color: black;
 }
 
-.filter-box {
-    border: 1px solid black;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.filter-box h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.filter-box label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-.filter-box label input[type="checkbox"] {
-    margin-right: 10px;
-    width: 15px;
-    height: 15px;
-}
-
 .filter-bar button {
-    background-color: blue;
+    background-color: #0033A0;
     color: white;
     font-size: 18px;
     padding: 10px 20px;
