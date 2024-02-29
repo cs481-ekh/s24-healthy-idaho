@@ -19,5 +19,6 @@ CREATE TABLE IF NOT EXISTS healthy_idaho(
   RPLTHEMES                           VARCHAR(20),
   RPLTHEME4                           VARCHAR(20),
   RPLTHEME2                           VARCHAR(20),
-  RPLTHEME1                           VARCHAR(20)
+  RPLTHEME1                           VARCHAR(20),
+  Year                                INT(4)
 );
