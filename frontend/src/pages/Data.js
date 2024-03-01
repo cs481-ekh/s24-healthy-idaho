@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import Map from './Map';
 
-// import Chart from './Chart';
 import FilterBar from './FilterBar';
 import "../styles.css";
 
@@ -20,13 +19,14 @@ function Data() {
 
     return (
         <div>
-            <div className="app-container">
+            <div className="data-container">
                 <div className="filter-bar-container">
                     <FilterBar 
                         yearOptions={yearOptions} 
                         variableOptions={variableOptions} 
                         activeTract={activeTract} 
                         setActiveTract={setActiveTract}
+                        isComparison={false} // Indicates that it's not being used in comparison context
                     />
                 </div>
 
