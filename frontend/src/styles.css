@@ -160,3 +160,60 @@ body {
 .compare-container .dropdown {
     margin-bottom: 0;
 }
+
+/*Styling for About.js*/
+.project-header h2 {
+    font-size: 25px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.project-plan {
+    display: flex;
+    flex-direction: row;
+    padding: 3%;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.project-plan h2 {
+    font-size: 20px;
+    text-align: center;
+    align-self: center;
+    padding: 2px;
+    width: fit-content;
+}
+
+.project-plan h3 {
+    font-size: 18px;
+    text-align: center;
+    align-self: center;
+    padding: 2px;
+    width: fit-content;
+}
+
+p {
+    text-align: center;
+    width:inherit;
+    margin: 10px;
+    border-color: rgb(200, 200, 200);
+    border-style:ridge;
+    border-width:thin;
+    padding: 2px;
+    box-shadow: 0 8px 40px -12px rgba(0, 51, 160, 0.5);
+    line-height: 1.5;
+}
+
+.deliverable-list li {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.left-side{
+    flex: 40%;
+}
+.right-side {
+    flex: 40%;
+}
