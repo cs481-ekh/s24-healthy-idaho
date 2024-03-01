@@ -75,7 +75,7 @@ body {
 }
 
 .filter-bar .dropdown {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .filter-bar select {
@@ -109,4 +109,40 @@ body {
 
 .filter-bar button:hover {
     background-color: darkblue;
+}
+
+/*Styling for Compare.js*/
+.compare-container {
+    display: flex;
+}
+
+.left-section,
+.right-section {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .compare-container {
+        flex-direction: column;
+    }
+}
+
+.left-filter-bar,
+.right-filter-bar {
+    padding: 10px;
+    border: white;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.left-filter-bar .dropdown,
+.right-filter-bar .dropdown {
+    margin-bottom: 0; /* Override the margin for dropdowns in left and right sections */
+}
+
+.left-filter-bar select,
+.right-filter-bar select {
+    margin-right: 10px; /* Add some spacing between the dropdowns */
 }

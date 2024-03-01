@@ -1,6 +1,5 @@
 import React from 'react';
 import Map from './Map';
-// import Chart from './Chart';
 import FilterBar from './FilterBar';
 import "../styles.css";
 
