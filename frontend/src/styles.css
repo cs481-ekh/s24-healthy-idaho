@@ -69,16 +69,20 @@ body {
     align-items: center;
 }
 
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .filter-label {
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    text-align: center;
 }
 
-.filter-bar .dropdown {
-    margin-bottom: 10px;
-}
-
-.filter-bar select {
+.dropdown select {
     width: 100%;
     padding: 5px;
     font-size: 16px;
@@ -111,6 +115,17 @@ body {
     background-color: darkblue;
 }
 
+/*Styling for Data.js*/
+.data-container {
+    display: flex;
+    align-items: flex-start; /* Adjust alignment of map and FilterBar */
+}
+
+.map-container {
+    flex: 1;
+    padding: 10px;
+}
+
 /*Styling for Compare.js*/
 .compare-container {
     display: flex;
@@ -127,22 +142,21 @@ body {
     }
 }
 
-.left-filter-bar,
-.right-filter-bar {
-    padding: 10px;
-    border: white;
-    font-size: 18px;
-    font-family: Arial, sans-serif;
+.compare-container .filter-bar {
     display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
-.left-filter-bar .dropdown,
-.right-filter-bar .dropdown {
-    margin-bottom: 0; /* Override the margin for dropdowns in left and right sections */
+.compare-container .filter-group {
+    margin-right: 20px;
 }
 
-.left-filter-bar select,
-.right-filter-bar select {
-    margin-right: 10px; /* Add some spacing between the dropdowns */
+.compare-container .filter-label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.compare-container .dropdown {
+    margin-bottom: 0;
 }

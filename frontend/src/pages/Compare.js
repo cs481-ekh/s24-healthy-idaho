@@ -18,13 +18,21 @@ function Data() {
         <div>
             <div className="compare-container">
                 <div className="left-section">
-                    <FilterBar yearOptions={yearOptions} variableOptions={variableOptions} />
+                    <FilterBar
+                        yearOptions={yearOptions}
+                        variableOptions={variableOptions}
+                        isComparison={true} // Indicates that it's being used in comparison context
+                    />
                     <div className="map-container">
                         <Map />
                     </div>
                 </div>
                 <div className="right-section">
-                    <FilterBar yearOptions={yearOptions} variableOptions={variableOptions} />
+                    <FilterBar
+                        yearOptions={yearOptions}
+                        variableOptions={variableOptions}
+                        isComparison={true} // Indicates that it's being used in comparison context
+                    />
                     <div className="map-container">
                         <Map />
                     </div>
