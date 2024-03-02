@@ -1,5 +1,6 @@
 import React from 'react';
 import { Stack, Card, Typography } from '@mui/material';
+import diagram from "./../components/architecture-diagram.png";
 import "../styles.css";
 
 function About() {
@@ -126,16 +127,9 @@ function About() {
                     </h3>
                     <p>
                         We propose a web-based portal that will provide a variety of Idaho-specific climate-related
-                        information in an accessible format. The information in the portal will include factors such
-                        as: exposure to heat waves and wildfire smoke in different regions across Idaho, as well as
-                        land surface temperature, access to adaptation measures (such as green areas), and background
-                        social information that drive climate extreme health outcomes.
-                        <br></br>
-                        <br></br>
-                        An accessible and user-friendly interface will provide Idahoans with the climate-related
-                        resources they need to see what climatic extremes they are vulnerable to in their region and
-                        how to stay healthy throughout them. There will be no registration necessary to ensure that any
-                        user has access to the information they need.
+                        information in an accessible format.An accessible and user-friendly interface will provide
+                        Idahoans with the climate-related resources they need to see what climatic extremes they are
+                        vulnerable to in their region and how to stay healthy throughout them.
                         <br></br>
                         <br></br>
                         Accessibility of this information will help planning for more climate-friendly neighborhoods to
@@ -153,12 +147,12 @@ function About() {
                     </h3>
                     <p>
                         The environment for this project will be Docker containers built within a Docker network.
-                        This allows the project to be deployed to any infrastructure capable of running Docker.
-                        The end goal is to deploy this container to the Boise State University VM.
+                        This allows the project to be deployed to any infrastructure capable of running Docker with
+                        the plan of deploying to Boise State University VM.
                         <br></br>
                         <br></br>
                         The research for this portal has been completed through the Boise State University Civil
-                        Engineering department which means the portal will need to be, and will be, accessible on the
+                        Engineering department which means the portal will need to be accessible on the
                         lab computers and virtually anyone with internet access.
                     </p>
                     <h3>
@@ -167,11 +161,8 @@ function About() {
                     <p>
                         The proposal assumes that with the given dataset from the sponsor, we will be able to create an
                         interactive map of Idaho where users will be able to filter through the different climate-related
-                        health issues. Regarding development, we are assuming that all the chosen
-                        libraries and frameworks are free to use and we will be able to learn how to use them through
-                        open-source documentation and online resources. One last assumption being made is that we will
-                        not be required to have in-depth understanding of the climate-related health concerns in the
-                        given dataset.
+                        health issues. We are assuming that all the chosen libraries and frameworks are free to use and
+                        we will be able to learn how to use them through open-source documentation and online resources.
                         <br></br>
                         <br></br>
                         Development for this web-based application will be tested only on a desktop. While a mobile
@@ -220,53 +211,64 @@ function About() {
                     </h3>
                     <p>
                         Data Schema & Data Accessibility requirements:
-                        <ol className="deliverable-list">
+                        <ol className="requirements-list">
                             <li>Healthy Idaho Portal must retrieve data from the database</li>
                             <li>Application must have a method to display that data to the user</li>
                             <li>Application must have methods to allow the user to download the filtered data</li>
                             <li>Application must have an administration portal where backend data can be modified</li>
                         </ol>
                         Compatibility requirements:
-                        <ol className="deliverable-list">
+                        <ol className="requirements-list">
                             <li>Application must be contained in a Docknet to allow interoperability  between frontend and backend</li>
                             <li>The application must target common desktop browser engines</li>
                             <li>Application should have the ability to be properly displayed on a mobile device (stretch goal)</li>
                         </ol>
                         UX requirements:
-                        <ol className="deliverable-list">
+                        <ol className="requirements-list">
                             <li>Application must display an interactive map, with a side menu that allows user to set filters</li>
                             <li>Application must include a button to to download the chosen filtered data</li>
                         </ol>
                         Security requirements:
-                        <ol className="deliverable-list">
+                        <ol className="requirements-list">
                             <li>Application must include an admin page that prompts an admin to log in with credentials</li>
                             <li>Application must include some form of account recovery method</li>
                             <li>Application must include some form of encryption in the backend to protect database information</li>
                         </ol>
                         User Management requirements:
-                        <ol className="deliverable-list">
+                        <ol className="requirements-list">
                             <li>Application must allow access to authorized parties to access and perform CRUD on the backend</li>
                             <li>Application will record statistics involving its usage</li>
                         </ol>
                         Testing requirements:
-                        <ol className="deliverable-list">
+                        <ol className="requirements-list">
                             <li>The application must include certain Unit and Integration tests to ensure that core systems are working as intended</li>
                         </ol>
                         Deployment requirements:
-                        <ol className="deliverable-list">
+                        <ol className="requirements-list">
                             <li>The application must be containerized within a docker container with a docknet</li>
                             <li>Application will be deployed on the Boise State VM</li>
                         </ol>
                     </p>
+                </div>
+                <div className="right-side">
                     <h3>
                         <b>3.2 Constraints</b>
                     </h3>
                     <p>
-
+                        Technical:
+                        <ol className="requirements-list">
+                            <li>Host machine must be compatible with Docker so that deployment of the app will be easier</li>
+                        </ol>
+                        Logistical:
+                        <ol className="requirements-list">
+                            <li>Deploying app to Boise State VM after development could lead to issues with testing/compatibility</li>
+                            <li>The time constraint might limit our ability to meet stretch goals</li>
+                        </ol>
+                        Physical:
+                        <ol className="requirements-list">
+                            <li>The University will have control over the app once deployed meaning it will not be controllable from our end</li>
+                        </ol>
                     </p>
-                </div>
-
-                <div className="right-side">
                     {/*Section 4*/}
                     <h2>
                         <b>4 Design and Implementation</b>
@@ -275,13 +277,20 @@ function About() {
                         <b>4.1 Proposed Approach</b>
                     </h3>
                     <p>
-
+                        <ol className="requirements-list">
+                            <li>Docker: A suite of containerization technologies to isolate the Database, Frontend, and Backend within their own Docker Container</li>
+                            <li>MySQL: A Relational Database Management System (RDBMS) used to store the .csv and shapefile files given by the sponsor</li>
+                            <li>Django Web Server: A web framework written in Python that will handle client requests for data by communicating between the database and frontend</li>
+                            <li>ReactJS: A popular Frontend framework used to create user interfaces</li>
+                            <li>Leaflet: A JavaScript library used to generating user-friendly interactive maps</li>
+                            <li>ReCharts: A JavaScript Library built using React components that can be used to interpret map vectors and shapefiles</li>
+                        </ol>
                     </p>
                     <h3>
                         <b>4.2 Architectural Design</b>
                     </h3>
                     <p>
-
+                        <img alt="[DIAGRAM]" className="diagram" src={diagram} />
                     </p>
 
                     {/*Section 5*/}
@@ -292,13 +301,25 @@ function About() {
                         <b>Milestone 1: PSP</b>
                     </h3>
                     <p>
-
+                        <ol className="requirements-list">
+                            <li>Runnable on most, if not all current web browsers/engines</li>
+                            <li>Must have implemented basic UI and related functions</li>
+                            <li className="tab">Workable interactive map with color-coded vectors</li>
+                            <li className="tab">Side-bar with working functions that interact with backend application</li>
+                        </ol>
                     </p>
                     <h3>
                         <b>Milestone 2: MVP</b>
                     </h3>
                     <p>
-
+                        <ol className="requirements-list">
+                            <li>Overall UI must be finalized or close to finalized</li>
+                            <li className="tab">Current plan is to adhere to current Boise State Branding Standards</li>
+                            <li>Core Functionality:</li>
+                            <li className="tab">Administration page must be included and working</li>
+                            <li className="tab">Functionality to download data from application must be working</li>
+                            <li className="tab">Map visualization tools must be finalized to work for key variables</li>
+                        </ol>
                     </p>
 
                     {/*Section 6*/}
@@ -306,7 +327,11 @@ function About() {
                         <b>6 Testing and Validation</b>
                     </h2>
                     <p>
-
+                        Testing will be performed using the Cypress testing framework. Cypress will automatically
+                        trigger each time a commit or pull request has been made affecting the main branch in Github.
+                        Cypress will perform regression testing through testing individual React components, verifying
+                        the correctness of returned data from the Database, form validation of the filtering functionality
+                        that Healthy Idaho provides.
                     </p>
                 </div>
 
