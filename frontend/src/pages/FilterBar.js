@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import "../styles.css";
+import './Map.js'
 
-const FilterBar = ({ yearOptions, variableOptions }) => {
+const FilterBar = ({ yearOptions, variableOptions, activeTract, setActiveTract }) => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
 
     const handleSearch = () => {
         // Implement search functionality here
-        console.log("Search button clicked");
+        setActiveTract({selectedYear: selectedYear, selectedVariable: selectedVariable});
     };
 
     return (
@@ -15,7 +16,7 @@ const FilterBar = ({ yearOptions, variableOptions }) => {
             {/* Year Dropdown */}
             <label className="filter-label">Year</label>
             <div className="dropdown">
-                <select id="year" value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
+                <select id="year" defaultValue={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
                     <option value="" disabled>Select Year</option>
                     {yearOptions.map((year, index) => (
                         <option key={index} value={year}>{year}</option>
