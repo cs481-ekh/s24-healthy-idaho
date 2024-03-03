@@ -1,32 +1,56 @@
 // Using leaflet to display map of Idaho, not sure how we'll use this with the data yet
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 
-function Map() {
-    // const [censusTractData, setCensusTractData] = useState(null);
-    //
-    // useEffect(() => {
-    //     // Fetch census tract data from CDC website or any other source
-    //     // Parse the data into GeoJSON format
-    //     // Example:
-    //     // const fetchedData = await fetchData();
-    //     // const parsedData = parseData(fetchedData);
-    //     // setCensusTractData(parsedData);
-    // }, []);
+// Local modules
+import "../styles.css"
+import './Data.js';
+
+// Import GeoJSON data from local files
+import tracts2020 from '../tracts/tract2020.json';
+import tracts2010 from '../tracts/tract2010.json';
+import tracts2000 from '../tracts/tract2000.json';
+
+function Map({activeTract}) {
+    const [tractData, setTractData] = useState(null);
+    const [tractColor, setTractColor] = useState(null);
+
+    useEffect(() => {
+        let newTractData = null;
+        let newTractColor = null;
+        if (activeTract?.selectedYear >= 2000 && activeTract?.selectedYear <= 2009) {
+            newTractData = tracts2000;
+            newTractColor = 'red';
+        }
+        if (activeTract?.selectedYear >= 2010 && activeTract?.selectedYear <= 2019) {
+            newTractData = tracts2010;
+            newTractColor = 'green';
+        }
+        if (activeTract?.selectedYear >= 2020) {
+            newTractData = tracts2020;
+            newTractColor = 'yellow';
+        }
+
+        setTractData(newTractData);
+        setTractColor(newTractColor);
+        console.log("Tract Data: " + JSON.stringify(activeTract));
+    }, [activeTract]);
 
     return (
-        <MapContainer center={[44.0682, -114.7420]} zoom={6} style={{ height: '400px', width: '100%' }}>
-            <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        <MapContainer center={[45.394096, -114.734550]} zoom={6} style={{ height: '850px', width: '100%' }}>
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+            <GeoJSON 
+                key={JSON.stringify(tractData)}
+                data={tractData}
+                style={() => ({
+                    color: 'white',
+                    weight: 1,
+                    fillColor: 'blue',
+                    fillOpacity: 0.5
+                })}
             />
-            {/*{censusTractData && (*/}
-            {/*    <GeoJSON data={censusTractData} style={() => ({*/}
-            {/*        fillColor: 'green', // Example styling, customize as needed*/}
-            {/*        fillOpacity: 0.5,*/}
-            {/*        color: 'black',*/}
-            {/*        weight: 1*/}
-            {/*    })} />*/}
-            {/*)}*/}
+
         </MapContainer>
     );
 }
