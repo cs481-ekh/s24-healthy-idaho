@@ -44,9 +44,9 @@ function Map({activeTract}) {
                 key={JSON.stringify(tractData)}
                 data={tractData}
                 style={() => ({
-                    color: 'black',
+                    color: 'white',
                     weight: 1,
-                    fillColor: tractColor,
+                    fillColor: 'blue',
                     fillOpacity: 0.5
                 })}
             />
