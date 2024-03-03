@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Map from './Map';
+import axios from 'axios';
 
 import FilterBar from './FilterBar';
 import "../styles.css";
