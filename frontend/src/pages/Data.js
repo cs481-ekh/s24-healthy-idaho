@@ -29,12 +29,10 @@ function Data() {
                         isComparison={false} // Indicates that it's not being used in comparison context
                     />
                 </div>
-
                 <div className="map-container">
                     <Map activeTract={activeTract}/>
                 </div>
             </div>
-
             {/*<Chart />*/}
         </div>
     );
