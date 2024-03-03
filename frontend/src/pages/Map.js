@@ -14,40 +14,43 @@ import tracts2000 from '../tracts/tract2000.json';
 
 function Map({activeTract}) {
     const [tractData, setTractData] = useState(null);
-    // const [parsedTract, setParsedTract] = useState(null);
     const [tractColor, setTractColor] = useState(null);
 
     useEffect(() => {
+        let newTractData = null;
+        let newTractColor = null;
         if (activeTract?.selectedYear >= 2000 && activeTract?.selectedYear <= 2009) {
-            setTractData(tracts2000);
-            setTractColor('red');
+            newTractData = tracts2000;
+            newTractColor = 'red';
         }
         if (activeTract?.selectedYear >= 2010 && activeTract?.selectedYear <= 2019) {
-            setTractData(tracts2010);
-            setTractColor('green');
+            newTractData = tracts2010;
+            newTractColor = 'green';
         }
         if (activeTract?.selectedYear >= 2020) {
-            setTractData(tracts2020);
-            setTractColor('yellow');
+            newTractData = tracts2020;
+            newTractColor = 'yellow';
         }
+
+        setTractData(newTractData);
+        setTractColor(newTractColor);
         console.log("Tract Data: " + JSON.stringify(activeTract));
     }, [activeTract]);
 
     return (
         <MapContainer center={[45.394096, -114.734550]} zoom={6} style={{ height: '850px', width: '100%' }}>
-            <TileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {
-                tractData && <GeoJSON data={tractData} style={(feature) => ({
-                    fillColor: tractColor,
-                    type: 'Feature',
-                    weight: 2,
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+            <GeoJSON 
+                key={JSON.stringify(tractData)}
+                data={tractData}
+                style={() => ({
                     color: 'black',
+                    weight: 1,
+                    fillColor: tractColor,
                     fillOpacity: 0.5
-                
-                })}/>
-            }
+                })}
+            />
+
         </MapContainer>
     );
 }
