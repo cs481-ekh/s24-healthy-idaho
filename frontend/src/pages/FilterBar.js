@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import "../styles.css";
 import './Map.js'
 
-const FilterBar = ({ yearOptions, variableOptions, activeTract, setActiveTract, isComparison }) => {
+const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison }) => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
+    const [selectedColor, setSelectedColor] = useState({});
 
     const handleSearch = () => {
-        // Implement search functionality here
-        setActiveTract({selectedYear: selectedYear, selectedVariable: selectedVariable});
+        // set active tract with selected year, variable, and color options to pass to Map component
+        setActiveTract({selectedYear: selectedYear, selectedVariable: selectedVariable, selectedColor: selectedColor});
     };
 
     return (
@@ -51,6 +52,29 @@ const FilterBar = ({ yearOptions, variableOptions, activeTract, setActiveTract, 
                                 {variable}
                             </option>
                         ))}
+                    </select>
+                </div>
+            </div>
+
+            <div className="filter-group">
+                {/* Color Dropdown */}
+                <label className="filter-label">Color</label>
+                <div className="dropdown">
+                    <select
+                        id="color"
+                        value={selectedColor.length ? JSON.stringify(selectedColor) : ""}
+                        onChange={(e) => setSelectedColor(JSON.parse(e.target.value))}
+                    >
+                        <option value="" disabled selected>
+                            Select Color
+                        </option>
+                        {
+                            Object.keys(colorOptions).map((color, index) => (
+                                <option key={index} value={JSON.stringify(colorOptions[color])}>
+                                    {color}
+                                </option>
+                            ))
+                        }
                     </select>
                 </div>
             </div>
