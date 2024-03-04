@@ -65,7 +65,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                         value={selectedColor.length ? JSON.stringify(selectedColor) : ""}
                         onChange={(e) => setSelectedColor(JSON.parse(e.target.value))}
                     >
-                        <option value="" disabled selected>
+                        <option value="" disabled>
                             Select Color
                         </option>
                         {
