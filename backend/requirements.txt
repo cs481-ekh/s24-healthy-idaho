@@ -6,3 +6,4 @@ mysqlclient==2.2.1
 pytz
 psycopg2-binary
 django-cors-headers
+djangorestframework==3.14.0

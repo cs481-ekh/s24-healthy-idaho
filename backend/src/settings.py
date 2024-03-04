@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'healthy_idaho',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -48,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'src.urls'
@@ -82,7 +83,7 @@ DATABASES = {
         'NAME': 'healthy_idaho_db',
         'USER': 'root',
         'PASSWORD': 'rootpassword',
-        'HOST': 'database',
+        'HOST': 'database', #use <database/localhost> when in <production/testing>
         'PORT': '3306',
     }
 }
@@ -106,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # CORS Settings for React Frontend
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = DEBUG
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ORIGIN_WHITELIST = [
