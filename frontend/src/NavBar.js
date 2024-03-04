@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from "././components/SDPlogo.png";
 import "./styles.css";
 
 const NavBar = () => {
     return (
         <div className="header">
+            <img alt="[LOGO]" className="logo" src={logo} />
             <nav className="navbar">
                 <NavLink to="/data" activeClassName="active">Data</NavLink>
                 <NavLink to="/compare" activeClassName="active">Compare</NavLink>
