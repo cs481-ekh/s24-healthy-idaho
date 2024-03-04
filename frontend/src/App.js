@@ -9,17 +9,6 @@ import Admin from "./pages/Admin"
 import axios from 'axios';
 
 const App = () => {
-
-    // useEffect(() => {
-    //     axios.get('http://localhost:8001/healthy_idaho/')
-    //         .then(response => {
-    //             console.log(response);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-    // }, []);
-
     return (
         <Router>
             <div>
