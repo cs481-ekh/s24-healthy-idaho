@@ -10,4 +10,7 @@ urlpatterns = [
     path("read-one/<str:pk>", views.healthyIdahoReadOne, name="read-one"),
     path("update/<str:pk>", views.healthyIdahoUpdate, name="update"),
     path("delete/<str:pk>", views.healthyIdahoDelete, name="delete"),
+
+
+    path("query/", views.healthyIdahoQuery, name="query"),
 ]
