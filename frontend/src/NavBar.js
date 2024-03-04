@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from "././components/SDPlogo.png";
+import logo from "./components/SDPlogo_large.png";
 import "./styles.css";
 
 const NavBar = () => {
