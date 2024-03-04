@@ -29,6 +29,14 @@ body {
     background-color: white;
     padding: 20px;
     width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 90px; /* Adjust the width and height as needed */
+    height: 40px;
+    margin-right: 20px; /* Add some margin between the logo and the navigation menu */
 }
 
 .navbar {
