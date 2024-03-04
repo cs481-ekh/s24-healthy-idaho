@@ -19,30 +19,6 @@ def index(request):
           /healthyIdaho/delete/&ltstr:pk&gt</p>"""
     return HttpResponse(html)
 
-#class HealthyIdahoAPIView(views.APIView):
-#    serializer_class=HealthyIdahoSerializer
-#    def get_serializer_context(self):
-#        return {
-#            "request": self.request,
-#            "format": self.format_kwarg,
-#            "view":self
-#        }  
-#    def get_serializer(self, *args, **kwargs):
-#        kwargs['context']=self.get_serializer_context()
-#        return self.serializer_class(*args, **kwargs)
-#    
-#    def get(self, request):
-#        print("HERE")
-#        try:
-#            data=JSONParser.parse(request)
-#            serializer=HealthyIdahoSerializer(data=data)
-#            if serializer.is_valid(raise_exception=True):
-#                return Response(serializer.data)
-#            else:
-#                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#        except JSONDecodeError:
-#            return JsonResponse({"result": "error", "message": "JSON decoding error"}, status=400)
-#             
 @api_view(["POST"])
 def healthyIdahoCreate(request):
     serializer=HealthyIdahoSerializer(data=request.data)
@@ -65,13 +41,14 @@ def healthyIdahoReadOne(request, pk):
 
 
 
-#healthy_idaho/query/?year=xxxx&attr=attribute
+#healthy_idaho/query/?year="xxxx"&attr="attribute"
 @api_view(["GET"])
 def healthyIdahoQuery(request):
-    qyear=request.query_params["year"]
-    qattr=request.query_params["attr"]
-    year=HealthyIdaho.objects.filter(Year=qyear)
-    serializer=HealthyIdahoSerializer(year,fields=("FIPS", qattr), many=True)
+    print(request.query_params)
+    print(request.query_params["year"])
+    print(request.query_params["attr"])
+    year=HealthyIdaho.objects.filter(Year=request.query_params["year"])
+    serializer=HealthyIdahoSerializer(year,fields=("FIPS", request.query_params["attr"]), many=True)
     return Response(serializer.data)
 
 

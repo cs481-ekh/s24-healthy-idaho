@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'healthy_idaho_db',
         'USER': 'root',
         'PASSWORD': 'rootpassword',
-        'HOST': 'localhost', #use <database/localhost> when in <production/testing>
+        'HOST': 'database', #use <database/localhost> when in <production/testing>
         'PORT': '3306',
     }
 }
