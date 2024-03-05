@@ -1,7 +1,7 @@
 
 from django.http import JsonResponse
 from .models import HealthyIdaho
-from .serializers import HealthyIdahoSerializer
+from .serializers import HealthyIdahoSerializer, HealthyIdahoDataSerializer
 from django.http import HttpResponse
 from rest_framework.decorators import api_view 
 from rest_framework.response import Response
@@ -48,10 +48,12 @@ def healthyIdahoQuery(request):
     print(request.query_params["year"])
     print(request.query_params["attr"])
     year=HealthyIdaho.objects.filter(Year=request.query_params["year"])
-    serializer=HealthyIdahoSerializer(year,fields=("FIPS", request.query_params["attr"]), many=True)
-    return Response(serializer.data)
-
-
+    serializer=HealthyIdahoDataSerializer(year, many=True, context={'attr': request.query_params["attr"]})
+    return Response({
+        "year": request.query_params["year"],
+        "variable": request.query_params["attr"],
+        "data": serializer.data
+    })
 
 @api_view(["POST"])
 def healthyIdahoUpdate(request, pk):

@@ -60,6 +60,8 @@ function colorItNDiv(x, low, high, div) {
   return Math.floor((x - low) / divVal);
 }
 
+export default {colorIt, colorItNDiv};
+
 
 //example
 //split [5,6,...20] into 4 regions, say what i'th number belongs to
