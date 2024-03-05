@@ -15,8 +15,6 @@ import tracts2020 from '../tracts/tract2020.json';
 import tracts2010 from '../tracts/tract2010.json';
 import tracts2000 from '../tracts/tract2000.json';
 
-
-
 function colorItNDiv(x, low, high, div, color) {
     if( low > high ) 
       throw new Error("low >= high")
