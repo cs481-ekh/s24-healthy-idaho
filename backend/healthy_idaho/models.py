@@ -12,7 +12,7 @@ class HealthyIdaho(models.Model):
     MinorityStatusandLanguage = models.CharField(max_length=20)
     Greenness = models.CharField(max_length=20)
     HeatIsland = models.CharField(max_length=20)    
-    LSTMAX = models.CharField(max_length=20)
+    LSTMax = models.CharField(max_length=20)
     LSTMean = models.CharField(max_length=20)
     Smoke = models.CharField(max_length=20)
     Popultatuion = models.CharField(max_length=20)
