@@ -18,3 +18,11 @@ class HealthyIdahoSerializer(DynamicFieldsModelSerializer):
   class Meta:
     model=HealthyIdaho
     fields="__all__"
+
+class HealthyIdahoDataSerializer(serializers.Serializer):
+    id = serializers.IntegerField(source='FIPS')
+    value = serializers.SerializerMethodField()
+
+    def get_value(self, obj):
+        attr = self.context.get('attr')
+        return getattr(obj, attr)
