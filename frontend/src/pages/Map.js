@@ -37,10 +37,10 @@ function Map({activeTract}) {
         console.log('Selected year: ' + activeTract?.selectedYear + ' | Selected var: ' + activeTract?.selectedVariable.replace(/\s/g, '') + ' | Selected color: ' + activeTract?.selectedColor);
         
         if (activeTract?.selectedYear != null) {
-            axios.get('http://localhost:8001/healthy_idaho/?year=' + activeTract?.selectedYear)
+            axios.get('http://localhost:8001/healthy_idaho/query/?year=' + activeTract?.selectedYear + "&attr=" + activeTract?.selectedVariable.replace(/[\s-]/g, ''))
             .then(response => {
-                setSearchData(response.data.data);
-                // console.log('Search data: ', response.data.data);
+                console.log(response.data)
+                // setSearchData(response.data.data);
             })
             .catch(error => {
                 console.log('Error fetching data: ', error);
