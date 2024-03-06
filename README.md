@@ -29,7 +29,11 @@ If you are using Ubuntu or any other Linux Distribution that uses the apt packag
 
 To build the project, ensure you are at the root directory, then you can use the ```./build.sh``` script to build the docker image, alternatively you can use the the ```docker-compose build``` command to build the container in your terminal if you are unable to run the above shell script.
 
-To start the services, you can use the ```./start``` script which should take care of the rest.
+## Running the Application
+
+### Using ```./start.sh``` Script
+
+To start the services, you can use the ```./start.sh``` script which should take care of the rest. 
 
 However, if you get the following error regarding the database or something similar:
 
@@ -38,3 +42,15 @@ mysql.connector.errors.OperationalError: 2013 (HY000): Lost connection to MySQL 
 ```
 
 This would mean python has failed to run the ```UploadData.py```, usually because python could not connect to the database. If this is the case, you can manually attempt to run this script by navigating to the ```sql/``` directory and running the UploadData script using the ```python3 UploadData.py``` command. If no errors are thrown, this would mean the data upload was successful.
+
+### Manual Start
+
+If you are unable to run the ```./start.sh``` script, you can use the ```docker-compose up``` command while in root to start all the services related to the app.
+
+Alternatively, you can start the services individually if you wish, this can be useful if you need to make changes for the frontend for example but still need access to the backend. To do this, you can use the ```docker-compose up <service>``` command. You can also add the ```-d``` argument to detach the output and return back to bash after execution. There are 3 services to this application:
+
+- frontend - React Frontend app
+- backend - Django Webserver for managing backend api endpoints
+- database - MySQL Database that holds the data for the app.
+
+Note: Manually starting the application will start the services but data will not be populated in the database, because of this, you would need to manually run the ```UploadData.py``` script in the ```sql/``` directory as mentioned above using the ```python3 UploadData.py``` command.
