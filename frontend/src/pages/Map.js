@@ -30,7 +30,21 @@ function onEachFeature(feature, layer, colorData) {
 
         if(fipsObject && fipsObject.color != null) {
             layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: 1});
+
+            //info to include in popup when tract is clicked on
+            layer.bindPopup(
+                (feature.properties.FIPS ? "<b>FIPS: </b>" + feature.properties.FIPS + "<br>" : "") +
+                (feature.properties.TRACT ? "<b>Tract: </b>" + feature.properties.TRACT + "<br>" : "") +
+                (feature.properties.COUNTY ? "<b>County: </b>" + feature.properties.COUNTY + "<br>" : "") +
+                (feature.properties.LOCATION ? "<b>Location: </b>" + feature.properties.LOCATION + "<br>" : "") +
+                (fipsObject.value ? "<b>Value: </b>" + fipsObject.value : "")
+            );
         }
+    }
+    else {
+        //draw text for tracts that don't have data
+        layer.setStyle({color: 'black', fillColor: 'white', weight: 1, fillOpacity: 1});
+        layer.bindPopup("No data");
     }
 }
 
@@ -83,7 +97,7 @@ function Map({activeTract}) {
             {isColorDataLoaded && (
                 <GeoJSON 
                     key={JSON.stringify(tractData) + JSON.stringify(colorData)}
-                    style={{color: 'black', weight: 1, fillOpacity: 0.25}}
+                    style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.25}}
                     data={tractData}
                     onEachFeature={(feature, layer) => onEachFeature(feature, layer, colorData)}
                 />
