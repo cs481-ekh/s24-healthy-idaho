@@ -2,7 +2,7 @@
 
 ## Project Name: Healthy Idaho Portal
 
-- Project Sponsor:
+- Project Sponsor: Moji Sadegh
 
 ## Team Members
 
