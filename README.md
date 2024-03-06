@@ -33,8 +33,8 @@ To start the services, you can use the ```./start``` script which should take ca
 
 However, if you get the following error regarding the database or something similar:
 
-```
+```bash
 mysql.connector.errors.OperationalError: 2013 (HY000): Lost connection to MySQL server at 'reading initial communication packet', system error: 0
 ```
 
-This would mean python has failed to run the ```UploadData.py```, usually because python could not connect to the database. If this is the case, you can manually attempt to run this script by navigating to the ```sql/``` directory and running the UploadData script using the ```python3 UploadData.py```. If no errors are thrown, this would mean the data upload was successful.
+This would mean python has failed to run the ```UploadData.py```, usually because python could not connect to the database. If this is the case, you can manually attempt to run this script by navigating to the ```sql/``` directory and running the UploadData script using the ```python3 UploadData.py``` command. If no errors are thrown, this would mean the data upload was successful.
