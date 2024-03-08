@@ -3,14 +3,14 @@ FROM node:21-alpine3.18
 WORKDIR /app/react
 
 COPY package.json ./
-# COPY ../../frontend/package.json ./
 
 RUN npm cache clean --force
 RUN npm install
 RUN npm install react-scripts --save
+RUN npm install -g serve
 
 COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["serve", "-s", "build", "-l", "3000"]
