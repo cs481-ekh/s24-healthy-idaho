@@ -14,6 +14,13 @@ import tracts2020 from '../tracts/tract2020.json';
 import tracts2010 from '../tracts/tract2010.json';
 import tracts2000 from '../tracts/tract2000.json';
 
+// function to sanitize HTML elements
+function sanitizeHTML(text) {
+    let div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function onEachFeature(feature, layer, colorData) {
     if (feature.properties && colorData) {
         let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
@@ -22,6 +29,16 @@ function onEachFeature(feature, layer, colorData) {
             layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: 1});
 
             //TODO: info to include in popup when tract is clicked on
+            layer.bindPopup(
+                "<div style='text-align: center;'>" +
+                "<b>Tract Info</b>" +
+                "</div>" +
+                "<b>FIPS:</b> " + sanitizeHTML(feature.properties.FIPS) + "<br>" +
+                ("<b>Value:</b> " + sanitizeHTML(Math.round((parseFloat(fipsObject.value) + Number.EPSILON) * 100) / 100) + "<br>") +
+                "<b>County:</b> " + sanitizeHTML(feature.properties.COUNTY) + "<br>" +
+                (feature.properties.AREA_SQMI ? "<b>Area (sq. mi):</b> " + sanitizeHTML(Math.round((feature.properties.AREA_SQMI+ Number.EPSILON) * 100) / 100)  + "<br>" : "") +
+                (feature.properties.LOCATION ? "<b>Location:</b> " + sanitizeHTML(feature.properties.LOCATION) + "<br>" : "")
+            );
         }
     }
     else {
