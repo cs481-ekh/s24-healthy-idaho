@@ -9,12 +9,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
 
     const handleSearch = () => {
         // set active tract with selected year, variable, and color options to pass to Map component
-        if (selectedYear && selectedVariable && selectedColor) {
-            setActiveTract({selectedYear: selectedYear, selectedVariable: selectedVariable, selectedColor: selectedColor});
-        }
-        else {
-            alert('Please select year, variable, and color');
-        }
+        setActiveTract({selectedYear: selectedYear, selectedVariable: selectedVariable, selectedColor: selectedColor});
     };
 
     return (

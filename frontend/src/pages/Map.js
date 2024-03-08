@@ -7,22 +7,12 @@ import axios from 'axios';
 // Local modules
 import "../styles.css"
 import './Data.js';
-import colorOptions from '../components/ColorOptions.js';
-// import colorItNDiv from '../components/ColorIt.js';
+import ColorIt from '../components/ColorIt.js';
 
 // Import GeoJSON data from local files
 import tracts2020 from '../tracts/tract2020.json';
 import tracts2010 from '../tracts/tract2010.json';
 import tracts2000 from '../tracts/tract2000.json';
-
-function colorItNDiv(x, low, high, div, color) {
-    if( low > high ) 
-      throw new Error("low >= high")
-
-    let divVal = (high - low) / div;
-
-    return color[Math.floor((x - low) / divVal)];
-}
 
 function onEachFeature(feature, layer, colorData) {
     if (feature.properties && colorData) {
@@ -31,14 +21,7 @@ function onEachFeature(feature, layer, colorData) {
         if(fipsObject && fipsObject.color != null) {
             layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: 1});
 
-            //info to include in popup when tract is clicked on
-            layer.bindPopup(
-                (feature.properties.FIPS ? "<b>FIPS: </b>" + feature.properties.FIPS + "<br>" : "") +
-                (feature.properties.TRACT ? "<b>Tract: </b>" + feature.properties.TRACT + "<br>" : "") +
-                (feature.properties.COUNTY ? "<b>County: </b>" + feature.properties.COUNTY + "<br>" : "") +
-                (feature.properties.LOCATION ? "<b>Location: </b>" + feature.properties.LOCATION + "<br>" : "") +
-                (fipsObject.value ? "<b>Value: </b>" + fipsObject.value : "")
-            );
+            //TODO: info to include in popup when tract is clicked on
         }
     }
     else {
@@ -54,8 +37,6 @@ function Map({activeTract}) {
     const [isColorDataLoaded, setIsColorDataLoaded] = useState(false);
 
     useEffect(() => {
-        console.log("useEffect");
-        console.log(activeTract);
         let newTractData = null;
 
         // Set tract data and color based on selected year
@@ -79,7 +60,7 @@ function Map({activeTract}) {
                 let max = Math.max.apply(null, data.map((item) => item.value));
                 let min = Math.min.apply(null, data.map((item) => item.value));
 
-                data = data.map((item) => {item.color = colorItNDiv(item.value, min, max, 9, activeTract?.selectedColor); return item;})
+                data = data.map((item) => {item.color = ColorIt.colorItNDiv(item.value, min, max, 9, activeTract?.selectedColor); return item;})
                 setColorData(data);
                 setIsColorDataLoaded(true);
             })

@@ -51,13 +51,13 @@ function colorIt(x, low, high) {
  *          region that x belongs to
  *   
  */
-function colorItNDiv(x, low, high, div) {
-  if( low >= high ) 
+function colorItNDiv(x, low, high, div, color) {
+  if( low > high ) 
     throw new Error("low >= high")
-  if( div > Math.abs(low - high) ) 
-    throw new Error("Number of div > distance(low, high)") 
-  divVal = (++high - low) / div;
-  return Math.floor((x - low) / divVal);
+
+  let divVal = (high - low) / div;
+
+  return color[Math.floor((x - low) / divVal)];
 }
 
 export default {colorIt, colorItNDiv};
