@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.753b8ac1.css",
-    "main.js": "/static/js/main.e1fb1421.js",
+    "main.js": "/static/js/main.3d8e29d8.js",
     "static/media/architecture-diagram.png": "/static/media/architecture-diagram.e3afb096d1696bd79675.png",
     "static/media/SDPlogo_large.png": "/static/media/SDPlogo_large.0dca2a6e323cdfb0f618.png",
     "index.html": "/index.html",
     "main.753b8ac1.css.map": "/static/css/main.753b8ac1.css.map",
-    "main.e1fb1421.js.map": "/static/js/main.e1fb1421.js.map"
+    "main.3d8e29d8.js.map": "/static/js/main.3d8e29d8.js.map"
   },
   "entrypoints": [
     "static/css/main.753b8ac1.css",
-    "static/js/main.e1fb1421.js"
+    "static/js/main.3d8e29d8.js"
   ]
 }

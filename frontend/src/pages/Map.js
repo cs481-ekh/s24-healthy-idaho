@@ -1,7 +1,7 @@
 // Using leaflet to display map of Idaho, not sure how we'll use this with the data yet
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, Control } from 'react-leaflet';
 import axios from 'axios';
 
 // Local modules
@@ -14,14 +14,33 @@ import tracts2020 from '../tracts/tract2020.json';
 import tracts2010 from '../tracts/tract2010.json';
 import tracts2000 from '../tracts/tract2000.json';
 
-function onEachFeature(feature, layer, colorData) {
+// function to sanitize HTML elements
+function sanitizeHTML(text) {
+    let div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function createPopupInfo(name, value) {
+    return `<div class="popup-info"><b>${name}</b> <span>${sanitizeHTML(value)}</span></div>`;
+}
+
+function onEachFeature(feature, layer, colorData, variableName) {
     if (feature.properties && colorData) {
         let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
+        
 
         if(fipsObject && fipsObject.color != null) {
             layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: 1});
 
-            //TODO: info to include in popup when tract is clicked on
+            layer.bindPopup(
+                "<div style='text-align: center;'><b>Tract Info</b></div>" +
+                createPopupInfo("FIPS", feature.properties.FIPS) +
+                createPopupInfo(variableName, Math.round((parseFloat(fipsObject.value) + Number.EPSILON) * 100) / 100) +
+                createPopupInfo("County", feature.properties.COUNTY) +
+                (feature.properties.AREA_SQMI ? createPopupInfo("Area (sq. mi)", Math.round((feature.properties.AREA_SQMI + Number.EPSILON) * 100) / 100) : "") +
+                (feature.properties.LOCATION ? createPopupInfo("Location", feature.properties.LOCATION) : "")
+            );
         }
     }
     else {
@@ -80,7 +99,7 @@ function Map({activeTract}) {
                     key={JSON.stringify(tractData) + JSON.stringify(colorData)}
                     style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.25}}
                     data={tractData}
-                    onEachFeature={(feature, layer) => onEachFeature(feature, layer, colorData)}
+                    onEachFeature={(feature, layer) => onEachFeature(feature, layer, colorData, activeTract?.selectedVariable)}
                 />
             )}
         </MapContainer>
