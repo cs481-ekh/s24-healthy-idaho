@@ -1,7 +1,7 @@
 // Using leaflet to display map of Idaho, not sure how we'll use this with the data yet
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, Control } from 'react-leaflet';
 import axios from 'axios';
 
 // Local modules
@@ -21,23 +21,25 @@ function sanitizeHTML(text) {
     return div.innerHTML;
 }
 
-function onEachFeature(feature, layer, colorData) {
+function createPopupInfo(name, value) {
+    return `<div class="popup-info"><b>${name}</b> <span>${sanitizeHTML(value)}</span></div>`;
+}
+
+function onEachFeature(feature, layer, colorData, variableName) {
     if (feature.properties && colorData) {
         let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
+        
 
         if(fipsObject && fipsObject.color != null) {
             layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: 1});
 
-            //TODO: info to include in popup when tract is clicked on
             layer.bindPopup(
-                "<div style='text-align: center;'>" +
-                "<b>Tract Info</b>" +
-                "</div>" +
-                "<b>FIPS:</b> " + sanitizeHTML(feature.properties.FIPS) + "<br>" +
-                ("<b>Value:</b> " + sanitizeHTML(Math.round((parseFloat(fipsObject.value) + Number.EPSILON) * 100) / 100) + "<br>") +
-                "<b>County:</b> " + sanitizeHTML(feature.properties.COUNTY) + "<br>" +
-                (feature.properties.AREA_SQMI ? "<b>Area (sq. mi):</b> " + sanitizeHTML(Math.round((feature.properties.AREA_SQMI+ Number.EPSILON) * 100) / 100)  + "<br>" : "") +
-                (feature.properties.LOCATION ? "<b>Location:</b> " + sanitizeHTML(feature.properties.LOCATION) + "<br>" : "")
+                "<div style='text-align: center;'><b>Tract Info</b></div>" +
+                createPopupInfo("FIPS", feature.properties.FIPS) +
+                createPopupInfo(variableName, Math.round((parseFloat(fipsObject.value) + Number.EPSILON) * 100) / 100) +
+                createPopupInfo("County", feature.properties.COUNTY) +
+                (feature.properties.AREA_SQMI ? createPopupInfo("Area (sq. mi)", Math.round((feature.properties.AREA_SQMI + Number.EPSILON) * 100) / 100) : "") +
+                (feature.properties.LOCATION ? createPopupInfo("Location", feature.properties.LOCATION) : "")
             );
         }
     }
@@ -97,7 +99,7 @@ function Map({activeTract}) {
                     key={JSON.stringify(tractData) + JSON.stringify(colorData)}
                     style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.25}}
                     data={tractData}
-                    onEachFeature={(feature, layer) => onEachFeature(feature, layer, colorData)}
+                    onEachFeature={(feature, layer) => onEachFeature(feature, layer, colorData, activeTract?.selectedVariable)}
                 />
             )}
         </MapContainer>

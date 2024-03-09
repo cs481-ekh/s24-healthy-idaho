@@ -238,3 +238,9 @@ p {
 .right-side {
     flex: 40%;
 }
+
+.popup-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+}
