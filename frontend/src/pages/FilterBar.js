@@ -5,7 +5,7 @@ import './Map.js'
 const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison }) => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
-    const [selectedColor, setSelectedColor] = useState({});
+    const [selectedColor, setSelectedColor] = useState(null);
 
     const handleSearch = () => {
         // set active tract with selected year, variable, and color options to pass to Map component
@@ -62,14 +62,16 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                 <div className="dropdown">
                     <select
                         id="color"
-                        value={selectedColor.length ? JSON.stringify(selectedColor) : ""}
+                        // value={selectedColor.length ? JSON.stringify(selectedColor) : ""}
+                        value={selectedColor !== null ? JSON.stringify(selectedColor) : ""}
                         onChange={(e) => setSelectedColor(JSON.parse(e.target.value))}
                     >
                         <option value="" disabled>
                             Select Color
                         </option>
                         {
-                            Object.keys(colorOptions).map((color, index) => (
+                            // Object.keys(colorOptions).map((color, index) => (
+                            colorOptions && Object.keys(colorOptions).map((color, index) => (
                                 <option key={index} value={JSON.stringify(colorOptions[color])}>
                                     {color}
                                 </option>

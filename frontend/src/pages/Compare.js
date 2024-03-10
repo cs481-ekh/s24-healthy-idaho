@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Map from './Map';
 // import Chart from './Chart';
 import FilterBar from './FilterBar';
 import "../styles.css";
+import colorOptions from "../components/ColorOptions";
 
 function Data() {
     // Define options for COUNTY and FIPS dropdown menus
@@ -14,6 +15,8 @@ function Data() {
         'Socioencomic Status', 'Greenness', 'Heat Island', 'LST-Max', 'LST-Mean',
         'Smoke', 'Population', 'PM-2-5'];
 
+    const [activeTract, setActiveTract] = useState(null);
+
     return (
         <div>
             <div className="compare-container">
@@ -21,7 +24,10 @@ function Data() {
                     <FilterBar
                         yearOptions={yearOptions}
                         variableOptions={variableOptions}
-                        isComparison={true} // Indicates that it's being used in comparison context
+                        colorOptions={colorOptions}
+                        activeTract={activeTract}
+                        setActiveTract={setActiveTract}
+                        isComparison={false} // Indicates that it's being used in comparison context
                     />
                     <div className="map-container">
                         <Map />
@@ -31,7 +37,10 @@ function Data() {
                     <FilterBar
                         yearOptions={yearOptions}
                         variableOptions={variableOptions}
-                        isComparison={true} // Indicates that it's being used in comparison context
+                        colorOptions={colorOptions}
+                        activeTract={activeTract}
+                        setActiveTract={setActiveTract}
+                        isComparison={false} // Indicates that it's being used in comparison context
                     />
                     <div className="map-container">
                         <Map />

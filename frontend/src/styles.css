@@ -171,25 +171,25 @@ body {
         flex-direction: column;
     }
 }
+/*This is styling to make dropdown menus next to each other rather than on top of each other*/
+/*.compare-container .filter-bar {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*}*/
 
-.compare-container .filter-bar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+/*.compare-container .filter-group {*/
+/*    margin-right: 20px;*/
+/*}*/
 
-.compare-container .filter-group {
-    margin-right: 20px;
-}
+/*.compare-container .filter-label {*/
+/*    display: block;*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
-.compare-container .filter-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-.compare-container .dropdown {
-    margin-bottom: 0;
-}
+/*.compare-container .dropdown {*/
+/*    margin-bottom: 0;*/
+/*}*/
 
 /*Styling for About.js*/
 .project-header h2 {
