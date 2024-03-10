@@ -11,12 +11,8 @@ services:
       - "3306:3306"
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
-    environment:
-      - DB_HOST=db
-      - MYSQL_DATABASE=healthy_idaho_db
-      - MYSQL_USER=admin
-      - MYSQL_PASSWORD=password
-      - MYSQL_ROOT_PASSWORD=rootpassword
+    env_file:
+      - .env
     networks:
       - hh-net
 
@@ -26,12 +22,8 @@ services:
     build:
       context: ./backend
       dockerfile: ../docker/django/Dockerfile
-    environment:
-      - DB_HOST=db
-      - MYSQL_DATABASE=healthy_idaho_db
-      - MYSQL_USER=admin
-      - MYSQL_PASSWORD=password
-      - MYSQL_ROOT_PASSWORD=rootpassword
+    env_file:
+      - .env
     ports:
       - "8001:8000"
     depends_on:
