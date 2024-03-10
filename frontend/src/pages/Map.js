@@ -57,7 +57,6 @@ function Map({activeTract}) {
 
     useEffect(() => {
         let newTractData = null;
-
         // Set tract data and color based on selected year
         if (activeTract?.selectedYear >= 2000 && activeTract?.selectedYear <= 2009) {
             newTractData = tracts2000;
@@ -70,9 +69,13 @@ function Map({activeTract}) {
         }
 
         setTractData(newTractData);
+        let fetchURL="";
+        if( !process.env.REACT_APP_API_ROOT )
+          fetchURL="http://localhost:8001/s24-healthy-idaho";
+        console.log("fetchURL="+fetchURL)
 
         if (activeTract?.selectedYear != null) {
-            axios.get('http://localhost:8001/healthy_idaho/query/?year=' + activeTract?.selectedYear + "&attr=" + activeTract?.selectedVariable.replace(/[\s-]/g, ''))
+            axios.get(fetchURL+'/query/?year=' + activeTract?.selectedYear + "&attr=" + activeTract?.selectedVariable.replace(/[\s-]/g, ''))
             .then(response => {
                 let data = response.data.data;
 

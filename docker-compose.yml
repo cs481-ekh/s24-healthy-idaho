@@ -36,8 +36,6 @@ services:
   frontend:
     container_name: frontend-app
     restart: always
-    environment:
-      - WATCHPACK_POLLING=true
     build:
       context: ./frontend
       dockerfile: ../docker/react/Dockerfile
