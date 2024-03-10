@@ -126,7 +126,29 @@ body {
 /*Styling for Data.js*/
 .data-container {
     display: flex;
-    align-items: flex-start; /* Adjust alignment of map and FilterBar */
+    align-items: flex-start;
+}
+
+.important-notice-title {
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    color: #0033A0;
+}
+
+.important-notice-title:hover {
+    color: darkblue;
+}
+
+.important-notice {
+    position: absolute;
+    background-color: whitesmoke;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    z-index: 9999; /* Ensure the popup appears above other content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
 }
 
 .map-container {
