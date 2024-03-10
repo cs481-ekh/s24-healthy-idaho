@@ -1,21 +1,12 @@
 import mysql.connector
-
-# Database connections, might be able to pull from elsewhere
-db_connection = {
-    'user' : 'root',
-    'password' : 'rootpassword',
-    'host' : 'localhost',
-    'port' : '3306',
-    'database' : 'healthy_idaho_db'
-}
-
+from decouple import config
 # Assignments
 connection = mysql.connector.connect (
-    user = db_connection['user'],
-    password = db_connection['password'],
-    host = db_connection['host'],
-    port = db_connection['port'],
-    database = db_connection['database']
+    user = config("MYSQL_ROOT_USERNAME"),
+    password = config("MYSQL_ROOT_PASSWORD"),
+    host = "localhost",
+    port = config("MYSQL_PORT"),
+    database = config("MYSQL_DATABASE")
 )
 
 # NEED CHANGE

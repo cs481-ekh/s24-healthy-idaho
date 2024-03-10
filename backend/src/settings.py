@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-l22@6x_!cb+%v)*d8rszg)-h0=td3&k49(dpyy=#i75)$qplnd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG=config("DEBUG")
 
 ALLOWED_HOSTS = ["0.0.0.0", "192.168.0.8", "localhost", "127.0.0.1"]
 
@@ -80,11 +81,11 @@ WSGI_APPLICATION = 'src.wsgi.application'
 DATABASES = {
     "default": {
       'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'healthy_idaho_db',
-        'USER': 'root',
-        'PASSWORD': 'rootpassword',
-        'HOST': 'database', #use <database/localhost> when in <production/testing>
-        'PORT': '3306',
+        'NAME': config("MYSQL_DATABASE"),
+        'USER': config("MYSQL_ROOT_USERNAME"),
+        'PASSWORD': config("MYSQL_ROOT_PASSWORD"),
+        'HOST': 'database',
+        'PORT': config("MYSQL_PORT"),
     }
 }
 

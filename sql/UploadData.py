@@ -1,6 +1,7 @@
 import csv
 import mysql.connector
 from pathlib import Path
+from decouple import config
 import os
 
 ###
@@ -26,22 +27,13 @@ def makeSQLQuery():
     return sql
 
 def estCnx():
-    # Database connections, might be able to pull from elsewhere
-    db_connection = {
-        'user' : 'root',
-        'password' : 'rootpassword',
-        'host' : 'localhost',
-        'port' : '3306',
-        'database' : 'healthy_idaho_db'
-    }
-    
     # Assignments
     connection = mysql.connector.connect (
-        user = db_connection['user'],
-        password = db_connection['password'],
-        host = db_connection['host'],
-        port = db_connection['port'],
-        database = db_connection['database']
+        user = config("MYSQL_ROOT_USERNAME"),
+        password = config("MYSQL_ROOT_PASSWORD"),
+        host = "localhost",
+        port = config("MYSQL_PORT"),
+        database = config("MYSQL_DATABASE")
     )
     return connection
 
