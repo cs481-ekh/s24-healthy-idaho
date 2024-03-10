@@ -2,19 +2,42 @@ import React, { useState } from 'react';
 import "../styles.css";
 import './Map.js'
 
-const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison }) => {
+const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison}) => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
     const [selectedColor, setSelectedColor] = useState(null);
+    // For error messages
+    const [yearError, setYearError] = useState(false);
+    const [variableError, setVariableError] = useState(false);
+    const [colorError, setColorError] = useState(false);
 
     const handleSearch = () => {
-        // set active tract with selected year, variable, and color options to pass to Map component
-        setActiveTract({selectedYear: selectedYear, selectedVariable: selectedVariable, selectedColor: selectedColor});
+        // For error messages
+        setYearError(false);
+        setVariableError(false);
+        setColorError(false);
+
+        // Check if all dropdowns are selected
+        if (!selectedYear) {
+            setYearError(true);
+        }
+        if (!selectedVariable) {
+            setVariableError(true);
+        }
+        if (!selectedColor) {
+            setColorError(true);
+        }
+
+        // Proceed with search only if all dropdowns are selected
+        if (selectedYear && selectedVariable && selectedColor) {
+            // set active tract with selected year, variable, and color options to pass to Map component
+            setActiveTract({selectedYear: selectedYear, selectedVariable: selectedVariable, selectedColor: selectedColor});
+        }
     };
 
     return (
         <div className={`filter-bar ${isComparison ? 'comparison' : ''}`}>
-            <div className="filter-group">
+            <div className={"filter-group"}>
                 {/* Year Dropdown */}
                 <label className="filter-label">Year</label>
                 <div className="dropdown">
@@ -32,6 +55,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                             </option>
                         ))}
                     </select>
+                    {yearError && <span className="error-message">Please select a year</span>}
                 </div>
             </div>
 
@@ -53,6 +77,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                             </option>
                         ))}
                     </select>
+                    {variableError && <span className="error-message">Please select a variable</span>}
                 </div>
             </div>
 
@@ -78,6 +103,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                             ))
                         }
                     </select>
+                    {colorError && <span className="error-message">Please select a color</span>}
                 </div>
             </div>
 

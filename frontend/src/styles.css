@@ -121,6 +121,13 @@ body {
     margin-bottom: 10px;
 }
 
+.filter-group-horiz {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* margin-bottom: 10px; */
+}
+
 .filter-label {
     font-weight: bold;
     margin-bottom: 5px;
@@ -144,6 +151,14 @@ body {
 
 .filter-bar option[selected] {
     color: black;
+}
+
+.error-message {
+    background-color: red;
+    color: white;
+    padding: 5px 10px; /* Padding for better appearance */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 5px; /* Add some space between error messages */
 }
 
 .filter-bar button {
@@ -198,6 +213,11 @@ body {
     display: flex;
 }
 
+.comparison {
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 .left-section,
 .right-section {
     flex: 1;
@@ -205,7 +225,7 @@ body {
 
 @media (max-width: 768px) {
     .compare-container {
-        flex-direction: column;
+        flex-direction: row;
     }
 }
 /*This is styling to make dropdown menus next to each other rather than on top of each other*/
