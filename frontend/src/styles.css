@@ -146,6 +146,14 @@ body {
     color: black;
 }
 
+.error-message {
+    background-color: red;
+    color: white;
+    padding: 5px 10px; /* Padding for better appearance */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 5px; /* Add some space between error messages */
+}
+
 .filter-bar button {
     background-color: #0033A0;
     color: white;
