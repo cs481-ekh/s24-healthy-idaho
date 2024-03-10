@@ -28,11 +28,13 @@ function Footer() {
                 positionOffset={{ top: -10 }} // Adjust offset as needed
             >
                 <div className="important-notice">
-                    Search tips ...
+                    Be sure to select a Year, Variable, and Color from the drop-down menus
+                    before searching or the search will not work as expected.
                     <br />
-                    Search tips ...
+                    The Year menu will filter the data shown based on the year selected.
                     <br />
-                    Search tips ...
+                    The Variable description's are listed on the About page that can be
+                    navigated to from the Navigation Menu at the top of the page.
                 </div>
             </JSPopup>
         </footer>
