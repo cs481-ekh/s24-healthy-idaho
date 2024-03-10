@@ -28,7 +28,7 @@ function Data() {
                         colorOptions={colorOptions}
                         activeTract={activeTract}
                         setActiveTract={setActiveTract}
-                        isComparison={false} // Indicates that it's being used in comparison context
+                        isComparison={true} // Indicates that it's being used in comparison context
                     />
                     <div className="map-container">
                         <Map />
@@ -41,7 +41,7 @@ function Data() {
                         colorOptions={colorOptions}
                         activeTract={activeTract}
                         setActiveTract={setActiveTract}
-                        isComparison={false} // Indicates that it's being used in comparison context
+                        isComparison={true} // Indicates that it's being used in comparison context
                     />
                     <div className="map-container">
                         <Map />

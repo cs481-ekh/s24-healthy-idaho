@@ -121,6 +121,13 @@ body {
     margin-bottom: 10px;
 }
 
+.filter-group-horiz {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* margin-bottom: 10px; */
+}
+
 .filter-label {
     font-weight: bold;
     margin-bottom: 5px;
@@ -206,6 +213,11 @@ body {
     display: flex;
 }
 
+.comparison {
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 .left-section,
 .right-section {
     flex: 1;
@@ -213,7 +225,7 @@ body {
 
 @media (max-width: 768px) {
     .compare-container {
-        flex-direction: column;
+        flex-direction: row;
     }
 }
 /*This is styling to make dropdown menus next to each other rather than on top of each other*/

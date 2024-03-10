@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "../styles.css";
 import './Map.js'
 
-const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison }) => {
+const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison}) => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
     const [selectedColor, setSelectedColor] = useState(null);
@@ -37,7 +37,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
 
     return (
         <div className={`filter-bar ${isComparison ? 'comparison' : ''}`}>
-            <div className="filter-group">
+            <div className={"filter-group"}>
                 {/* Year Dropdown */}
                 <label className="filter-label">Year</label>
                 <div className="dropdown">
