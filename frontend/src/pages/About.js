@@ -41,7 +41,7 @@ function About() {
                         This portal interactively visualizes annual social, biological and physical variables that are
                         relevant for the health of Idahoans (details in table below). The data was developed by
                         Mr. Seyd Teymoor Seydi (research scholar at Boise State), and was supported by the Boise State Grand Challenges Initiative.
-                        The mapper portal was developed through a Boise State Computer Science senior design project (Team Fire Tree Fire),
+                        The mapper portal was developed through a Boise State Computer Science senior design project (Team 🔥🌲🔥),
                         under supervision of Dr. Eric Henderson. Attributes and sources used by the team to create this portal can be
                         found&nbsp;<a href='https://drive.google.com/drive/u/0/folders/1CtkP1iY_tDpcAXA-9w30wFD-PWL8Dqgd' target='_blank'>here</a>.
                         <br></br>
@@ -226,7 +226,7 @@ function About() {
                 </Card>
             </Stack>
             <div className="project-header">
-                <h2>Fire Tree Fire Project Plan</h2>
+                <h2>Team 🔥🌲🔥 Project Plan</h2>
             </div>
             <div className="project-plan">
                 <div className="left-side">

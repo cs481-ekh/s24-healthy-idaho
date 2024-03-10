@@ -10,6 +10,7 @@ import {Link} from "react-router-dom";
 import FilterBar from './FilterBar';
 import "../styles.css";
 import colorOptions from '../components/ColorOptions.js'
+import Footer from "../Footer";
 
 function Data() {
     // Define options for COUNTY and FIPS dropdown menus
@@ -28,17 +29,6 @@ function Data() {
     return (
         <div>
             <div className="data-container">
-                <JSPopup trigger={<Link className="important-notice-title">Important Notice</Link>}>
-                    <div className="important-notice">
-                        For the best search experience be sure to select the Year, Variable, and Color
-                        from each menu before searching.
-                        <br />
-                        The Color menu is giving you the choice for which color the census tracts will
-                        be displayed on the map.
-                        <br />
-                        This accommodates color-blind individuals for inclusivity.
-                    </div>
-                </JSPopup>
                 <div className="filter-bar-container">
                     <FilterBar 
                         yearOptions={yearOptions} 
@@ -54,6 +44,7 @@ function Data() {
                 </div>
             </div>
             {/*<Chart />*/}
+            <Footer />
         </div>
     );
 }

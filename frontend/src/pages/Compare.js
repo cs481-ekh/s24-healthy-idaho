@@ -4,6 +4,7 @@ import Map from './Map';
 import FilterBar from './FilterBar';
 import "../styles.css";
 import colorOptions from "../components/ColorOptions";
+import Footer from "../Footer";
 
 function Data() {
     // Define options for COUNTY and FIPS dropdown menus
@@ -47,6 +48,7 @@ function Data() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }
