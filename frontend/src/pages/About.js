@@ -19,9 +19,7 @@ function About() {
                 }}>
                     <Typography variant='h2' sx={{ fontFamily: 'Arial, sans-serif' }}>
                         <br />
-                        Healthy Idaho(v 1.0.0)
-                        <br />
-                        Interactive Portal for Healthy Idaho Dataset
+                        Interactive Visualization Portal for Healthy Idaho Project
                         <br />
                     </Typography>
                 </Card>
@@ -40,24 +38,20 @@ function About() {
                 }}>
                     <Typography sx={{fontSize: 18, fontFamily: 'Arial, sans-serif'}}><b>Background</b>
                         <br></br>
-                        Idaho-specific, accessible information on heat and wildfire smoke that can inform
-                        public policy and outreach are rare. This portal provides a variety of Idaho-specific climate-
-                        related information in an accessible format (web-based). The information that this portal will
-                        disseminate include: exposure to heatwaves and wildfire smoke in different regions across Idaho,
-                        as well as land surface temperature, access to adaptation measures (such as green areas), and
-                        background social information that drive climate extreme health outcomes. Accessibility of this
-                        information will help planning for more climate-friendly neighborhoods to minimize the impacts
-                        of climate extremes in Idaho. It will also help a more equitable adaptation to climate change in
-                        the Gem State. This portal is critical for Idaho public policymakers as the Gem State observes
-                        huge growth rates. Attributes and sources used by the team to create this portal can be found&nbsp;
-                        <a href='https://drive.google.com/drive/u/0/folders/1HlFS8fAzw7zDaCdOpMma_M2jNgD1ewlq' target='_blank'>here</a>.
+                        This portal interactively visualizes annual social, biological and physical variables that are
+                        relevant for the health of Idahoans (details in table below). The data was developed by
+                        Mr. Seyd Teymoor Seydi (research scholar at Boise State), and was supported by the Boise State Grand Challenges Initiative.
+                        The mapper portal was developed through a Boise State Computer Science senior design project (Team 🔥🌲🔥),
+                        under supervision of Dr. Eric Henderson. Attributes and sources used by the team to create this portal can be
+                        found&nbsp;<a href='https://drive.google.com/drive/u/0/folders/1CtkP1iY_tDpcAXA-9w30wFD-PWL8Dqgd' target='_blank'>here</a>.
                         <br></br>
                         <br></br>
-                        <b>Fire Tree Fire Members:</b> Joshua Corrales; Anthony Diep; Braeden Lacombe; Clara Arnold (CS 481 - Spring 2024)
+                        <b>Team Fire Tree Fire Members:</b> Joshua Corrales; Anthony Diep; Braeden Lacombe; Clara Arnold (CS 481 - Spring 2024)
                         <br></br>
                         <br></br>
-                        <b>Healthy Idaho project collaborators:</b> Dr. Mojtaba Sadegh (mojtabasadegh@boisestate.edu; Boise State University);
-                        Seyd Seydi (seydseydi@boisestate.edu; Boise State University)
+                        <b>Healthy Idaho project investigators:</b> Dr. Mojtaba Sadegh (mojtabasadegh@boisestate.edu; Boise State University);
+                        Dr. Jennifer Pierce (Boise State,  iCLEER); Dr. Kimberly Rauscher (Boise State); Dr. Anna Radin (St. Luke’s);
+                        Dr. Ethan Sims (St. Luke’s & ICCH); Ms. Hilary Flint (St. Luke’s); Ms. Stephanie Wicks (St. Luke’s)
                         <br></br>
                         <br></br>
                         <b>Abstract:</b> The impact of climate change in the Western US, particularly in Idaho, calls for the need of a portal
@@ -86,11 +80,47 @@ function About() {
                         boxShadow: "0 16px 70px -12.125px rgba(0, 51, 160, 0.5)"
                     }
                 }}>
-                    <Typography sx={{fontSize: 18, fontFamily: 'Arial, sans-serif'}}><b>Utlities</b>
+                    <Typography sx={{fontSize: 18, fontFamily: 'Arial, sans-serif'}}><b>Variable Description</b></Typography>
+                    <Typography sx={{fontSize: 18, fontFamily: 'Arial, sans-serif', textAlign: 'left'}}>
                         <br></br>
-                        The user can select which categories of attributes to
-                        view/download (description of attributes&nbsp;
-                        <a href='https://docs.google.com/spreadsheets/d/18z6cARYUUnHoUgv13dE9cl_EyswMCCYE/edit#gid=704089613' target='_blank'>here</a>).
+                        <span style={{textDecoration: "underline"}}>Area:</span> Surface area of each census tract at the year of selection in km2
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>COUNTY:</span> County name
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Minority Status and Language:</span> Social vulnerability of the census tract population in terms of “Minority Status and Language” –
+                        0 indicates lowest vulnerability and 1 signifies highest vulnerability
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Overall Vulnerability:</span> Social vulnerability of the census tract population in terms of “Overall Vulnerability” –
+                        0 indicates lowest vulnerability and 1 signifies highest vulnerability
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Housing Type and Transportation:</span> Social vulnerability of the census tract population in terms of “Minority Status and Language” –
+                        0 indicates lowest vulnerability and 1 signifies highest vulnerability
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Household Composition and Disability:</span> Social vulnerability of the census tract population in terms of
+                        “Household Composition and Disability” – 0 indicates lowest vulnerability and 1 signifies highest vulnerability
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Socioeconomic Status:</span> Social vulnerability of the census tract population in terms of “Socioeconomic Status” –
+                        0 indicates lowest vulnerability and 1 signifies highest vulnerability
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Greenness:</span> Percentage of the census tract that is green (mean summer NDVI >= 0.3; irrigated green)
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Heat Island:</span> Urban heat island intensity – higher values indicate higher heat island intensities
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>LST-Max:</span> Maximum summer land surface temperature (deg C) in the census tract
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>LST-Mean:</span> Average summer land surface temperature (deg C) in the census tract
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Smoke:</span> Total annual smoke load in ug/m3 (sum of all daily smoke levels) for each census tract
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Population:</span> Population of each census tract
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>PM-2-5:</span> Total annual PM2.5 load in ug/m3 (sum of all daily PM2.5 levels) for each census tract
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Heatwave:</span> Annual heatwave exposures in person-days. Heatwave is defined as max daily temperature exceeding
+                        90 degF for at least 3 consecutive days. Number of heatwave days is multiplied by the population exposed and
+                        summed over the year to calculate exposure.
+                        <br></br>
+                        <span style={{textDecoration: "underline"}}>Density Population:</span> Density of population in each census tract in persons/km2 (population divided by area of census tract)
                     </Typography>
                 </Card>
 
@@ -105,15 +135,98 @@ function About() {
                         boxShadow: "0 16px 70px -12.125px rgba(0, 51, 160, 0.5)"
                     }
                 }}>
+                    <Typography sx={{fontSize: 18, fontFamily: 'Arial, sans-serif'}}><b>More Information</b>
+                        <br></br>
+                        <span style={{ fontStyle: "italic" }}>Every American is vulnerable to the health impacts associated with Climate Change.</span> The Earth’s warming
+                        climate lengthens and exacerbates warm seasons, heatwaves, and droughts, which results in increased
+                        wildfire activity and associated smoke in the Western US. The combination of climate extremes, growing
+                        populations in the western US, and an aging population contributes to elevated exposure to grave climate-related
+                        health impacts. In fact, thousands to tens of thousands heat-related deaths are projected in the US in a
+                        warming climate. Climate health impacts depend on four factors: (1) the nature, intensity, and duration of
+                        the climate extreme, (2) the extent of exposure to extremes, (3) the sensitivity and resilience of the exposed
+                        population, and (4) the capacity of the community to respond to and manage health risks.
+                        <br></br>
+                        <br></br>
+                        Idahoans are vulnerable to a variety of climatic extremes, including wildfire smoke and heatwaves. In 2022,
+                        for example, summer temperatures in Boise, ID topped 100  for a record-breaking 25 days. Heatwaves not only
+                        can cause heat cramps, heat exhaustion, heatstrokes, and hyperthermia, but also can worsen chronic conditions
+                        such as cardiovascular, respiratory, and cerebrovascular diseases and diabetes-related conditions. Furthermore,
+                        in 2020 alone, the Gem state observed more than 15 million person-days of exposure to poor air quality – air
+                        quality index (AQI) for PM2.5 above 100 – due to wildfire smoke. Wildfire smoke induces a variety of respiratory
+                        and cardiovascular effects such as coughing, wheezing, bronchitis, reduced lung function, asthma exacerbation
+                        and lung diseases aggravation, heart failure, heart attack, and stroke. It is estimated that from 2008-2013 in
+                        the Contiguous US, between 5200 and 8500 respiratory hospital admissions per year occurred due to exposure to
+                        wildfire smoke. Idaho is in the bullseye of wildfire smoke impacts in the western US; severe smoky days impact
+                        central Idaho for more than 20 days per year, and 10-20 days for the rest of Idaho.
+                    </Typography>
+                </Card>
+
+                {/*Fifth card*/}
+                <Card sx={{width:'85vw',
+                    alignSelf: 'center',
+                    alignContent: 'center',
+                    textAlign: 'center',
+                    bgcolor: '#E6E5E3',
+                    boxShadow: "0 8px 40px -12px rgba(0, 51, 160, 0.5)",
+                    "&:hover": {
+                        boxShadow: "0 16px 70px -12.125px rgba(0, 51, 160, 0.5)"
+                    }
+                }}>
+                    <Typography sx={{fontSize: 18, fontFamily: 'Arial, sans-serif'}}><b>Significance</b>
+                        <br></br>
+                        Idaho-specific, accessible information on heat and wildfire smoke that can inform public policy
+                        and outreach are rare. This portal provides a variety of Idaho-specific climate-related information
+                        in an accessible format. The information that this portal will disseminate include: exposure to
+                        heatwaves and wildfire smoke in different regions across Idaho, as well as land surface temperature,
+                        access to adaptation measures (such as green areas), and background social information that drive
+                        climate extreme health outcomes. Accessibility of this information will help planning for more
+                        climate-friendly neighborhoods to minimize the impacts of climate extremes in Idaho. It will also
+                        help a more equitable adaptation to climate change in the Gem State.
+                    </Typography>
+                </Card>
+
+                {/*Sixth card*/}
+                <Card sx={{width:'85vw',
+                    alignSelf: 'center',
+                    alignContent: 'center',
+                    textAlign: 'center',
+                    bgcolor: '#E6E5E3',
+                    boxShadow: "0 8px 40px -12px rgba(0, 51, 160, 0.5)",
+                    "&:hover": {
+                        boxShadow: "0 16px 70px -12.125px rgba(0, 51, 160, 0.5)"
+                    }
+                }}>
+                    <Typography sx={{fontSize: 18, fontFamily: 'Arial, sans-serif'}}><b>Utlities</b>
+                        <br></br>
+                        This portal enables the user to visualize specific data for each year at a census tract level.
+                        Upon clicking on the individual census tract, its attributes will be shown to the user.
+                        The user can also choose to “Compare” two variables in the same or different years next to each other.
+                        The user can select which categories of attributes to
+                        view/download (description of attributes&nbsp;
+                        <a href='https://docs.google.com/spreadsheets/d/18z6cARYUUnHoUgv13dE9cl_EyswMCCYE/edit#gid=704089613' target='_blank'>here</a>).
+                    </Typography>
+                </Card>
+
+                {/*Seventh card*/}
+                <Card sx={{width:'85vw',
+                    alignSelf: 'center',
+                    alignContent: 'center',
+                    textAlign: 'center',
+                    bgcolor: '#E6E5E3',
+                    boxShadow: "0 8px 40px -12px rgba(0, 51, 160, 0.5)",
+                    "&:hover": {
+                        boxShadow: "0 16px 70px -12.125px rgba(0, 51, 160, 0.5)"
+                    }
+                }}>
                     <Typography sx={{fontSize: 18, fontFamily: 'Arial, sans-serif'}}><b>Healthy Idaho Source Codes</b>
                         <br></br>
-                        Source codes developed by the “Fire Tree Fire” can be found&nbsp;
+                        Source codes used for this mapper are available&nbsp;
                         <a href='https://github.com/cs481-ekh/s24-healthy-idaho' target='_blank'>here.</a>
                     </Typography>
                 </Card>
             </Stack>
             <div className="project-header">
-                <h2>Fire Tree Fire Project Plan</h2>
+                <h2>Team 🔥🌲🔥 Project Plan</h2>
             </div>
             <div className="project-plan">
                 <div className="left-side">

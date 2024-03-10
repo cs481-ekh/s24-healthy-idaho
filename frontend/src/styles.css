@@ -66,6 +66,43 @@ body {
     color: #D64309;
 }
 
+/*Styling for Footer.js*/
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Example background color */
+    height: 50px; /* Example height */
+}
+
+.separator {
+    margin: 0 10px; /* Adjust spacing as needed */
+}
+
+.important-notice-title {
+    font-weight: bold;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    color: #0033A0;
+}
+
+.important-notice-title:hover {
+    color: darkblue;
+}
+
+.important-notice {
+    position: absolute;
+    background-color: whitesmoke;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    z-index: 9999; /* Ensure the popup appears above other content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+}
+
 /*Styling for FilterBar.js*/
 .filter-bar {
     padding: 10px;
@@ -126,8 +163,30 @@ body {
 /*Styling for Data.js*/
 .data-container {
     display: flex;
-    align-items: flex-start; /* Adjust alignment of map and FilterBar */
+    align-items: flex-start;
 }
+
+/*.important-notice-title {*/
+/*    font-weight: bold;*/
+/*    font-size: 18px;*/
+/*    font-family: Arial, sans-serif;*/
+/*    color: #0033A0;*/
+/*}*/
+
+/*.important-notice-title:hover {*/
+/*    color: darkblue;*/
+/*}*/
+
+/*.important-notice {*/
+/*    position: absolute;*/
+/*    background-color: whitesmoke;*/
+/*    padding: 20px;*/
+/*    border: 1px solid black;*/
+/*    border-radius: 5px;*/
+/*    z-index: 9999; !* Ensure the popup appears above other content *!*/
+/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
+/*    width: 300px;*/
+/*}*/
 
 .map-container {
     flex: 1;
@@ -149,25 +208,25 @@ body {
         flex-direction: column;
     }
 }
+/*This is styling to make dropdown menus next to each other rather than on top of each other*/
+/*.compare-container .filter-bar {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*}*/
 
-.compare-container .filter-bar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
+/*.compare-container .filter-group {*/
+/*    margin-right: 20px;*/
+/*}*/
 
-.compare-container .filter-group {
-    margin-right: 20px;
-}
+/*.compare-container .filter-label {*/
+/*    display: block;*/
+/*    margin-bottom: 10px;*/
+/*}*/
 
-.compare-container .filter-label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-.compare-container .dropdown {
-    margin-bottom: 0;
-}
+/*.compare-container .dropdown {*/
+/*    margin-bottom: 0;*/
+/*}*/
 
 /*Styling for About.js*/
 .project-header h2 {

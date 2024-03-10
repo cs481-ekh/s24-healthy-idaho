@@ -3,11 +3,14 @@ import React from 'react';
 import { useState } from 'react';
 import Map from './Map';
 import axios from 'axios';
+import JSPopup from "reactjs-popup";
+import {Link} from "react-router-dom";
 
 // Local modules
 import FilterBar from './FilterBar';
 import "../styles.css";
 import colorOptions from '../components/ColorOptions.js'
+import Footer from "../Footer";
 
 function Data() {
     // Define options for COUNTY and FIPS dropdown menus
@@ -41,6 +44,7 @@ function Data() {
                 </div>
             </div>
             {/*<Chart />*/}
+            <Footer />
         </div>
     );
 }
