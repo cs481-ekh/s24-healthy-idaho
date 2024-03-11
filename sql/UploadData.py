@@ -5,12 +5,6 @@ from decouple import config
 import os
 import re
 
-###
-# Note:
-# 1) For datasets, there are typos such as "Socioencomic Status, DB will reflect same typos
-# 2) "Ada County" and "Ada" are both specified in datasets, DB will reflect same
-
-
 allAttrList = ["COUNTY", "FIPS", "Overall Vulnerability", "Housing Type and Transportation", 
                  "Socioeconomic Status", "Household Composition and Disability", 
                  "Minority Status and Language", "Greenness", "Heat_Island", "LST-Max", 
