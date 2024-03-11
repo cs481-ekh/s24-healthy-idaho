@@ -3,6 +3,7 @@ import mysql.connector
 from pathlib import Path
 from decouple import config
 import os
+import re
 
 ###
 # Note:
@@ -43,8 +44,7 @@ def insertDataIntoTable (csvFilepath, f_sql):
 
     # Extract year from filename
     filename = os.path.basename(csvFilepath)
-    year = filename[filename.index('_')+7:filename.index('.')]
-
+    year=re.findall(r'\d+', str(filename))[0]
     # Insert data into table
     try:
         with open(csvFilepath, 'r') as csvFile:
@@ -52,7 +52,6 @@ def insertDataIntoTable (csvFilepath, f_sql):
           csvReader = csv.reader(csvFile)
           headers = next(csvReader)
           insert = [None] * len(allAttrList)
-
           count = 0
           for x in headers:
               if x == "":
@@ -62,8 +61,6 @@ def insertDataIntoTable (csvFilepath, f_sql):
               count+=1
           vals = [""] * len(allAttrList)
           for row in csvReader:
-              row = row[1:]
-
               # append the year to the row based on the filename
               for i in range(len(row)):
                   vals[insert.index(i)] = row[i]
@@ -84,10 +81,10 @@ def processDataDir():
     csvPath = os.path.join(Path(__file__).parent, "data")
 
     #print(csvPath)
-    l=[x for x in os.listdir(csvPath)]
-
+    l=[x for x in os.listdir(csvPath) if x.startswith("FCensus")]
     for x in l:
       file = os.path.join(os.getcwd(), "data", x)
       insertDataIntoTable(file, makeSQLQuery())
-    
+
+
 processDataDir()
