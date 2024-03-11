@@ -11,10 +11,9 @@ import os
 
 
 allAttrList = ["COUNTY", "FIPS", "Overall Vulnerability", "Housing Type and Transportation", 
-                 "Socioencomic Status", "Household Composition and Disability", 
+                 "Socioeconomic Status", "Household Composition and Disability", 
                  "Minority Status and Language", "Greenness", "Heat_Island", "LST-Max", 
-                 "LST-Mean", "Smoke","Popultatuion", "RPL_THEME3", "RPL_THEMES",  
-                 "RPL_THEME4", "RPL_THEME2", "RPL_THEME1", "Year"]
+                 "LST-Mean", "Smoke","Population", "Area", "PM-2-5", "Heatwave", "Density_Population", "Year"]
 
 
 def makeSQLQuery():
