@@ -45,7 +45,7 @@ function Data() {
                 return 'Social vulnerability of the census tract population in terms of “Socioeconomic Status”\n' +
                     '– 0 indicates lowest vulnerability and 1 signifies highest vulnerability';
             case 'Greenness':
-                return 'Percentage of the census tract that is green (mean summer NDVI &gt;= 0.3; irrigated green)';
+                return 'Percentage of the census tract that is green (mean summer NDVI >= 0.3; irrigated green)';
             case 'Heat Island':
                 return 'Urban heat island intensity – higher values indicate higher heat island intensities';
             case 'LST-Max':
