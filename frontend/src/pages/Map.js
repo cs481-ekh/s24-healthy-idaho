@@ -69,13 +69,10 @@ function Map({activeTract}) {
         }
 
         setTractData(newTractData);
-        let fetchURL="";
-        if( !process.env.REACT_APP_API_ROOT )
-          fetchURL="http://localhost:8001/s24-healthy-idaho";
-        console.log("fetchURL="+fetchURL)
+        const baseApiUrl=`${process.env.REACT_APP_API_ROOT ?? 'http:://localhost:8001/s24-healthy-idaho'}`
 
         if (activeTract?.selectedYear != null) {
-            axios.get(fetchURL+'/query/?year=' + activeTract?.selectedYear + "&attr=" + activeTract?.selectedVariable.replace(/[\s-]/g, ''))
+            axios.get(baseApiUrl+'/query/?year=' + activeTract?.selectedYear + "&attr=" + activeTract?.selectedVariable.replace(/[\s-]/g, ''))
             .then(response => {
                 let data = response.data.data;
 
