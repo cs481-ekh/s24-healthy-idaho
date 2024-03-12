@@ -9,10 +9,8 @@ import Admin from "./pages/Admin"
 import axios from 'axios';
 
 const App = () => {
-    const baseUrl=process.env.REACT_APP_API_ROOT
-    console.log("baseUrl="+baseUrl)
     return (
-        <Router basename={baseUrl}>
+        <Router basename={process.env.PUBLIC_URL}>
             <div>
                 <NavBar />
                 <Routes>
