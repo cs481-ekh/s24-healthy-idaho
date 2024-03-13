@@ -3,18 +3,12 @@ import mysql.connector
 from pathlib import Path
 from decouple import config
 import os
-
-###
-# Note:
-# 1) For datasets, there are typos such as "Socioencomic Status, DB will reflect same typos
-# 2) "Ada County" and "Ada" are both specified in datasets, DB will reflect same
-
+import re
 
 allAttrList = ["COUNTY", "FIPS", "Overall Vulnerability", "Housing Type and Transportation", 
-                 "Socioencomic Status", "Household Composition and Disability", 
+                 "Socioeconomic Status", "Household Composition and Disability", 
                  "Minority Status and Language", "Greenness", "Heat_Island", "LST-Max", 
-                 "LST-Mean", "Smoke","Popultatuion", "RPL_THEME3", "RPL_THEMES",  
-                 "RPL_THEME4", "RPL_THEME2", "RPL_THEME1", "Year"]
+                 "LST-Mean", "Smoke","Population", "Area", "PM-2-5", "Heatwave", "Density_Population", "Year"]
 
 
 def makeSQLQuery():
@@ -44,8 +38,7 @@ def insertDataIntoTable (csvFilepath, f_sql):
 
     # Extract year from filename
     filename = os.path.basename(csvFilepath)
-    year = filename[filename.index('_')+7:filename.index('.')]
-
+    year=re.findall(r'\d+', str(filename))[0]
     # Insert data into table
     try:
         with open(csvFilepath, 'r') as csvFile:
@@ -53,7 +46,6 @@ def insertDataIntoTable (csvFilepath, f_sql):
           csvReader = csv.reader(csvFile)
           headers = next(csvReader)
           insert = [None] * len(allAttrList)
-
           count = 0
           for x in headers:
               if x == "":
@@ -63,8 +55,6 @@ def insertDataIntoTable (csvFilepath, f_sql):
               count+=1
           vals = [""] * len(allAttrList)
           for row in csvReader:
-              row = row[1:]
-
               # append the year to the row based on the filename
               for i in range(len(row)):
                   vals[insert.index(i)] = row[i]
@@ -85,10 +75,10 @@ def processDataDir():
     csvPath = os.path.join(Path(__file__).parent, "data")
 
     #print(csvPath)
-    l=[x for x in os.listdir(csvPath)]
-
+    l=[x for x in os.listdir(csvPath) if x.startswith("FCensus")]
     for x in l:
       file = os.path.join(os.getcwd(), "data", x)
       insertDataIntoTable(file, makeSQLQuery())
-    
+
+
 processDataDir()

@@ -18,11 +18,10 @@ function Data() {
         '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017',
         '2018', '2019', '2020'].map(Number);
 
-    //removed PM-2-5 from variableOptions as it is not in the data for now
     const variableOptions = ['Minority Status and Language', 'Overall Vulnerability',
         'Housing Type and Transportation', 'Household Composition and Disability',
-        'Socioencomic Status', 'Greenness', 'Heat Island', 'LST-Max', 'LST-Mean',
-        'Smoke', 'Population'];
+        'Socioeconomic Status', 'Greenness', 'Heat Island', 'LST-Max', 'LST-Mean',
+        'Smoke', 'Population', 'PM-2-5', 'Heatwave', 'Density Population'];
 
     const [activeTract, setActiveTract] = useState(null);
 
