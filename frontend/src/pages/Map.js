@@ -57,11 +57,16 @@ function onEachFeature(feature, layer, colorData, variableName) {
                 mouseout: handleMouseOut
             });
         }
-    }
-    else {
-        //draw text for tracts that don't have data
-        layer.setStyle({color: 'black', fillColor: 'white', weight: 1, fillOpacity: 1});
-        layer.bindPopup("No data");
+        else {
+            //draw popup for tracts that don't have data
+            layer.setStyle({color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.75});
+            layer.bindPopup(
+                "<div style='text-align: center;'><b>Tract Info</b></div>" +
+                createPopupInfo("FIPS", feature.properties.FIPS) +
+                "No data");
+        }
+
+        
     }
 }
 
