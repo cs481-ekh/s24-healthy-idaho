@@ -10,7 +10,7 @@ import axios from 'axios';
 
 const App = () => {
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <div>
                 <NavBar />
                 <Routes>
