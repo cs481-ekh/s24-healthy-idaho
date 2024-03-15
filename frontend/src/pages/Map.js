@@ -29,6 +29,16 @@ function onEachFeature(feature, layer, colorData, variableName) {
     if (feature.properties && colorData) {
         let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
         
+        const handleMouseOver = (event) => {
+            const layer = event.target;
+            layer.setStyle({fillColor: 'yellow' });   
+        };
+        
+        const handleMouseOut = (event) => {
+            const layer = event.target;
+            const originalColor = fipsObject.color != null ? fipsObject.color : 'white';
+            layer.setStyle({ fillColor : originalColor });
+        };
 
         if(fipsObject && fipsObject.color != null) {
             layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: 1});
@@ -41,12 +51,22 @@ function onEachFeature(feature, layer, colorData, variableName) {
                 (feature.properties.AREA_SQMI ? createPopupInfo("Area (sq. mi)", Math.round((feature.properties.AREA_SQMI + Number.EPSILON) * 100) / 100) : "") +
                 (feature.properties.LOCATION ? createPopupInfo("Location", feature.properties.LOCATION) : "")
             );
+
+            layer.on ({
+                mouseover: handleMouseOver,
+                mouseout: handleMouseOut
+            });
         }
-    }
-    else {
-        //draw text for tracts that don't have data
-        layer.setStyle({color: 'black', fillColor: 'white', weight: 1, fillOpacity: 1});
-        layer.bindPopup("No data");
+        else {
+            //draw popup for tracts that don't have data
+            layer.setStyle({color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.75});
+            layer.bindPopup(
+                "<div style='text-align: center;'><b>Tract Info</b></div>" +
+                createPopupInfo("FIPS", feature.properties.FIPS) +
+                "No data");
+        }
+
+        
     }
 }
 
@@ -92,16 +112,7 @@ function Map({activeTract}) {
 
     }, [activeTract]);
     
-    const handleMouseOver = (event) => {
-        const layer = event.target;
-        layer.setStyle({fillColor: 'yellow' });   
-    };
-
-    const handleMouseOut = (event) => {
-        const layer = event.target;
-        const originalColor = layer.feature.properties.originalColor;
-        layer.setStyle({ fillColor : originalColor });
-    };
+    
     return (
         <MapContainer center={[45.394096, -114.734550]} zoom={6} style={{ height: '850px', width: '100%' }}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
@@ -110,17 +121,8 @@ function Map({activeTract}) {
                     key={JSON.stringify(tractData) + JSON.stringify(colorData)}
                     style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.25}}
                     data={tractData}
-                    onEachFeature={(feature, layer) => {
-                        const fipsObject = colorData.find(item => item.id === parseInt(feature.properties.FIPS));
-                        if (fipsObject && fipsObject.color != null) {
-                            layer.setStyle({ fillColor: fipsObject.color });
-                            layer.feature.properties.originalColor = fipsObject.color; // Store original color
-                        }
-                        layer.on({
-                            mouseover: handleMouseOver,
-                            mouseout: handleMouseOut,
-                        });
-                    }}
+                    onEachFeature={onEachFeature ? (feature, layer) => 
+                        onEachFeature(feature, layer, colorData, activeTract?.selectedVariable) : null}
                 />
             )}
         </MapContainer>
