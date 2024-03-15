@@ -25,7 +25,7 @@ function createPopupInfo(name, value) {
     return `<div class="popup-info"><b>${name}</b> <span>${sanitizeHTML(value)}</span></div>`;
 }
 
-function onEachFeature(feature, layer, colorData, variableName) {
+function onEachFeature(feature, layer, colorData, variableName, opacity) {
     if (feature.properties && colorData) {
         let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
         
@@ -41,7 +41,7 @@ function onEachFeature(feature, layer, colorData, variableName) {
         };
 
         if(fipsObject && fipsObject.color != null) {
-            layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: 1});
+            layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: opacity});
 
             layer.bindPopup(
                 "<div style='text-align: center;'><b>Tract Info</b></div>" +
@@ -74,6 +74,7 @@ function Map({activeTract}) {
     const [tractData, setTractData] = useState(null);
     const [colorData, setColorData] = useState(null);
     const [isColorDataLoaded, setIsColorDataLoaded] = useState(false);
+    const opacity = activeTract?.opacity ?? 0.25;
 
     useEffect(() => {
         let newTractData = null;
@@ -119,10 +120,11 @@ function Map({activeTract}) {
             {isColorDataLoaded && (
                 <GeoJSON 
                     key={JSON.stringify(tractData) + JSON.stringify(colorData)}
-                    style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.25}}
+                    // style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: activeTract.opacity}}
+                    style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: opacity}}
                     data={tractData}
                     onEachFeature={onEachFeature ? (feature, layer) => 
-                        onEachFeature(feature, layer, colorData, activeTract?.selectedVariable) : null}
+                        onEachFeature(feature, layer, colorData, activeTract?.selectedVariable, activeTract?.selectedColor, opacity) : null}
                 />
             )}
         </MapContainer>
