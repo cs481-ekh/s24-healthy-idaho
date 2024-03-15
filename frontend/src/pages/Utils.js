@@ -35,7 +35,7 @@ export const getVariableDescription = (variable) => {
             return 'Annual heatwave exposures in person-days. Heatwave is defined as max daily temperature\n' +
                 'exceeding 90 degF for at least 3 consecutive days. Number of heatwave days is multiplied by the population\n' +
                 'exposed and summed over the year to calculate exposure.';
-        case 'Density_Population':
+        case 'Density Population':
             return 'Density of population in each census tract in persons/km2 (population divided by area\n' +
                 'of census tract)';
         default:
