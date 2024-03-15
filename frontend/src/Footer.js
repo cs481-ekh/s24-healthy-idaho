@@ -34,7 +34,8 @@ function Footer() {
                     The Year menu will filter the data shown based on the year selected.
                     <br />
                     The Variable description's are listed on the About page that can be
-                    navigated to from the Navigation Menu at the top of the page.
+                    navigated to from the Navigation Menu at the top of the page. They are
+                    also available when hovered over in the Variable drop-down menu.
                 </div>
             </JSPopup>
         </footer>
