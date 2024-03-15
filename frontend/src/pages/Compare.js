@@ -5,6 +5,7 @@ import FilterBar from './FilterBar';
 import "../styles.css";
 import colorOptions from "../components/ColorOptions";
 import Footer from "../Footer";
+import { getVariableDescription } from './Utils.js';
 
 function Data() {
     // Define options for COUNTY and FIPS dropdown menus

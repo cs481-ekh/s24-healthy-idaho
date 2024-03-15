@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "../styles.css";
 import './Map.js'
+import { getVariableDescription } from './Utils.js';
 
 const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison}) => {
     const [selectedYear, setSelectedYear] = useState('');
@@ -10,6 +11,8 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
     const [yearError, setYearError] = useState(false);
     const [variableError, setVariableError] = useState(false);
     const [colorError, setColorError] = useState(false);
+    // For description of selected variable
+    const [variableDescription, setVariableDescription] = useState('');
 
     const handleSearch = () => {
         // For error messages
@@ -33,6 +36,10 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
             // set active tract with selected year, variable, and color options to pass to Map component
             setActiveTract({selectedYear: selectedYear, selectedVariable: selectedVariable, selectedColor: selectedColor});
         }
+    };
+
+    const handleVariableChange = (selectedVariable) => {
+        setSelectedVariable(selectedVariable);
     };
 
     return (
@@ -66,13 +73,13 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                     <select
                         id="variable"
                         value={selectedVariable}
-                        onChange={(e) => setSelectedVariable(e.target.value)}
+                        onChange={(e) => handleVariableChange(e.target.value)}
                     >
                         <option value="" disabled>
                             Select Variable
                         </option>
                         {variableOptions.map((variable, index) => (
-                            <option key={index} value={variable}>
+                            <option key={index} value={variable} title={getVariableDescription(variable)}>
                                 {variable}
                             </option>
                         ))}

@@ -3,8 +3,7 @@ import React from 'react';
 import { useState } from 'react';
 import Map from './Map';
 import axios from 'axios';
-import JSPopup from "reactjs-popup";
-import {Link} from "react-router-dom";
+import { getVariableDescription } from './Utils.js';
 
 // Local modules
 import FilterBar from './FilterBar';
