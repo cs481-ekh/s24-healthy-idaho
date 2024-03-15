@@ -40,9 +40,6 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
 
     const handleVariableChange = (selectedVariable) => {
         setSelectedVariable(selectedVariable);
-        // Get description for the selected variable
-        const description = getVariableDescription(selectedVariable);
-        setVariableDescription(description);
     };
 
     return (
@@ -82,14 +79,13 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                             Select Variable
                         </option>
                         {variableOptions.map((variable, index) => (
-                            <option key={index} value={variable}>
+                            <option key={index} value={variable} title={getVariableDescription(variable)}>
                                 {variable}
                             </option>
                         ))}
                     </select>
                     {variableError && <span className="error-message">Please select a variable</span>}
                 </div>
-                {variableDescription && <p className="variable-description">{variableDescription}</p>}
             </div>
 
             <div className="filter-group">
