@@ -15,18 +15,18 @@ from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+APP_ROOT = config("APP_ROOT")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l22@6x_!cb+%v)*d8rszg)-h0=td3&k49(dpyy=#i75)$qplnd'
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG=config("DEBUG")
 
-ALLOWED_HOSTS = ["0.0.0.0", "192.168.0.8", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["0.0.0.0", "192.168.0.8", "localhost", "127.0.0.1", "sdp.boisestate.edu"]
 
 # Application definition
 
@@ -122,6 +122,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_HEADERS = ["origin"]
+CSRF_TRUSTED_ORIGINS=["https://*.127.0.0.1", "https://sdp.boisestate.edu"]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -138,9 +140,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = f'{APP_ROOT}static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Prevents client's javscript from accessing cookies
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True

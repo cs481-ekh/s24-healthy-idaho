@@ -15,7 +15,7 @@ function Data() {
     const variableOptions = ['Minority Status and Language', 'Overall Vulnerability',
         'Housing Type and Transportation', 'Household Composition and Disability',
         'Socioeconomic Status', 'Greenness', 'Heat Island', 'LST-Max', 'LST-Mean',
-        'Smoke', 'Population', 'PM-2-5'];
+        'Smoke', 'Population', 'PM-2-5', 'Heatwave', 'Density Population'];
 
     const [activeTract, setActiveTract] = useState(null);
 
