@@ -8,4 +8,4 @@ sudo apt install python3-pip -y
 
 # python packages
 pip3 install mysql-connector-python
-pip3 install pythondecouple
+pip3 install python-decouple
