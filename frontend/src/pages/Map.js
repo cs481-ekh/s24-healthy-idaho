@@ -159,7 +159,7 @@ function Map({activeTract}) {
             {isColorDataLoaded && (
                 <GeoJSON 
                     key={JSON.stringify(tractData) + JSON.stringify(colorData)}
-                    style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.25}}
+                    style={{color: 'black'}}
                     data={tractData}
                     onEachFeature={onEachFeature ? (feature, layer) => 
                         onEachFeature(feature, layer, colorData, activeTract?.selectedVariable) : null}
@@ -173,6 +173,7 @@ function Map({activeTract}) {
                 />
             )}
         </MapContainer>
+        //te
     );
 }
 
