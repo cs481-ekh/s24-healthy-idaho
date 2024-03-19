@@ -1,7 +1,8 @@
 // Using leaflet to display map of Idaho, not sure how we'll use this with the data yet
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON, Control } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
+import L from 'leaflet';
 import axios from 'axios';
 
 // Local modules
@@ -25,20 +26,63 @@ function createPopupInfo(name, value) {
     return `<div class="popup-info"><b>${name}</b> <span>${sanitizeHTML(value)}</span></div>`;
 }
 
+function Legend({ selectedColor, colorData, selectedVariable }) {
+    const map = useMap();
+
+    useEffect(() => {
+        let legend = L.control({ position: 'bottomright' });
+
+        legend.onAdd = function () {
+            let div = L.DomUtil.create('div', 'info legend');
+            let labels = [];
+            let min = Math.min.apply(null, colorData.map((item) => item.value));
+            let max = Math.max.apply(null, colorData.map((item) => item.value));
+            let range = max - min;
+            let interval = range / selectedColor.length;
+
+            //iterate through each color and draw box in legend
+            for (let i = 0; i < selectedColor.length; i++) {
+                let rangeStart = min + (i * interval);
+                let rangeEnd = rangeStart + interval;
+                labels.push(
+                    '<i class="legend-color-box" style="background:' + selectedColor[i] + ';"></i> ' +
+                    rangeStart.toFixed(2) + ' - ' + rangeEnd.toFixed(2)
+                );
+            }
+
+            div.innerHTML = 
+                     `<div>${labels.join('<br>')}</div>`;
+            
+            return div;
+        };
+
+        legend.addTo(map);
+
+        // Cleanup
+        return () => {
+            legend.remove();
+        };
+    }, [map, selectedColor, selectedVariable]);
+
+    return null;
+}
+
 function onEachFeature(feature, layer, colorData, variableName) {
+
     if (feature.properties && colorData) {
         let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
-        
+
         const handleMouseOver = (event) => {
             const layer = event.target;
-            layer.setStyle({fillColor: 'yellow' });   
+            layer.setStyle({fillColor: 'yellow', weight: 7 });   
         };
         
         const handleMouseOut = (event) => {
             const layer = event.target;
             const originalColor = fipsObject.color != null ? fipsObject.color : 'white';
-            layer.setStyle({ fillColor : originalColor });
+            layer.setStyle({ fillColor : originalColor, weight: 1});
         };
+
 
         if(fipsObject && fipsObject.color != null) {
             layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: 1});
@@ -54,8 +98,9 @@ function onEachFeature(feature, layer, colorData, variableName) {
 
             layer.on ({
                 mouseover: handleMouseOver,
-                mouseout: handleMouseOut
+                mouseout: handleMouseOut,
             });
+            
         }
         else {
             //draw popup for tracts that don't have data
@@ -63,10 +108,8 @@ function onEachFeature(feature, layer, colorData, variableName) {
             layer.bindPopup(
                 "<div style='text-align: center;'><b>Tract Info</b></div>" +
                 createPopupInfo("FIPS", feature.properties.FIPS) +
-                "No data");
+                "No data available for this tract in the database.");
         }
-
-        
     }
 }
 
@@ -92,7 +135,6 @@ function Map({activeTract}) {
         const baseApiUrl=`${process.env.REACT_APP_API_ROOT ?? 'http://localhost:8001/s24-healthy-idaho'}`
 
         if (activeTract?.selectedYear != null) {
-            console.log("fetching:"+baseApiUrl+'/query/?year=' + activeTract?.selectedYear + "&attr=" + activeTract?.selectedVariable.replace(/[\s-]/g, ''))
             axios.get(baseApiUrl+'/query/?year=' + activeTract?.selectedYear + "&attr=" + activeTract?.selectedVariable.replace(/[\s-]/g, ''))
             .then(response => {
                 let data = response.data.data;
@@ -108,11 +150,9 @@ function Map({activeTract}) {
                 console.log('Error fetching data: ', error);
             });
         }
-        
 
     }, [activeTract]);
-    
-    
+        
     return (
         <MapContainer center={[45.394096, -114.734550]} zoom={6} style={{ height: '850px', width: '100%' }}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
@@ -123,6 +163,13 @@ function Map({activeTract}) {
                     data={tractData}
                     onEachFeature={onEachFeature ? (feature, layer) => 
                         onEachFeature(feature, layer, colorData, activeTract?.selectedVariable) : null}
+                />
+            )}
+            {isColorDataLoaded && (
+                <Legend 
+                    selectedColor={activeTract?.selectedColor} 
+                    colorData={colorData}
+                    selectedVariable={activeTract?.selectedVariable}
                 />
             )}
         </MapContainer>
