@@ -333,3 +333,22 @@ p {
     flex-direction: column;
     margin-bottom: 5px;
 }
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    border-radius: 5px;
+}
+
+.legend {
+    text-align: left;
+    line-height: 18px;
+    color: #555;
+}
+.legend-color-box {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border: 1px solid black;
+}
