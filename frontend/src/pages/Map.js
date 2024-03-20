@@ -40,6 +40,8 @@ function Legend({ selectedColor, colorData, selectedVariable }) {
             let range = max - min;
             let interval = range / selectedColor.length;
 
+            labels.push('<b>Color Scale</b>');
+            
             //iterate through each color and draw box in legend
             for (let i = 0; i < selectedColor.length; i++) {
                 let rangeStart = min + (i * interval);
@@ -47,9 +49,11 @@ function Legend({ selectedColor, colorData, selectedVariable }) {
                 labels.push(
                     '<i class="legend-color-box" style="background:' + selectedColor[i] + ';"></i> ' +
                     rangeStart.toFixed(2) + ' - ' + rangeEnd.toFixed(2)
-                );
-            }
-
+                    );
+                }
+                
+            labels.push('<i class = "legend-color-box" style="background: black;"></i> No Data')
+                
             div.innerHTML = 
                      `<div>${labels.join('<br>')}</div>`;
             
@@ -151,6 +155,7 @@ function Map({activeTract}) {
             });
         }
 
+
     }, [activeTract]);
         
     return (
@@ -158,12 +163,12 @@ function Map({activeTract}) {
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
             {isColorDataLoaded && (
                 <GeoJSON 
-                    key={JSON.stringify(tractData) + JSON.stringify(colorData)}
+                    key={JSON.stringify(tractData) + JSON.stringify(colorData) + activeTract?.selectedYear}
                     style={{color: 'black'}}
                     data={tractData}
                     onEachFeature={onEachFeature ? (feature, layer) => 
                         onEachFeature(feature, layer, colorData, activeTract?.selectedVariable) : null}
-                />
+            />
             )}
             {isColorDataLoaded && (
                 <Legend 
@@ -173,7 +178,6 @@ function Map({activeTract}) {
                 />
             )}
         </MapContainer>
-        //te
     );
 }
 
