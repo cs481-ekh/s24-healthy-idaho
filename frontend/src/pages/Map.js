@@ -44,6 +44,7 @@ function Legend({ selectedColor, colorData, selectedVariable }) {
             for (let i = 0; i < selectedColor.length; i++) {
                 let rangeStart = min + (i * interval);
                 let rangeEnd = rangeStart + interval;
+
                 labels.push(
                     '<i class="legend-color-box" style="background:' + selectedColor[i] + ';"></i> ' +
                     rangeStart.toFixed(2) + ' - ' + rangeEnd.toFixed(2)
@@ -165,13 +166,6 @@ function Map({activeTract}) {
                     onEachFeature={onEachFeature ? (feature, layer) => 
                         onEachFeature(feature, layer, colorData, activeTract?.selectedVariable) : null}
             />
-            )}
-            {isColorDataLoaded && (
-                <Legend 
-                    selectedColor={activeTract?.selectedColor} 
-                    colorData={colorData}
-                    selectedVariable={activeTract?.selectedVariable}
-                />
             )}
             {isColorDataLoaded && (
                 <Legend 
