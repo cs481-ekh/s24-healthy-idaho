@@ -69,7 +69,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                 csvContent += "FIPS, " + selectedVariable + "\n";
                 // Add data rows
                 data.forEach((item) => {
-                    csvContent += item.id + "," + item.value + "\n";
+                    csvContent += item.id + ", " + item.value + "\n";
                 });
 
                 // Create download link
