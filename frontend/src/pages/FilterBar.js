@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import "../styles.css";
 import './Map.js'
 import { getVariableDescription } from './Utils.js';
+import axios from 'axios';
 
 const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison}) => {
     const [selectedYear, setSelectedYear] = useState('');
@@ -40,6 +41,49 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
 
     const handleVariableChange = (selectedVariable) => {
         setSelectedVariable(selectedVariable);
+    };
+
+    const handleDownload = () => {
+        const baseApiUrl=`${process.env.REACT_APP_API_ROOT ?? 'http://localhost:8001/s24-healthy-idaho'}`
+        console.log('Download clicked');
+
+         // Check if all dropdowns are selected
+         if (!selectedYear) {
+            setYearError(true);
+        }
+        if (!selectedVariable) {
+            setVariableError(true);
+        }
+        if (!selectedColor) {
+            setColorError(true);
+        }
+
+        // Proceed with search only if all dropdowns are selected
+        if (selectedYear && selectedVariable && selectedColor) {
+            axios.get(baseApiUrl+'/query/?year=' + selectedYear + "&attr=" + selectedVariable.replace(/[\s-]/g, ''))
+            .then(response => {
+                let data = response.data.data;
+                let csvContent = "data:text/csv;charset=utf-8,";
+
+                // Add header row
+                csvContent += "FIPS, " + selectedVariable + "\n";
+                // Add data rows
+                data.forEach((item) => {
+                    csvContent += item.id + ", " + item.value + "\n";
+                });
+
+                // Create download link
+                const encodedUri = encodeURI(csvContent);
+                const link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "hh_subset_" + selectedYear + "_" + selectedVariable+ ".csv");
+                document.body.appendChild(link);
+                link.click();
+            })
+            .catch(error => {
+                console.log('Error fetching data: ', error);
+            });
+        }
     };
 
     return (
@@ -116,6 +160,9 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
 
             {/* Search Button */}
             <button onClick={handleSearch}>Search</button>
+            {/* Download Button */}
+            <br></br>
+            <button onClick={handleDownload}>Download Data Subset</button>
         </div>
     );
 }
