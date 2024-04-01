@@ -5,6 +5,7 @@ import FilterBar from './FilterBar';
 import "../styles.css";
 import colorOptions from "../components/ColorOptions";
 import Footer from "../Footer";
+import { getVariableDescription } from './Utils.js';
 
 function Data() {
     // Define options for COUNTY and FIPS dropdown menus
@@ -16,7 +17,8 @@ function Data() {
         'Socioeconomic Status', 'Greenness', 'Heat Island', 'LST-Max', 'LST-Mean',
         'Smoke', 'Population', 'PM-2-5', 'Heatwave', 'Density Population'];
 
-    const [activeTract, setActiveTract] = useState(null);
+    const [activeTractLeft, setActiveTractLeft] = useState(null);
+    const [activeTractRight, setActiveTractRight] = useState(null);
 
     return (
         <div>
@@ -26,12 +28,12 @@ function Data() {
                         yearOptions={yearOptions}
                         variableOptions={variableOptions}
                         colorOptions={colorOptions}
-                        activeTract={activeTract}
-                        setActiveTract={setActiveTract}
+                        activeTract={activeTractLeft}
+                        setActiveTract={setActiveTractLeft}
                         isComparison={true} // Indicates that it's being used in comparison context
                     />
                     <div className="map-container">
-                        <Map />
+                        <Map activeTract={activeTractLeft}/>
                     </div>
                 </div>
                 <div className="right-section">
@@ -39,12 +41,12 @@ function Data() {
                         yearOptions={yearOptions}
                         variableOptions={variableOptions}
                         colorOptions={colorOptions}
-                        activeTract={activeTract}
-                        setActiveTract={setActiveTract}
+                        activeTract={activeTractLeft}
+                        setActiveTract={setActiveTractRight}
                         isComparison={true} // Indicates that it's being used in comparison context
                     />
                     <div className="map-container">
-                        <Map />
+                        <Map activeTract={activeTractRight}/>
                     </div>
                 </div>
             </div>

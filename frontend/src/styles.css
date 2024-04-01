@@ -161,6 +161,16 @@ body {
     margin-top: 5px; /* Add some space between error messages */
 }
 
+.variable-description {
+    font-size: 14px; /* Adjust the font size as needed */
+    color: black; /* Set text color to black */
+    background-color: #f0f0f0; /* Set background color to light gray */
+    padding: 10px; /* Add padding for better spacing */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 5px; /* Add rounded corners */
+    margin-top: 10px; /* Add some margin at the top */
+}
+
 .filter-bar button {
     background-color: #0033A0;
     color: white;
@@ -322,4 +332,23 @@ p {
     display: flex;
     flex-direction: column;
     margin-bottom: 5px;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    border-radius: 5px;
+}
+
+.legend {
+    text-align: left;
+    line-height: 18px;
+    color: #555;
+}
+.legend-color-box {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border: 1px solid black;
 }
