@@ -121,7 +121,15 @@ function Map({activeTract}) {
                 <GeoJSON 
                     key={JSON.stringify(tractData) + JSON.stringify(colorData)}
                     // style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: activeTract.opacity}}
-                    style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: opacity}}
+                    // style={{color: 'black', fillColor: 'black', weight: 1, fillOpacity: opacity}}
+                    style={(feature) => {
+                        let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
+                        return {
+                            color: "black",
+                            filleColor: fipsObject.color,
+                            fillOpacity: opacity
+                        }
+                    }}
                     data={tractData}
                     onEachFeature={onEachFeature ? (feature, layer) => 
                         onEachFeature(feature, layer, colorData, activeTract?.selectedVariable, activeTract?.selectedColor, opacity) : null}
