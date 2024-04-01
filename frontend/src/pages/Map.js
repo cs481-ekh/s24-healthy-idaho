@@ -70,7 +70,7 @@ function Legend({ selectedColor, colorData, selectedVariable }) {
     return null;
 }
 
-function onEachFeature(feature, layer, colorData, variableName) {
+function onEachFeature(feature, layer, colorData, variableName, opacity) {
     if (feature.properties && colorData) {
         let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
 
