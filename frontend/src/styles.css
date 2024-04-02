@@ -352,3 +352,68 @@ p {
     display: inline-block;
     border: 1px solid black;
 }
+
+/*Admin.js styling*/
+.login-container {
+    width: 400px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.error-message {
+    background-color: red;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin-bottom: 10px
+}
+
+.error-message p {
+    margin: 0;
+    border: none;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
