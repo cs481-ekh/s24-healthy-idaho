@@ -33,29 +33,6 @@ If you are using Ubuntu or any other Linux Distribution that uses the apt packag
 
 To build the project, ensure you are at the root directory, then you can use the ```./build.sh``` script to build the docker image, alternatively you can use the the ```docker-compose build``` command to build the container in your terminal if you are unable to run the above shell script.
 
-Lastly, before building the application, you must have a couple of environment files made, there needs to be one in the root directory of this project, as well as in the `/frontend` directory. These go as follows:
-
-.env File in Root
-
-```text
-DB_HOST= #Host name of the Database
-MYSQL_DATABASE= #Name of the database
-MYSQL_USER= #MySQL Username
-MYSQL_PASSWORD= #Database Password (Keep this safe)
-MYSQL_ROOT_USERNAME= #MySQL Root username
-MYSQL_ROOT_PASSWORD= #Password for root user
-MYSQL_PORT= #MySQL Port Number (Usually 3306)
-DEBUG= #Debugging Flag for Django
-SECRET_KEY= #Django Secret Key (Keep this safe)
-APP_ROOT= #Application root directory (Usually `s24-healthy-idaho`)
-```
-
-.env File in `/frontend`
-
-```text
-REACT_APP_API_ROOT=sdp.boisestate.edu/s24-healthy-idaho
-PUBLIC_URL=s24-healthy-idaho
-```
 
 ## Running the Application
 
