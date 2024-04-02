@@ -10,7 +10,8 @@ function Admin() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (username === 'Healthy Idaho' && password === 'spring24') {
+        // if (username === 'Healthy Idaho' && password === 'spring24') {
+        if (username === process.env.REACT_APP_USERNAME && password === process.env.REACT_APP_PASSWORD) {
             // Successful login, you can redirect or do any further action here
             // setError('');
             // alert('Login successful!');
