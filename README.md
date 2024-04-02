@@ -83,9 +83,21 @@ Alternatively, you can start the services individually if you wish, this can be 
 
 Note: Manually starting the application will start the services but data will not be populated in the database, because of this, you would need to manually run the ```UploadData.py``` script in the ```sql/``` directory as mentioned above using the ```python3 UploadData.py``` command.
 
-
 ### Accessing the Application
 
 You know the application is running correctly once you see this in your terminal:
+
+```shell
+/s24-healthy-idaho$ ./start.sh 
+Starting the docker container...
+Creating network "s24-healthy-idaho_hh-net" with driver "bridge"
+Creating frontend-app ... done
+Creating database-app ... done
+Creating backend-app  ... done
+Waiting for the database to start... 25
+Populating the database...
+Database populated successfully
+Server is up and running!
+```
 
 Now the application can accessed at ```http://localhost:3000/s24-healthy-idaho```
