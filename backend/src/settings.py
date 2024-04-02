@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from decouple import config
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 APP_ROOT = config("APP_ROOT")
@@ -24,7 +24,7 @@ APP_ROOT = config("APP_ROOT")
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=config("DEBUG")
+DEBUG=os.environ["DEBUG"]=="True"
 
 ALLOWED_HOSTS = ["0.0.0.0", "192.168.0.8", "localhost", "127.0.0.1", "sdp.boisestate.edu"]
 
