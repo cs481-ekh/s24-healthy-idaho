@@ -23,11 +23,16 @@ Before starting the application, you must have the following installed.
 - python3
 - docker
 - docker-compose
-- mysql-connector-python (installed through pip3)
+
+Additionally, you must have the following python packages installed:
+
+- mysql-connector-python
+- python-decouple
 
 If you are using Ubuntu or any other Linux Distribution that uses the apt package manager, you can use the ```./prereq.sh``` script to install the above dependencies onto your host (You will need sudo permissions to execute these). If you are using another host operating system such as Windows, you will need to ensure the above three are installed in your system.
 
 To build the project, ensure you are at the root directory, then you can use the ```./build.sh``` script to build the docker image, alternatively you can use the the ```docker-compose build``` command to build the container in your terminal if you are unable to run the above shell script.
+
 
 ## Running the Application
 
@@ -54,3 +59,22 @@ Alternatively, you can start the services individually if you wish, this can be 
 - database - MySQL Database that holds the data for the app.
 
 Note: Manually starting the application will start the services but data will not be populated in the database, because of this, you would need to manually run the ```UploadData.py``` script in the ```sql/``` directory as mentioned above using the ```python3 UploadData.py``` command.
+
+### Accessing the Application
+
+You know the application is running correctly once you see this in your terminal:
+
+```shell
+/s24-healthy-idaho$ ./start.sh 
+Starting the docker container...
+Creating network "s24-healthy-idaho_hh-net" with driver "bridge"
+Creating frontend-app ... done
+Creating database-app ... done
+Creating backend-app  ... done
+Waiting for the database to start... 25
+Populating the database...
+Database populated successfully
+Server is up and running!
+```
+
+Now the application can accessed at ```http://localhost:3000/s24-healthy-idaho```
