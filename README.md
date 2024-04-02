@@ -23,11 +23,39 @@ Before starting the application, you must have the following installed.
 - python3
 - docker
 - docker-compose
-- mysql-connector-python (installed through pip3)
+
+Additionally, you must have the following python packages installed:
+
+- mysql-connector-python
+- python-decouple
 
 If you are using Ubuntu or any other Linux Distribution that uses the apt package manager, you can use the ```./prereq.sh``` script to install the above dependencies onto your host (You will need sudo permissions to execute these). If you are using another host operating system such as Windows, you will need to ensure the above three are installed in your system.
 
 To build the project, ensure you are at the root directory, then you can use the ```./build.sh``` script to build the docker image, alternatively you can use the the ```docker-compose build``` command to build the container in your terminal if you are unable to run the above shell script.
+
+Lastly, before building the application, you must have a couple of environment files made, there needs to be one in the root directory of this project, as well as in the `/frontend` directory. These go as follows:
+
+.env File in Root
+
+```text
+DB_HOST= #Host name of teh Database
+MYSQL_DATABASE= #Name of the database
+MYSQL_USER= #MySQL Username
+MYSQL_PASSWORD= #Database Password (Keep this safe)
+MYSQL_ROOT_USERNAME= #MySQL Root username
+MYSQL_ROOT_PASSWORD= #Password for root user
+MYSQL_PORT= #MySQL Port Number (Usually 3306)
+DEBUG= #Debugging Flag for Django
+SECRET_KEY= #Dajngo Secret Key (Keep this safe)
+APP_ROOT= #Application root directory (Usually `s24-healthy-idaho`)
+```
+
+.env File in `/frontend`
+
+```text
+REACT_APP_API_ROOT=sdp.boisestate.edu/s24-healthy-idaho
+PUBLIC_URL=s24-healthy-idaho
+```
 
 ## Running the Application
 
@@ -54,3 +82,10 @@ Alternatively, you can start the services individually if you wish, this can be 
 - database - MySQL Database that holds the data for the app.
 
 Note: Manually starting the application will start the services but data will not be populated in the database, because of this, you would need to manually run the ```UploadData.py``` script in the ```sql/``` directory as mentioned above using the ```python3 UploadData.py``` command.
+
+
+### Accessing the Application
+
+You know the application is running correctly once you see this in your terminal:
+
+Now the application can accessed at ```http://localhost:3000/s24-healthy-idaho```
