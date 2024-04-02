@@ -38,7 +38,7 @@ Lastly, before building the application, you must have a couple of environment f
 .env File in Root
 
 ```text
-DB_HOST= #Host name of teh Database
+DB_HOST= #Host name of the Database
 MYSQL_DATABASE= #Name of the database
 MYSQL_USER= #MySQL Username
 MYSQL_PASSWORD= #Database Password (Keep this safe)
