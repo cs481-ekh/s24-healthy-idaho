@@ -46,7 +46,7 @@ MYSQL_ROOT_USERNAME= #MySQL Root username
 MYSQL_ROOT_PASSWORD= #Password for root user
 MYSQL_PORT= #MySQL Port Number (Usually 3306)
 DEBUG= #Debugging Flag for Django
-SECRET_KEY= #Dajngo Secret Key (Keep this safe)
+SECRET_KEY= #Django Secret Key (Keep this safe)
 APP_ROOT= #Application root directory (Usually `s24-healthy-idaho`)
 ```
 
