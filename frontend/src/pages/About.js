@@ -2,6 +2,7 @@ import React from 'react';
 import { Stack, Card, Typography } from '@mui/material';
 import diagram from "./../components/architecture-diagram.png";
 import "../styles.css";
+import Footer from "../Footer";
 
 function About() {
 
@@ -450,6 +451,7 @@ function About() {
 
             </div>
 
+            <Footer />
         </div>
     );
 }
