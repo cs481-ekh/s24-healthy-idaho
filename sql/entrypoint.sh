@@ -12,6 +12,8 @@ echo "🟢 MySQL is ready."
 echo "🟦 Current user: $(whoami)"
 
 # Do the thing
+echo "🟦 Populating the database..."
+
 cd /docker-entrypoint-initdb.d
 python3 UploadData.py
 

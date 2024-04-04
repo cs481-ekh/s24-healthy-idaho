@@ -25,7 +25,7 @@ def estCnx():
     connection = mysql.connector.connect (
         user = config("MYSQL_ROOT_USERNAME"),
         password = config("MYSQL_ROOT_PASSWORD"),
-        host = "localhost",
+        host = "host.docker.internal",
         port = config("MYSQL_PORT"),
         database = config("MYSQL_DATABASE")
     )
