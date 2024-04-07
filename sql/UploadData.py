@@ -25,7 +25,7 @@ def estCnx():
     connection = mysql.connector.connect (
         user = config("MYSQL_ROOT_USERNAME"),
         password = config("MYSQL_ROOT_PASSWORD"),
-        host = "host.docker.internal",
+        host = "localhost",
         port = config("MYSQL_PORT"),
         database = config("MYSQL_DATABASE")
     )
@@ -42,7 +42,7 @@ def insertDataIntoTable (csvFilepath, f_sql):
     # Insert data into table
     try:
         with open(csvFilepath, 'r') as csvFile:
-            
+          
           csvReader = csv.reader(csvFile)
           headers = next(csvReader)
           insert = [None] * len(allAttrList)
