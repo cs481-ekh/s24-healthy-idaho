@@ -2,10 +2,15 @@ import React from 'react';
 import './styles.css';
 import {Link} from "react-router-dom";
 import JSPopup from "reactjs-popup";
+import logo from "./components/bsu-logo.png";
 
 function Footer() {
     return (
         <footer className="footer">
+            <a href="https://www.boisestate.edu/" target="_blank" rel="noopener noreferrer">
+                <img alt="[LOGO]" className="bsu-logo" src={logo} />
+            </a>
+            <span className="separator">|</span>
             <JSPopup
                 trigger={<Link className="important-notice-title">Important Notice</Link>}
                 position="top center"
