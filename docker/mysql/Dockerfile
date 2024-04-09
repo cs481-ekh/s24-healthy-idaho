@@ -1,5 +1,7 @@
 FROM mysql:8.3.0
 
+ADD mysql.cnf /etc/mysql/conf.d/mysql.cnf
+
 RUN python3 -m pip install mysql-connector-python
 RUN python3 -m pip install python-decouple
 
