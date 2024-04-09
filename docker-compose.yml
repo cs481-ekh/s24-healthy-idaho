@@ -10,7 +10,7 @@ services:
     ports: 
       - "${DB_PORT:-3306}:3306"
     volumes:
-      - ./sql:/docker-entrypoint-initdb.d
+      - ./sql/db-init:/docker-entrypoint-initdb.d
     env_file:
       - .env
     networks:

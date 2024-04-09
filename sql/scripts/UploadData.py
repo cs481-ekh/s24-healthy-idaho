@@ -4,12 +4,20 @@ from pathlib import Path
 from decouple import config
 import os
 import re
+from time import sleep
 
 allAttrList = ["COUNTY", "FIPS", "Overall Vulnerability", "Housing Type and Transportation", 
                  "Socioeconomic Status", "Household Composition and Disability", 
                  "Minority Status and Language", "Greenness", "Heat_Island", "LST-Max", 
                  "LST-Mean", "Smoke","Population", "Area", "PM-2-5", "Heatwave", "Density_Population", "Year"]
 
+# def checkSQLConnection():
+#     try:
+#         conn = mysql.connector.connect(user=config("MYSQL_ROOT_USERNAME"), password=config("MYSQL_ROOT_PASSWORD"), host='localhost', port=config("MYSQL_PORT"), database=config("MYSQL_DATABASE"))
+#         conn.close()
+#         return True
+#     except mysql.connector.Error as e:
+#         return False
 
 def makeSQLQuery():
     insertIntoDB = "INSERT INTO healthy_idaho"
@@ -81,4 +89,10 @@ def processDataDir():
       insertDataIntoTable(file, makeSQLQuery())
 
 
+# while not checkSQLConnection():
+#     print("SQL Connection not established. Retrying...")
+#     sleep(10)
+#     continue
+
+# print("SQL Connection established.")
 processDataDir()
