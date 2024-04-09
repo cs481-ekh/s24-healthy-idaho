@@ -52,7 +52,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
     };
 
     const handleDownload = () => {
-        const baseApiUrl=`${process.env.REACT_APP_API_ROOT ?? 'http://localhost:8001/s24-healthy-idaho'}`
+        const baseApiUrl=`${process.env.REACT_APP_API_ROOT ?? 'http://localhost:8001/s24-healthy-idaho/api'}`
         console.log('Download clicked');
 
          // Check if all dropdowns are selected
