@@ -167,7 +167,7 @@ function Map({activeTract}) {
                         let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
                         return {
                             color: "black",
-                            filleColor: fipsObject.color,
+                            fillColor: fipsObject ? fipsObject.color : 'defaultColor',
                             fillOpacity: opacity
                         }
                     }}
