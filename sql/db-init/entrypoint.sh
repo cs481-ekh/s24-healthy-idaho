@@ -15,5 +15,9 @@ mysql -uroot -p$MYSQL_ROOT_PASSWORD <<EOF
     (County, FIPS, OverallVulnerability, HousingTypeandTransportation, SocioeconomicStatus, HouseholdCompositionandDisability, MinorityStatusandLanguage, Greenness, HeatIsland, LSTMax, LSTMean, Smoke, Population, Area, PM25, Heatwave, DensityPopulation, Year);
 EOF
 
-echo "🟢 Data uploaded."
+if [ $? -eq 0 ]; then
+    echo "🟢 Data uploaded successfully!"
+else
+    echo "🔴 Error uploading data!"
+fi
 exit 0

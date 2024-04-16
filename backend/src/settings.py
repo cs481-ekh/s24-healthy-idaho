@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': config("MYSQL_DATABASE"),
         'USER': config("MYSQL_ROOT_USERNAME"),
         'PASSWORD': config("MYSQL_ROOT_PASSWORD"),
-        'HOST': 'database',
+        'HOST': config("MYSQL_HOST"),
         'PORT': config("MYSQL_PORT"),
     }
 }
