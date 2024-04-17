@@ -27,26 +27,51 @@ function Compare() {
     const [opacity, setOpacity] = useState(0.25);
 
     const handleSearch = (mapIndex) => {
-        const selectedYear = mapIndex === 1 ? selectedYearLeft : selectedYearRight;
-        const selectedVariable = mapIndex === 1 ? selectedVariableLeft : selectedVariableRight;
-        const selectedColor = mapIndex === 1 ? selectedColorLeft : selectedColorRight;
+        let selectedYear, selectedVariable, selectedColor;
+
+        if (mapIndex === 1) {
+            selectedYear = selectedYearLeft;
+            selectedVariable = selectedVariableLeft;
+            selectedColor = selectedColorLeft;
+        } else if (mapIndex === 2) {
+            selectedYear = selectedYearRight;
+            selectedVariable = selectedVariableRight;
+            selectedColor = selectedColorRight;
+        } else {
+            selectedYear = null;
+            selectedVariable = null;
+            selectedColor = null;
+        }
 
         if (selectedYear && selectedVariable && selectedColor) {
             if (mapIndex === 1) {
-                setActiveTractLeft({ selectedYear, selectedVariable, selectedColor });
-            } else {
-                setActiveTractRight({ selectedYear, selectedVariable, selectedColor });
+                setActiveTractLeft({ selectedYear, selectedVariable, selectedColor, opacity });
+            }
+            if (mapIndex === 2) {
+                setActiveTractRight({ selectedYear, selectedVariable, selectedColor, opacity });
             }
         }
     };
 
     const handleOpacityChange = (mapIndex, value) => {
-        const activeTract = mapIndex === 1 ? activeTractLeft : activeTractRight;
-        const setActiveTract = mapIndex === 1 ? setActiveTractLeft : setActiveTractRight;
+        let activeTract, setActiveTract;
+
+        if (mapIndex === 1) {
+            activeTract = activeTractLeft;
+            setActiveTract = setActiveTractLeft;
+        } else if (mapIndex === 2) {
+            activeTract = activeTractRight;
+            setActiveTract = setActiveTractRight;
+        } else {
+            activeTract = null;
+            setActiveTract = null;
+        }
 
         setOpacity(parseFloat(value));
         // Update active tract with new opacity
-        setActiveTract({ ...activeTract, opacity: parseFloat(value) });
+        if(activeTract && setActiveTract) {
+            setActiveTract({ ...activeTract, opacity: parseFloat(value) });
+        }
     };
 
     return (
@@ -74,7 +99,7 @@ function Compare() {
                         yearOptions={yearOptions}
                         variableOptions={variableOptions}
                         colorOptions={colorOptions}
-                        mapIndex={2} // Make sure mapIndex is set to 2 for the right section
+                        mapIndex={2}
                         handleSearch={handleSearch}
                         handleOpacityChange={handleOpacityChange}
                         setSelectedYear={setSelectedYearRight}
