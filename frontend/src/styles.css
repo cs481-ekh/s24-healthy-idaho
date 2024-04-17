@@ -202,15 +202,9 @@ body {
 }
 
 /*Styling for Compare.js*/
-.compare-page {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
 .compare-container {
     display: flex;
-    margin-left: 100px;
+    justify-content: center;
 }
 
 .comparison {
@@ -223,18 +217,16 @@ body {
 }
 
 .compare-map-container {
+    max-width: 80%;
     display: flex;
-    justify-content: center; /* Center the map horizontally */
-    align-items: center; /* Center the map vertically */
-    flex-direction: column; /* Arrange items vertically */
-    max-width: 90%;
-    padding: 10px;
-    margin: auto; /* Center the container horizontally */
+    justify-content: center;
+    align-items: center;
+    margin-left: 70px;
 }
 
 .compare-map-container .map {
-    max-width: 100%; /* Set the maximum width of the map */
-    max-height: 100%; /* Set the maximum height of the map */
+    max-width: 100%;
+    max-height: 100%
 }
 
 .compare-controls {
@@ -242,11 +234,17 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    margin-top: 30px; /* Add some margin between maps and controls */
+    text-align: center; /* Center the contents horizontally */
 }
 
 .compare-controls input[type="range"] {
     width: 200px; /* Adjust this value as needed */
     margin-bottom: 10px;
+}
+
+.opacity-compare {
+    margin-top: 20px;
 }
 
 .compare-page button {

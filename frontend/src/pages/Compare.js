@@ -15,13 +15,15 @@ function Compare() {
         'Smoke', 'Population', 'PM-2-5', 'Heatwave', 'Density Population'];
 
     const [activeTractLeft, setActiveTractLeft] = useState(null);
-    const [activeTractRight, setActiveTractRight] = useState(null);
     const [selectedYearLeft, setSelectedYearLeft] = useState('');
-    const [selectedYearRight, setSelectedYearRight] = useState('');
     const [selectedVariableLeft, setSelectedVariableLeft] = useState('');
-    const [selectedVariableRight, setSelectedVariableRight] = useState('');
     const [selectedColorLeft, setSelectedColorLeft] = useState(null);
+
+    const [activeTractRight, setActiveTractRight] = useState(null);
+    const [selectedYearRight, setSelectedYearRight] = useState('');
+    const [selectedVariableRight, setSelectedVariableRight] = useState('');
     const [selectedColorRight, setSelectedColorRight] = useState(null);
+
     const [opacity, setOpacity] = useState(0.25);
 
     const handleSearch = (mapIndex) => {
@@ -29,7 +31,6 @@ function Compare() {
         const selectedVariable = mapIndex === 1 ? selectedVariableLeft : selectedVariableRight;
         const selectedColor = mapIndex === 1 ? selectedColorLeft : selectedColorRight;
 
-        // Proceed with search
         if (selectedYear && selectedVariable && selectedColor) {
             if (mapIndex === 1) {
                 setActiveTractLeft({ selectedYear, selectedVariable, selectedColor });
@@ -50,7 +51,6 @@ function Compare() {
 
     return (
         <div>
-        <div className="compare-page">
             <div className="compare-container">
                 <div className="left-section">
                     <CompareFilterBar
@@ -91,17 +91,18 @@ function Compare() {
                 {/* Search Button */}
                 <button onClick={() => handleSearch(1)}>Search</button>
                 {/* Opacity Slider */}
-                <label className="filter-label">Opacity</label>
-                <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.05"
-                    value={activeTractLeft?.opacity ?? activeTractRight?.opacity}
-                    onChange={(e) => handleOpacityChange(1, e.target.value)}
-                />
+                <div className="opacity-compare">
+                    <label className="filter-label">Opacity</label>
+                    <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.05"
+                        value={activeTractLeft?.opacity ?? activeTractRight?.opacity}
+                        onChange={(e) => handleOpacityChange(1, e.target.value)}
+                    />
+                </div>
             </div>
-        </div>
     <Footer />
     </div>
     );
