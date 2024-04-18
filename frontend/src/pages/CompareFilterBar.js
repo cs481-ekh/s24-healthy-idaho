@@ -10,17 +10,17 @@ const CompareFilterBar = ({ yearOptions, variableOptions, colorOptions, mapIndex
 
     const handleYearChange = (value) => {
         setSelectedYearLocal(value);
-        setSelectedYear(value); // Set the state in the parent component
+        setSelectedYear(value);
     };
 
     const handleVariableChange = (value) => {
         setSelectedVariableLocal(value);
-        setSelectedVariable(value); // Set the state in the parent component
+        setSelectedVariable(value);
     };
 
     const handleColorChange = (value) => {
         setSelectedColorLocal(value);
-        setSelectedColor(value); // Set the state in the parent component
+        setSelectedColor(value);
     };
 
     return (
