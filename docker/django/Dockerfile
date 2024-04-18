@@ -3,7 +3,6 @@ FROM python:3.10
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
-
 WORKDIR /code
 
 COPY requirements.txt requirements.txt
@@ -15,6 +14,6 @@ ADD . /code
 
 #EXPOSE 8001
 
-CMD ["./wait.sh", "database:3306", "--timeout=30", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+#CMD ["./wait.sh", "database:3306", "--timeout=30", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 
