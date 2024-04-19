@@ -190,11 +190,14 @@ body {
     background-color: darkblue;
 }
 
+<<<<<<< HEAD
 .button-options {
     display: flex;
     justify-content: space-evenly;
 }
 
+=======
+>>>>>>> 6ccd769 (Closes #176 (#179))
 .download-section {
     margin-top: 20px;
 }
@@ -251,10 +254,13 @@ body {
     margin-left: 30px; /* Add some space between the button and the slider */
 }
 
+<<<<<<< HEAD
 .compare-buttons {
   padding: 50px;
 }
 
+=======
+>>>>>>> 6ccd769 (Closes #176 (#179))
 .compare-page button {
     background-color: #0033A0;
     color: white;
