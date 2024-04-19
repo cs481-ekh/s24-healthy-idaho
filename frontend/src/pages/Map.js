@@ -87,7 +87,7 @@ function onEachFeature(feature, layer, colorData, variableName, opacity) {
 
 
         if(fipsObject && fipsObject.color != null) {
-            layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: opacity});
+            layer.setStyle({fillColor: fipsObject.color, weight: 1});
 
             layer.bindPopup(
                 "<div style='text-align: center;'><b>Tract Info</b></div>" +
@@ -106,7 +106,7 @@ function onEachFeature(feature, layer, colorData, variableName, opacity) {
         }
         else {
             //draw popup for tracts that don't have data
-            layer.setStyle({color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.75});
+            layer.setStyle({color: 'black', fillColor: 'black', weight: 1});
             layer.bindPopup(
                 "<div style='text-align: center;'><b>Tract Info</b></div>" +
                 createPopupInfo("FIPS", feature.properties.FIPS) +
