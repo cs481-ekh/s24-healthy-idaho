@@ -181,9 +181,10 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
 
             {/* Search Button */}
             <button onClick={handleSearch}>Search</button>
-            {/* Download Button */}
-            <br></br>
-            <button onClick={handleDownload}>Download Data Subset</button>
+            <div className="download-section">
+                {/* Download Button */}
+                <button onClick={handleDownload}>Download Data Subset</button>
+            </div>
         </div>
     );
 }

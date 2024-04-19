@@ -190,78 +190,76 @@ body {
     background-color: darkblue;
 }
 
+.download-section {
+    margin-top: 20px;
+}
+
 /*Styling for Data.js*/
 .data-container {
     display: flex;
     align-items: flex-start;
 }
 
-/*.important-notice-title {*/
-/*    font-weight: bold;*/
-/*    font-size: 18px;*/
-/*    font-family: Arial, sans-serif;*/
-/*    color: #0033A0;*/
-/*}*/
-
-/*.important-notice-title:hover {*/
-/*    color: darkblue;*/
-/*}*/
-
-/*.important-notice {*/
-/*    position: absolute;*/
-/*    background-color: whitesmoke;*/
-/*    padding: 20px;*/
-/*    border: 1px solid black;*/
-/*    border-radius: 5px;*/
-/*    z-index: 9999; !* Ensure the popup appears above other content *!*/
-/*    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);*/
-/*    width: 300px;*/
-/*}*/
-
 .map-container {
     flex: 1;
     padding: 10px;
+    max-width: 70%; /* Adjust the maximum width as needed */
 }
 
 /*Styling for Compare.js*/
 .compare-container {
     display: flex;
+    justify-content: center;
 }
 
 .comparison {
     flex-direction: row;
     justify-content: space-evenly;
 }
-
 .left-section,
 .right-section {
     flex: 1;
 }
 
-@media (max-width: 768px) {
-    .compare-container {
-        flex-direction: row;
-    }
+.compare-map-container {
+    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 70px;
 }
-/*This is styling to make dropdown menus next to each other rather than on top of each other*/
-/*.compare-container .filter-bar {*/
-/*    display: flex;*/
-/*    flex-direction: row;*/
-/*    align-items: center;*/
-/*}*/
 
-/*.compare-container .filter-group {*/
-/*    margin-right: 20px;*/
-/*}*/
+.compare-map-container .map {
+    max-width: 100%;
+    max-height: 100%
+}
 
-/*.compare-container .filter-label {*/
-/*    display: block;*/
-/*    margin-bottom: 10px;*/
-/*}*/
+.compare-controls {
+    display: flex;
+    flex-direction: row; /* Change flex direction to row */
+    align-items: center;
+    justify-content: center; /* Horizontally center the items */
+    margin-top: 10px;
+}
 
-/*.compare-container .dropdown {*/
-/*    margin-bottom: 0;*/
-/*}*/
+.opacity-compare {
+    margin-left: 30px; /* Add some space between the button and the slider */
+}
+
+.compare-page button {
+    background-color: #0033A0;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.compare-page button:hover {
+    background-color: darkblue;
+}
 
 /*Styling for About.js*/
 .project-header h2 {
