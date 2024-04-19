@@ -56,7 +56,7 @@ function colorItNDiv(x, low, high, div, color) {
     throw new Error("low >= high")
 
   let divVal = (high - low) / div;
-
+  if( x == high ) return color[8];
   return color[Math.floor((x - low) / divVal)];
 }
 

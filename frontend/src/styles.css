@@ -190,6 +190,11 @@ body {
     background-color: darkblue;
 }
 
+.button-options {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 /*Styling for Data.js*/
 .data-container {
     display: flex;
@@ -421,4 +426,3 @@ button:hover {
     font-size: 16px;
     font-family: Arial, sans-serif;
 }
-

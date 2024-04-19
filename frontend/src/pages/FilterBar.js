@@ -4,7 +4,7 @@ import './Map.js'
 import { getVariableDescription } from './Utils.js';
 import axios from 'axios';
 
-const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison}) => {
+const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison, dataMode}) => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
     const [selectedColor, setSelectedColor] = useState(null);
@@ -15,6 +15,8 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
     const [colorError, setColorError] = useState(false);
     // For description of selected variable
     const [variableDescription, setVariableDescription] = useState('');
+    // For Displaying Data
+    const [selectedDataMode, setSelectedDataMode] = useState(true);
 
     const handleOpacityChange = (e) => {
         setOpacity(parseFloat(e.target.value));
@@ -46,6 +48,15 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
             setActiveTract({ selectedYear, selectedVariable, selectedColor, opacity });
         }       
     };
+
+    const usePercentiles = () => {
+      // Toggle whether Data Display Mode, whether percentiles or abs.
+      setActiveTract({ ...activeTract, selectedDataMode: true });
+    }
+
+    const useAbsoluteValues = () => {
+      setActiveTract({ ...activeTract, selectedDataMode: false });
+    }
 
     const handleVariableChange = (selectedVariable) => {
         setSelectedVariable(selectedVariable);
@@ -137,6 +148,15 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                         ))}
                     </select>
                     {variableError && <span className="error-message">Please select a variable</span>}
+                </div>
+            </div>
+
+            <div className="button-group">
+              {/* Percentile vs Abs. Options */}
+              <label className="filter-group">Data Display Mode</label>
+                <div className="button-options">
+                  <button onClick={usePercentiles} className="button1">Percentiles</button>
+                  <button onClick={useAbsoluteValues}>Absolute Values</button>
                 </div>
             </div>
 

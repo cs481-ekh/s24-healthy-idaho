@@ -35,6 +35,7 @@ function Data() {
                         activeTract={activeTract} 
                         setActiveTract={setActiveTract}
                         isComparison={false} // Indicates that it's not being used in comparison context
+                        dataMode={true}
                     />
                 </div>
                 <div className="map-container">
