@@ -155,7 +155,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
               {/* Percentile vs Abs. Options */}
               <label className="filter-group">Data Display Mode</label>
                 <div className="button-options">
-                  <button onClick={usePercentiles} className="button1">Percentiles</button>
+                  <button onClick={usePercentiles}>Percentiles</button>
                   <button onClick={useAbsoluteValues}>Absolute Values</button>
                 </div>
             </div>

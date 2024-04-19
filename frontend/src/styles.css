@@ -251,6 +251,10 @@ body {
     margin-left: 30px; /* Add some space between the button and the slider */
 }
 
+.compare-buttons {
+  padding: 50px;
+}
+
 .compare-page button {
     background-color: #0033A0;
     color: white;
