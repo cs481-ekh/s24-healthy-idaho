@@ -236,20 +236,14 @@ body {
 
 .compare-controls {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Change flex direction to row */
     align-items: center;
-    padding: 10px;
-    margin-top: 30px; /* Add some margin between maps and controls */
-    text-align: center; /* Center the contents horizontally */
-}
-
-.compare-controls input[type="range"] {
-    width: 200px; /* Adjust this value as needed */
-    margin-bottom: 10px;
+    justify-content: center; /* Horizontally center the items */
+    margin-top: 10px;
 }
 
 .opacity-compare {
-    margin-top: 20px;
+    margin-left: 30px; /* Add some space between the button and the slider */
 }
 
 .compare-page button {

@@ -49,6 +49,22 @@ function Compare() {
 
     return (
         <div>
+            <div className="compare-controls">
+                {/* Search Button */}
+                <button onClick={() => handleSearch(1)}>Search</button>
+                {/* Opacity Slider */}
+                <div className="opacity-compare">
+                    <label className="filter-label">Opacity</label>
+                    <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.05"
+                        value={activeTractLeft?.opacity ?? activeTractRight?.opacity}
+                        onChange={(e) => handleOpacityChange(e.target.value)}
+                    />
+                </div>
+            </div>
             <div className="compare-container">
                 <div className="left-section">
                     <CompareFilterBar
@@ -83,22 +99,6 @@ function Compare() {
                     <div className="compare-map-container">
                         <Map activeTract={activeTractRight}/>
                     </div>
-                </div>
-            </div>
-            <div className="compare-controls">
-                {/* Search Button */}
-                <button onClick={() => handleSearch(1)}>Search</button>
-                {/* Opacity Slider */}
-                <div className="opacity-compare">
-                    <label className="filter-label">Opacity</label>
-                    <input
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.05"
-                        value={activeTractLeft?.opacity ?? activeTractRight?.opacity}
-                        onChange={(e) => handleOpacityChange(e.target.value)}
-                    />
                 </div>
             </div>
     <Footer />
