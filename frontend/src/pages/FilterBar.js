@@ -3,6 +3,10 @@ import "../styles.css";
 import './Map.js'
 import { getVariableDescription } from './Utils.js';
 import axios from 'axios';
+<<<<<<< HEAD
+=======
+
+>>>>>>> df2e589 (updated)
 const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison, dataMode}) => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
@@ -147,6 +151,15 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                         ))}
                     </select>
                     {variableError && <span className="error-message">Please select a variable</span>}
+                </div>
+            </div>
+
+            <div className="button-group">
+              {/* Percentile vs Abs. Options */}
+              <label className="filter-group">Data Display Mode</label>
+                <div className="button-options">
+                  <button onClick={usePercentiles} className="button1">Percentiles</button>
+                  <button onClick={useAbsoluteValues}>Absolute Values</button>
                 </div>
             </div>
 
