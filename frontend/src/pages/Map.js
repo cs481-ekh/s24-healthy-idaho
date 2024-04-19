@@ -134,7 +134,6 @@ function Map({activeTract}) {
             newTractData = tracts2020;
         }
         let old = activeTract?.selectedYear;
-        console.log("old="+old);
         setTractData(newTractData);
         const baseApiUrl=`${process.env.REACT_APP_API_ROOT ?? 'http://localhost:8001/s24-healthy-idaho/api'}`
 
@@ -145,7 +144,6 @@ function Map({activeTract}) {
 
                 let max = Math.max.apply(null, data.map((item) => item.value));
                 let min = Math.min.apply(null, data.map((item) => item.value));
-                console.log("dataMode(map)="+activeTract?.selectedDataMode)
                 if( activeTract?.selectedDataMode ) {
                  // using percentiles
                  let i = 0, j = 0;

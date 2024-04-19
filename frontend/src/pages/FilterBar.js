@@ -3,7 +3,6 @@ import "../styles.css";
 import './Map.js'
 import { getVariableDescription } from './Utils.js';
 import axios from 'axios';
-
 const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison, dataMode}) => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
@@ -151,11 +150,12 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                 </div>
             </div>
 
-            <div className="button-group">
+            <div className="filter-group">
               {/* Percentile vs Abs. Options */}
-              <label className="filter-group">Data Display Mode</label>
+              <label className="filter-label">Data Display Mode</label>
                 <div className="button-options">
                   <button onClick={usePercentiles}>Percentiles</button>
+                  
                   <button onClick={useAbsoluteValues}>Absolute Values</button>
                 </div>
             </div>
