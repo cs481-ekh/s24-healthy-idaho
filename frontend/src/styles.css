@@ -209,11 +209,13 @@ body {
     flex: 1;
     padding: 10px;
     max-width: 70%; /* Adjust the maximum width as needed */
+    max-width: 70%; /* Adjust the maximum width as needed */
 }
 
 /*Styling for Compare.js*/
 .compare-container {
     display: flex;
+    justify-content: center;
     justify-content: center;
 }
 
