@@ -3,6 +3,10 @@ import "../styles.css";
 import './Map.js'
 import { getVariableDescription } from './Utils.js';
 import axios from 'axios';
+<<<<<<< HEAD
+=======
+
+>>>>>>> df2e5890ad75e2f36aa05ee6e10b117a576afa3d
 const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison, dataMode}) => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
