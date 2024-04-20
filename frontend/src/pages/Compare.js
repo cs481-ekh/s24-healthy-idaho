@@ -75,12 +75,7 @@ function Compare() {
                         onChange={(e) => handleOpacityChange(e.target.value)}
                     />
                 </div>
-                {/* Data Mode */}
-                <div className="compare-buttons">
-                  <button onClick={usePercentiles}>Percentiles</button>
-                  <button onClick={useAbsoluteValues}>Absolute Values</button>
-                </div>
-                
+
             </div>
             <div className="compare-container">
                 <div className="left-section">
@@ -114,6 +109,7 @@ function Compare() {
                         setSelectedColor={setSelectedColorRight}
                         isComparison={true}
                         dataMode={true}
+
                     />
                     <div className="compare-map-container">
                         <Map activeTract={activeTractRight}/>
