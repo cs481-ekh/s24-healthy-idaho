@@ -18,68 +18,6 @@ function Compare() {
     const [selectedYearLeft, setSelectedYearLeft] = useState('');
     const [selectedVariableLeft, setSelectedVariableLeft] = useState('');
     const [selectedColorLeft, setSelectedColorLeft] = useState(null);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-
-    const [activeTractRight, setActiveTractRight] = useState(null);
-    const [selectedYearRight, setSelectedYearRight] = useState('');
-    const [selectedVariableRight, setSelectedVariableRight] = useState('');
-    const [selectedColorRight, setSelectedColorRight] = useState(null);
-
-    const [opacity, setOpacity] = useState(0.25);
-
-    const handleSearch = () => {
-        if (selectedYearLeft && selectedVariableLeft && selectedColorLeft) {
-            setActiveTractLeft({ selectedYear: selectedYearLeft, selectedVariable: selectedVariableLeft, selectedColor: selectedColorLeft, opacity });
-        }
-
-        if (selectedYearRight && selectedVariableRight && selectedColorRight) {
-            setActiveTractRight({ selectedYear: selectedYearRight, selectedVariable: selectedVariableRight, selectedColor: selectedColorRight, opacity });
-        }
-    };
-
-    const handleOpacityChange = (value) => {
-        // Update opacity state for both left and right maps
-        setOpacity(parseFloat(value));
-
-        // Update active tract with new opacity for the left map
-        setActiveTractLeft({ ...activeTractLeft, opacity: parseFloat(value) });
-
-        // Update active tract with new opacity for the right map
-        setActiveTractRight({ ...activeTractRight, opacity: parseFloat(value) });
-    };
->>>>>>> main
-
-    const [activeTractRight, setActiveTractRight] = useState(null);
-    const [selectedYearRight, setSelectedYearRight] = useState('');
-    const [selectedVariableRight, setSelectedVariableRight] = useState('');
-    const [selectedColorRight, setSelectedColorRight] = useState(null);
-
-    const [opacity, setOpacity] = useState(0.25);
-
-    const handleSearch = () => {
-        if (selectedYearLeft && selectedVariableLeft && selectedColorLeft) {
-            setActiveTractLeft({ selectedYear: selectedYearLeft, selectedVariable: selectedVariableLeft, selectedColor: selectedColorLeft, opacity });
-        }
-
-        if (selectedYearRight && selectedVariableRight && selectedColorRight) {
-            setActiveTractRight({ selectedYear: selectedYearRight, selectedVariable: selectedVariableRight, selectedColor: selectedColorRight, opacity });
-        }
-    };
-
-    const handleOpacityChange = (value) => {
-        // Update opacity state for both left and right maps
-        setOpacity(parseFloat(value));
-
-        // Update active tract with new opacity for the left map
-        setActiveTractLeft({ ...activeTractLeft, opacity: parseFloat(value) });
-
-        // Update active tract with new opacity for the right map
-        setActiveTractRight({ ...activeTractRight, opacity: parseFloat(value) });
-    };
->>>>>>> 6ccd769 (Closes #176 (#179))
 
     const [activeTractRight, setActiveTractRight] = useState(null);
     const [selectedYearRight, setSelectedYearRight] = useState('');
@@ -137,18 +75,12 @@ function Compare() {
                         onChange={(e) => handleOpacityChange(e.target.value)}
                     />
                 </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
                 {/* Data Mode */}
                 <div className="compare-buttons">
                   <button onClick={usePercentiles}>Percentiles</button>
                   <button onClick={useAbsoluteValues}>Absolute Values</button>
                 </div>
                 
-=======
->>>>>>> 6ccd769 (Closes #176 (#179))
-=======
->>>>>>> main
             </div>
             <div className="compare-container">
                 <div className="left-section">
@@ -163,13 +95,7 @@ function Compare() {
                         setSelectedVariable={setSelectedVariableLeft}
                         setSelectedColor={setSelectedColorLeft}
                         isComparison={true}
-<<<<<<< HEAD
-<<<<<<< HEAD
                         dataMode={true}
-=======
->>>>>>> 6ccd769 (Closes #176 (#179))
-=======
->>>>>>> main
                     />
                     <div className="compare-map-container">
                         <Map activeTract={activeTractLeft}/>
@@ -187,13 +113,7 @@ function Compare() {
                         setSelectedVariable={setSelectedVariableRight}
                         setSelectedColor={setSelectedColorRight}
                         isComparison={true}
-<<<<<<< HEAD
-<<<<<<< HEAD
                         dataMode={true}
-=======
->>>>>>> 6ccd769 (Closes #176 (#179))
-=======
->>>>>>> main
                     />
                     <div className="compare-map-container">
                         <Map activeTract={activeTractRight}/>
