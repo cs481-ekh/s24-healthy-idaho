@@ -195,13 +195,10 @@ body {
     justify-content: space-evenly;
 }
 
-<<<<<<< HEAD
 .download-section {
     margin-top: 20px;
 }
 
-=======
->>>>>>> df2e589 (updated)
 /*Styling for Data.js*/
 .data-container {
     display: flex;
