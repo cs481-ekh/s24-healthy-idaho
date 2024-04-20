@@ -1,0 +1,163 @@
+diff --git a/backend/src/settings.py b/backend/src/settings.py
+index 9cfa396..2763101 100644
+--- a/backend/src/settings.py
++++ b/backend/src/settings.py
+@@ -84,7 +84,7 @@ DATABASES = {
+         'NAME': config("MYSQL_DATABASE"),
+         'USER': config("MYSQL_ROOT_USERNAME"),
+         'PASSWORD': config("MYSQL_ROOT_PASSWORD"),
+-        'HOST': 'database',
++        'HOST': config("DB_HOST"),
+         'PORT': config("MYSQL_PORT"),
+     }
+ }
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 7481987..ddff413 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -24,6 +24,7 @@ services:
+       dockerfile: ../docker/django/Dockerfile
+     env_file:
+       - .env
++    command: ["./wait.sh", "${DB_HOST:-database}:${MYSQL_PORT:-3306}", "--timeout=30", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+     ports:
+       - "${BACKEND_PORT:-8001}:8000"
+     depends_on:
+diff --git a/docker/django/Dockerfile b/docker/django/Dockerfile
+index d79f5e3..843b907 100644
+--- a/docker/django/Dockerfile
++++ b/docker/django/Dockerfile
+@@ -3,7 +3,6 @@ FROM python:3.10
+ ENV PYTHONUNBUFFERED 1
+ ENV PYTHONDONTWRITEBYTECODE 1
+ 
+-
+ WORKDIR /code
+ 
+ COPY requirements.txt requirements.txt
+@@ -15,6 +14,6 @@ ADD . /code
+ 
+ #EXPOSE 8001
+ 
+-CMD ["./wait.sh", "database:3306", "--timeout=30", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
++#CMD ["./wait.sh", "database:3306", "--timeout=30", "--", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+ 
+ 
+diff --git a/frontend/package-lock.json b/frontend/package-lock.json
+index 727ccd6..d7c8251 100644
+--- a/frontend/package-lock.json
++++ b/frontend/package-lock.json
+@@ -17303,16 +17303,16 @@
+       }
+     },
+     "node_modules/typescript": {
+-      "version": "5.4.4",
+-      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.4.4.tgz",
+-      "integrity": "sha512-dGE2Vv8cpVvw28v8HCPqyb08EzbBURxDpuhJvTrusShUfGnhHBafDsLdS1EhhxyL6BJQE+2cT3dDPAv+MQ6oLw==",
++      "version": "4.9.5",
++      "resolved": "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz",
++      "integrity": "sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==",
+       "peer": true,
+       "bin": {
+         "tsc": "bin/tsc",
+         "tsserver": "bin/tsserver"
+       },
+       "engines": {
+-        "node": ">=14.17"
++        "node": ">=4.2.0"
+       }
+     },
+     "node_modules/unbox-primitive": {
+diff --git a/frontend/src/pages/FilterBar.js b/frontend/src/pages/FilterBar.js
+index 9e5738c..cd92228 100644
+--- a/frontend/src/pages/FilterBar.js
++++ b/frontend/src/pages/FilterBar.js
+@@ -3,7 +3,6 @@ import "../styles.css";
+ import './Map.js'
+ import { getVariableDescription } from './Utils.js';
+ import axios from 'axios';
+-
+ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, setActiveTract, isComparison, dataMode}) => {
+     const [selectedYear, setSelectedYear] = useState('');
+     const [selectedVariable, setSelectedVariable] = useState('');
+@@ -151,11 +150,12 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
+                 </div>
+             </div>
+ 
+-            <div className="button-group">
++            <div className="filter-group">
+               {/* Percentile vs Abs. Options */}
+-              <label className="filter-group">Data Display Mode</label>
++              <label className="filter-label">Data Display Mode</label>
+                 <div className="button-options">
+                   <button onClick={usePercentiles}>Percentiles</button>
++                  
+                   <button onClick={useAbsoluteValues}>Absolute Values</button>
+                 </div>
+             </div>
+diff --git a/frontend/src/pages/Map.js b/frontend/src/pages/Map.js
+index 8e06bec..cd4997f 100644
+--- a/frontend/src/pages/Map.js
++++ b/frontend/src/pages/Map.js
+@@ -134,7 +134,6 @@ function Map({activeTract}) {
+             newTractData = tracts2020;
+         }
+         let old = activeTract?.selectedYear;
+-        console.log("old="+old);
+         setTractData(newTractData);
+         const baseApiUrl=`${process.env.REACT_APP_API_ROOT ?? 'http://localhost:8001/s24-healthy-idaho/api'}`
+ 
+@@ -145,7 +144,6 @@ function Map({activeTract}) {
+ 
+                 let max = Math.max.apply(null, data.map((item) => item.value));
+                 let min = Math.min.apply(null, data.map((item) => item.value));
+-                console.log("dataMode(map)="+activeTract?.selectedDataMode)
+                 if( activeTract?.selectedDataMode ) {
+                  // using percentiles
+                  let i = 0, j = 0;
+diff --git a/frontend/src/styles.css b/frontend/src/styles.css
+index 91e65b5..ccc518b 100644
+--- a/frontend/src/styles.css
++++ b/frontend/src/styles.css
+@@ -209,12 +209,14 @@ body {
+     flex: 1;
+     padding: 10px;
+     max-width: 70%; /* Adjust the maximum width as needed */
++    max-width: 70%; /* Adjust the maximum width as needed */
+ }
+ 
+ /*Styling for Compare.js*/
+ .compare-container {
+     display: flex;
+     justify-content: center;
++    justify-content: center;
+ }
+ 
+ .comparison {
+diff --git a/sql/db-init/entrypoint.sh b/sql/db-init/entrypoint.sh
+index 285fa06..df11ea1 100755
+--- a/sql/db-init/entrypoint.sh
++++ b/sql/db-init/entrypoint.sh
+@@ -4,7 +4,7 @@ echo "🟠 Copying csv to files directory..."
+ cp ../FCensus_Combined.csv /var/lib/mysql-files
+ 
+ echo "🟠 Uploading data..."
+-mysql -uroot -p$MYSQL_ROOT_PASSWORD <<EOF
++mysql -u$MYSQL_ROOT_USERNAME -p$MYSQL_ROOT_PASSWORD <<EOF
+     USE healthy_idaho_db;
+     LOAD DATA INFILE '/var/lib/mysql-files/FCensus_Combined.csv'
+     INTO TABLE healthy_idaho
+@@ -15,5 +15,11 @@ mysql -uroot -p$MYSQL_ROOT_PASSWORD <<EOF
+     (County, FIPS, OverallVulnerability, HousingTypeandTransportation, SocioeconomicStatus, HouseholdCompositionandDisability, MinorityStatusandLanguage, Greenness, HeatIsland, LSTMax, LSTMean, Smoke, Population, Area, PM25, Heatwave, DensityPopulation, Year);
+ EOF
+ 
+-echo "🟢 Data uploaded."
++if [ $? -eq 0 ]; then
++    echo "🟢 Data uploaded successfully!"
++    exit 0
++else
++    echo "🔴 Error uploading data!"
++    exit 1
++fi
+ exit 0
+\ No newline at end of file

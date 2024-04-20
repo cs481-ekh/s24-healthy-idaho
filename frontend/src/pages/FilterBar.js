@@ -44,16 +44,18 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
         if (selectedYear && selectedVariable && selectedColor) {
             // set active tract with selected year, variable, and color options to pass to Map component
             // setActiveTract({selectedYear: selectedYear, selectedVariable: selectedVariable, selectedColor: selectedColor, opacity: opacity});
-            setActiveTract({ selectedYear, selectedVariable, selectedColor, opacity });
+            setActiveTract({ selectedYear, selectedVariable, selectedColor, opacity, selectedDataMode });
         }       
     };
 
     const usePercentiles = () => {
       // Toggle whether Data Display Mode, whether percentiles or abs.
+      setSelectedDataMode(true);
       setActiveTract({ ...activeTract, selectedDataMode: true });
     }
 
     const useAbsoluteValues = () => {
+      setSelectedDataMode(false);
       setActiveTract({ ...activeTract, selectedDataMode: false });
     }
 
