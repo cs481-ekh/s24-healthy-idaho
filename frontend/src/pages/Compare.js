@@ -47,6 +47,17 @@ function Compare() {
         setActiveTractRight({ ...activeTractRight, opacity: parseFloat(value) });
     };
 
+    const usePercentiles = () => {
+      // Toggle whether Data Display Mode, whether percentiles or abs.
+      setActiveTractLeft({ ...activeTractLeft, selectedDataMode: true });
+      setActiveTractRight({ ...activeTractRight, selectedDataMode: true });
+    }
+
+    const useAbsoluteValues = () => {
+      // Toggle whether Data Display Mode, whether percentiles or abs.
+      setActiveTractLeft({ ...activeTractLeft, selectedDataMode: false });
+      setActiveTractRight({ ...activeTractRight, selectedDataMode: false });
+    }
     return (
         <div>
             <div className="compare-controls">
@@ -64,6 +75,12 @@ function Compare() {
                         onChange={(e) => handleOpacityChange(e.target.value)}
                     />
                 </div>
+                {/* Data Mode */}
+                <div className="compare-buttons">
+                  <button onClick={usePercentiles}>Percentiles</button>
+                  <button onClick={useAbsoluteValues}>Absolute Values</button>
+                </div>
+                
             </div>
             <div className="compare-container">
                 <div className="left-section">
@@ -78,6 +95,7 @@ function Compare() {
                         setSelectedVariable={setSelectedVariableLeft}
                         setSelectedColor={setSelectedColorLeft}
                         isComparison={true}
+                        dataMode={true}
                     />
                     <div className="compare-map-container">
                         <Map activeTract={activeTractLeft}/>
@@ -95,6 +113,7 @@ function Compare() {
                         setSelectedVariable={setSelectedVariableRight}
                         setSelectedColor={setSelectedColorRight}
                         isComparison={true}
+                        dataMode={true}
                     />
                     <div className="compare-map-container">
                         <Map activeTract={activeTractRight}/>

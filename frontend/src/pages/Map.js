@@ -8,7 +8,7 @@ import axios from 'axios';
 // Local modules
 import "../styles.css"
 import './Data.js';
-import ColorIt from '../components/ColorIt.js';
+import ColorIt from '../components/ColorIt';
 
 // Import GeoJSON data from local files
 import tracts2020 from '../tracts/tract2020.json';
@@ -87,7 +87,7 @@ function onEachFeature(feature, layer, colorData, variableName, opacity) {
 
 
         if(fipsObject && fipsObject.color != null) {
-            layer.setStyle({fillColor: fipsObject.color, weight: 1, fillOpacity: opacity});
+            layer.setStyle({fillColor: fipsObject.color, weight: 1});
 
             layer.bindPopup(
                 "<div style='text-align: center;'><b>Tract Info</b></div>" +
@@ -106,7 +106,7 @@ function onEachFeature(feature, layer, colorData, variableName, opacity) {
         }
         else {
             //draw popup for tracts that don't have data
-            layer.setStyle({color: 'black', fillColor: 'black', weight: 1, fillOpacity: 0.75});
+            layer.setStyle({color: 'black', fillColor: 'black', weight: 1});
             layer.bindPopup(
                 "<div style='text-align: center;'><b>Tract Info</b></div>" +
                 createPopupInfo("FIPS", feature.properties.FIPS) +
@@ -133,7 +133,7 @@ function Map({activeTract}) {
         if (activeTract?.selectedYear >= 2020) {
             newTractData = tracts2020;
         }
-
+        let old = activeTract?.selectedYear;
         setTractData(newTractData);
         const baseApiUrl=`${process.env.REACT_APP_API_ROOT ?? 'http://localhost:8001/s24-healthy-idaho/api'}`
 
@@ -144,8 +144,33 @@ function Map({activeTract}) {
 
                 let max = Math.max.apply(null, data.map((item) => item.value));
                 let min = Math.min.apply(null, data.map((item) => item.value));
+                if( activeTract?.selectedDataMode ) {
+                 // using percentiles
+                 let i = 0, j = 0;
+                 let n;
 
-                data = data.map((item) => {item.color = ColorIt.colorItNDiv(item.value, min, max, 9, activeTract?.selectedColor); return item;})
+                 // get the total number of data points
+                 n = Object.keys(response.data.data).length;
+
+                 // sort them based on value
+                 data.sort(function(a, b) {
+                   return parseFloat(a.value) - parseFloat(b.value);
+                 });
+                  
+
+                 let aNinth = Math.round(n / 9);
+                 data = data.map((item) => {
+                   if( i++ >= aNinth ) {
+                     i = 0; // reset i counter
+                     j++;   // increment the color for every n/9
+                   }
+                   item.color = activeTract?.selectedColor[j];
+                   return item;
+                 });
+                }
+                else {
+                  data = data.map((item) => {item.color = ColorIt.colorItNDiv(item.value, min, max, 9, activeTract?.selectedColor); return item;})
+                }
                 setColorData(data);
                 setIsColorDataLoaded(true);
             })
