@@ -7,7 +7,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
     const [selectedColor, setSelectedColor] = useState(null);
-    const [opacity, setOpacity] = useState(0.25); // Initial opacity value
+    const [opacity, setOpacity] = useState(1); // Initial opacity value
     // For error messages
     const [yearError, setYearError] = useState(false);
     const [variableError, setVariableError] = useState(false);

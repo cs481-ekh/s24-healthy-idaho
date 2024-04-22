@@ -24,7 +24,7 @@ function Compare() {
     const [selectedVariableRight, setSelectedVariableRight] = useState('');
     const [selectedColorRight, setSelectedColorRight] = useState(null);
 
-    const [opacity, setOpacity] = useState(0.25);
+    const [opacity, setOpacity] = useState(1);
 
     const handleSearch = () => {
         if (selectedYearLeft && selectedVariableLeft && selectedColorLeft) {

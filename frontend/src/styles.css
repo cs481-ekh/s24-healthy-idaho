@@ -5,12 +5,19 @@
 
 .filter-bar-container {
     width: 300px; /* Adjust width as needed */
-    padding: 10px;
 }
 
 .map-container {
     flex: 1; /* Grow to fill remaining space */
     padding: 10px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
 }
 
 /*Styling for NavBar.js*/
@@ -208,8 +215,6 @@ body {
 .map-container {
     flex: 1;
     padding: 10px;
-    max-width: 70%; /* Adjust the maximum width as needed */
-    max-width: 70%; /* Adjust the maximum width as needed */
 }
 
 /*Styling for Compare.js*/
@@ -244,9 +249,8 @@ body {
 .compare-controls {
     display: flex;
     flex-direction: row; /* Change flex direction to row */
-    align-items: center;
+    align-items: center; /* Vertically center the items */
     justify-content: center; /* Horizontally center the items */
-    margin-top: 10px;
 }
 
 .opacity-compare {
@@ -254,7 +258,7 @@ body {
 }
 
 .compare-buttons {
-  padding: 50px;
+    justify-content: space-between;
 }
 
 .compare-page button {
