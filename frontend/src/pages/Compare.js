@@ -70,7 +70,7 @@ function Compare() {
                         type="range"
                         min="0"
                         max="1"
-                        step="0.05"
+                        step="0.20"
                         value={activeTractLeft?.opacity ?? activeTractRight?.opacity}
                         onChange={(e) => handleOpacityChange(e.target.value)}
                     />

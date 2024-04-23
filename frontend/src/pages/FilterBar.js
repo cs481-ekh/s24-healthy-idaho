@@ -189,7 +189,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                     type="range"
                     min="0"
                     max="1"
-                    step="0.05"
+                    step="0.20"
                     value={opacity}
                     onChange={handleOpacityChange}
                 />

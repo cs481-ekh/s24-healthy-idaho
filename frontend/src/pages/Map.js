@@ -219,6 +219,6 @@ return (
             />
         )}
     </MapContainer>
-);}
-
+);
+}
 export default Map;
