@@ -43,8 +43,7 @@ function About() {
                         relevant for the health of Idahoans (details in table below). The data was developed by
                         Mr. Seyd Teymoor Seydi (research scholar at Boise State), and was supported by the Boise State Grand Challenges Initiative.
                         The mapper portal was developed through a Boise State Computer Science senior design project (Team 🔥🌲🔥),
-                        under supervision of Dr. Eric Henderson. Attributes and sources used by the team to create this portal can be
-                        found&nbsp;<a href='https://drive.google.com/drive/u/0/folders/1CtkP1iY_tDpcAXA-9w30wFD-PWL8Dqgd' target='_blank'>here</a>.
+                        under supervision of Dr. Eric Henderson.
                         <br></br>
                         <br></br>
                         <b>Team Fire Tree Fire Members:</b> Joshua Corrales; Anthony Diep; Braeden Lacombe; Clara Arnold (CS 481 - Spring 2024)
@@ -450,8 +449,6 @@ function About() {
                 </div>
 
             </div>
-
-            <Footer />
         </div>
     );
 }

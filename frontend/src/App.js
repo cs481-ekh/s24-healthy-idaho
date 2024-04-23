@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './NavBar';
+import Footer from './Footer';
 import Compare from "./pages/Compare";
 import About from "./pages/About";
 import Data from "./pages/Data";
@@ -24,6 +25,7 @@ const App = () => {
                     {/* Default route */}
                     <Route path="/" element={<Data />} />
                 </Routes>
+                <Footer />
             </div>
         </Router>
     );

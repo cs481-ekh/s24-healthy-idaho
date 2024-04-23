@@ -152,15 +152,6 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                 </div>
             </div>
 
-            <div className="filter-group">
-              {/* Percentile vs Abs. Options */}
-              <label className="filter-label">Data Display Mode</label>
-                <div className="button-options">
-                  <button onClick={usePercentiles}>Percentiles</button>
-                  
-                  <button onClick={useAbsoluteValues}>Absolute Values</button>
-                </div>
-            </div>
 
             <div className="filter-group">
                 {/* Color Dropdown */}
@@ -188,6 +179,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                 </div>
             </div>
 
+            
             <div className="filter-group">
                 {/* Opacity Slider */}
                 <label className="filter-label">Opacity</label>
@@ -199,6 +191,15 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                     value={opacity}
                     onChange={handleOpacityChange}
                 />
+            </div>
+
+            <div>
+              {/* Percentile vs Abs. Options */}
+              <label className="filter-label">Data Display Mode</label>
+                <div className="button-options">
+                  <button style={{margin: '5px'}} onClick={usePercentiles}>Percentile</button>
+                  <button style={{margin: '5px'}} onClick={useAbsoluteValues}>Abs. Val.</button>
+                </div>
             </div>
 
             {/* Search Button */}

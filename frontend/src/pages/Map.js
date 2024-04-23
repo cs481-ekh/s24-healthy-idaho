@@ -115,7 +115,7 @@ if (feature.properties && colorData) {
 }
 }
 
-function Map({activeTract}) {
+function Map({activeTract, height= '850px', width = '100%'}) {
 const [tractData, setTractData] = useState(null);
 const [colorData, setColorData] = useState(null);
 const [isColorDataLoaded, setIsColorDataLoaded] = useState(false);
@@ -182,7 +182,7 @@ useEffect(() => {
 }, [activeTract]);
     
 return (
-    <MapContainer center={[45.394096, -114.734550]} zoom={6} style={{ height: '85vh', width: '95vw%' }}>
+    <MapContainer center={[45.394096, -114.734550]} zoom={6} style={{height, width}}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
         {isColorDataLoaded && (
             <GeoJSON 

@@ -1,6 +1,8 @@
 /*Styling for App.js*/
 .app-container {
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .filter-bar-container {
@@ -34,10 +36,10 @@ body {
 
 .header {
     background-color: white;
-    padding: 20px;
-    width: 100%;
     display: flex;
     align-items: center;
+    padding: 10px 0px 10px 10px;
+    overflow: hidden;
 }
 
 .logo {
@@ -221,7 +223,6 @@ body {
 .compare-container {
     display: flex;
     justify-content: center;
-    justify-content: center;
 }
 
 .comparison {
@@ -234,11 +235,12 @@ body {
 }
 
 .compare-map-container {
-    max-width: 80%;
+    max-width: 95%;
+    max-height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 70px;
+    margin-left: 20px;
 }
 
 .compare-map-container .map {
@@ -250,11 +252,15 @@ body {
     display: flex;
     flex-direction: row; /* Change flex direction to row */
     align-items: center; /* Vertically center the items */
-    justify-content: center; /* Horizontally center the items */
+    justify-content: space-evenly; /* Horizontally center the items */
+    padding: 0% 25% 0% 25%;
+}
+.compare-item {
+    margin: 10px auto;
 }
 
 .opacity-compare {
-    margin-left: 30px; /* Add some space between the button and the slider */
+    /* margin-left: 30px; Add some space between the button and the slider */
 }
 
 .compare-buttons {
@@ -420,9 +426,10 @@ button {
     font-family: Arial, sans-serif;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: #0033A0;
     color: white;
     cursor: pointer;
+    margin: 5px auto;
 }
 
 button:hover {
