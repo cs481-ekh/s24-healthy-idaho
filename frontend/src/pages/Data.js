@@ -38,12 +38,10 @@ function Data() {
                         dataMode={true}
                     />
                 </div>
-                <div className="map-container">
+                <div className="map-container" >
                     <Map activeTract={activeTract}/>
                 </div>
             </div>
-            {/*<Chart />*/}
-            <Footer />
         </div>
     );
 }

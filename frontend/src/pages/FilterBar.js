@@ -7,7 +7,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedVariable, setSelectedVariable] = useState('');
     const [selectedColor, setSelectedColor] = useState(null);
-    const [opacity, setOpacity] = useState(0.25); // Initial opacity value
+    const [opacity, setOpacity] = useState(1); // Initial opacity value
     // For error messages
     const [yearError, setYearError] = useState(false);
     const [variableError, setVariableError] = useState(false);
@@ -108,6 +108,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
 
     return (
         <div className={`filter-bar ${isComparison ? 'comparison' : ''}`}>
+            <div>
             <div className={"filter-group"}>
                 {/* Year Dropdown */}
                 <label className="filter-label">Year</label>
@@ -152,15 +153,6 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                 </div>
             </div>
 
-            <div className="filter-group">
-              {/* Percentile vs Abs. Options */}
-              <label className="filter-label">Data Display Mode</label>
-                <div className="button-options">
-                  <button onClick={usePercentiles}>Percentiles</button>
-                  
-                  <button onClick={useAbsoluteValues}>Absolute Values</button>
-                </div>
-            </div>
 
             <div className="filter-group">
                 {/* Color Dropdown */}
@@ -188,6 +180,8 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                 </div>
             </div>
 
+            </div>
+            
             <div className="filter-group">
                 {/* Opacity Slider */}
                 <label className="filter-label">Opacity</label>
@@ -195,10 +189,19 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                     type="range"
                     min="0"
                     max="1"
-                    step="0.05"
+                    step="0.20"
                     value={opacity}
                     onChange={handleOpacityChange}
                 />
+            </div>
+
+            <div>
+              {/* Percentile vs Abs. Options */}
+              <label className="filter-label">Data Display Mode</label>
+                <div className="button-options">
+                  <button style={{margin: '5px'}} onClick={usePercentiles}>Percentile</button>
+                  <button style={{margin: '5px'}} onClick={useAbsoluteValues}>Abs. Val.</button>
+                </div>
             </div>
 
             {/* Search Button */}

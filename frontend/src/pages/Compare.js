@@ -24,7 +24,7 @@ function Compare() {
     const [selectedVariableRight, setSelectedVariableRight] = useState('');
     const [selectedColorRight, setSelectedColorRight] = useState(null);
 
-    const [opacity, setOpacity] = useState(0.25);
+    const [opacity, setOpacity] = useState(1);
 
     const handleSearch = () => {
         if (selectedYearLeft && selectedVariableLeft && selectedColorLeft) {
@@ -62,23 +62,23 @@ function Compare() {
         <div>
             <div className="compare-controls">
                 {/* Search Button */}
-                <button onClick={() => handleSearch(1)}>Search</button>
+                <button className="compare-item" onClick={() => handleSearch(1)}>Search</button>
                 {/* Opacity Slider */}
-                <div className="opacity-compare">
+                <div className="compare-item">
                     <label className="filter-label">Opacity</label>
                     <input
                         type="range"
                         min="0"
                         max="1"
-                        step="0.05"
+                        step="0.20"
                         value={activeTractLeft?.opacity ?? activeTractRight?.opacity}
                         onChange={(e) => handleOpacityChange(e.target.value)}
                     />
                 </div>
                 {/* Data Mode */}
-                <div className="compare-buttons">
-                  <button onClick={usePercentiles}>Percentiles</button>
-                  <button onClick={useAbsoluteValues}>Absolute Values</button>
+                <div>
+                  <button style={{margin: '5px'}} onClick={usePercentiles}>Percentiles</button>
+                  <button style={{margin: '5px'}} onClick={useAbsoluteValues}>Absolute Values</button>
                 </div>
                 
             </div>
@@ -98,7 +98,7 @@ function Compare() {
                         dataMode={true}
                     />
                     <div className="compare-map-container">
-                        <Map activeTract={activeTractLeft}/>
+                        <Map activeTract={activeTractLeft} height='75vh' width = '100%'/>
                     </div>
                 </div>
                 <div className="right-section">
@@ -116,11 +116,10 @@ function Compare() {
                         dataMode={true}
                     />
                     <div className="compare-map-container">
-                        <Map activeTract={activeTractRight}/>
+                        <Map activeTract={activeTractRight} height='75vh' width = '100%'/>
                     </div>
                 </div>
             </div>
-    <Footer />
     </div>
     );
 }

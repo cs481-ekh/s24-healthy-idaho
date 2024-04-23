@@ -8,7 +8,7 @@ function Footer() {
     return (
         <footer className="footer">
             <a href="https://www.boisestate.edu/" target="_blank" rel="noopener noreferrer">
-                <img alt="[LOGO]" className="bsu-logo" src={logo} />
+                <img alt="[LOGO]" className="bsu-logo" src={logo} style={{resizeMode: 'contain', flex: 1}} />
             </a>
             <span className="separator">|</span>
             <JSPopup
