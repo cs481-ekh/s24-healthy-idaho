@@ -39,7 +39,7 @@ function Data() {
                     />
                 </div>
                 <div className="map-container" >
-                    <Map activeTract={activeTract} height='90vh' width = '100%' />
+                    <Map activeTract={activeTract}/>
                 </div>
             </div>
         </div>

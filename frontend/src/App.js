@@ -16,15 +16,17 @@ const App = () => {
         <Router basename={process.env.PUBLIC_URL}>
             <div>
                 <NavBar />
-                <Routes>
-                    <Route path="/data" element={<Data />} />
-                    <Route path="/compare" element={<Compare />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/admin" element={<Admin />} />
-                    <Route path="/admin-control" element={<AdminControl />} />
-                    {/* Default route */}
-                    <Route path="/" element={<Data />} />
-                </Routes>
+                <div className="content">
+                    <Routes>
+                        <Route path="/data" element={<Data />} />
+                        <Route path="/compare" element={<Compare />} />
+                        <Route path="/about" element={<About />} />
+                        <Route path="/admin" element={<Admin />} />
+                        <Route path="/admin-control" element={<AdminControl />} />
+                        {/* Default route */}
+                        <Route path="/" element={<Data />} />
+                    </Routes>
+                </div>
                 <Footer />
             </div>
         </Router>

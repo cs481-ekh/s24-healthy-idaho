@@ -1,5 +1,5 @@
 // Using leaflet to display map of Idaho, not sure how we'll use this with the data yet
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
 import L from 'leaflet';
@@ -70,7 +70,7 @@ useEffect(() => {
 return null;
 }
 
-function onEachFeature(feature, layer, colorData, variableName, opacity) {
+function onEachFeature(feature, layer, colorData, variableName) {
 if (feature.properties && colorData) {
     let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
 
@@ -92,8 +92,8 @@ if (feature.properties && colorData) {
         layer.bindPopup(
             "<div style='text-align: center;'><b>Tract Info</b></div>" +
             createPopupInfo("FIPS", feature.properties.FIPS) +
-            createPopupInfo(variableName, Math.round((parseFloat(fipsObject.value) + Number.EPSILON) * 100) / 100) +
-            createPopupInfo("County", feature.properties.COUNTY) +
+            (fipsObject.value ? createPopupInfo(variableName, Math.round((parseFloat(fipsObject.value) + Number.EPSILON) * 100) / 100) : + "") +
+            createPopupInfo("County", feature.properties.COUNTY) + 
             (feature.properties.AREA_SQMI ? createPopupInfo("Area (sq. mi)", Math.round((feature.properties.AREA_SQMI + Number.EPSILON) * 100) / 100) : "") +
             (feature.properties.LOCATION ? createPopupInfo("Location", feature.properties.LOCATION) : "")
         );
@@ -115,11 +115,20 @@ if (feature.properties && colorData) {
 }
 }
 
-function Map({activeTract, height= '850px', width = '100%'}) {
+function Map({activeTract, height= '85vh', width = '100%'}) {
 const [tractData, setTractData] = useState(null);
 const [colorData, setColorData] = useState(null);
 const [isColorDataLoaded, setIsColorDataLoaded] = useState(false);
 const opacity = activeTract?.opacity ?? 1;
+const geoJsonLayer = useRef(null);
+
+// useEffect(() => {
+//     if (geoJsonLayer.current) {
+//         geoJsonLayer.current.setStyle({
+//             fillOpacity: opacity
+//         });
+//     }
+// }, [opacity]);
 
 useEffect(() => {
     let newTractData = null;
@@ -157,7 +166,6 @@ useEffect(() => {
                 return parseFloat(a.value) - parseFloat(b.value);
                 });
 
-
                 let aNinth = Math.round(n / 9);
                 data = data.map((item) => {
                 if( i++ >= aNinth ) {
@@ -180,12 +188,15 @@ useEffect(() => {
         });
     }
 }, [activeTract]);
+
+
     
 return (
     <MapContainer center={[45.394096, -114.734550]} zoom={6} style={{height, width}}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
         {isColorDataLoaded && (
             <GeoJSON 
+                ref={geoJsonLayer}
                 key={JSON.stringify(tractData) + JSON.stringify(colorData)}
                 style={(feature) => {
                     let fipsObject = colorData.find((item) => item.id === parseInt(feature.properties.FIPS));
@@ -198,7 +209,7 @@ return (
                 data={tractData}
                 onEachFeature={onEachFeature ? (feature, layer) => 
                     onEachFeature(feature, layer, colorData, activeTract?.selectedVariable, activeTract?.selectedColor, opacity) : null}
-        />
+            />
         )}
         {isColorDataLoaded && (
             <Legend 
@@ -208,7 +219,6 @@ return (
             />
         )}
     </MapContainer>
-);
-}
+);}
 
 export default Map;

@@ -108,6 +108,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
 
     return (
         <div className={`filter-bar ${isComparison ? 'comparison' : ''}`}>
+            <div>
             <div className={"filter-group"}>
                 {/* Year Dropdown */}
                 <label className="filter-label">Year</label>
@@ -179,6 +180,7 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
                 </div>
             </div>
 
+            </div>
             
             <div className="filter-group">
                 {/* Opacity Slider */}
