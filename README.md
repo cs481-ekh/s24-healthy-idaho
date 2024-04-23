@@ -73,5 +73,3 @@ Now the following services can be accessed at the following.
 - Frontend: ```http://localhost:{REACT_PORT}/s24-healthy-idaho```
 - Backend API: ```http://localhost:{DJANGO_PORT}/s24-healthy-idaho/api/```
 - Database: ```localhost:{MYSQL_PORT}``` either through MYSQL Workbench or CLI
-
-

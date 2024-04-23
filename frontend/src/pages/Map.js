@@ -178,7 +178,7 @@ useEffect(() => {
                 });
             }
             else {
-                data = data.map((item) => {item.color = ColorIt.colorItNDiv(item.value, min, max, 9, activeTract?.selectedColor[8]); return item;})
+                data = data.map((item) => {item.color = ColorIt.colorItNDiv(item.value, min, max, 9, activeTract?.selectedColor); return item;})
             }
             setColorData(data);
             setIsColorDataLoaded(true);

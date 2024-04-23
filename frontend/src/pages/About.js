@@ -360,6 +360,7 @@ function About() {
                         <ol className="requirements-list">
                             <li>The application must be containerized within a docker container with a docknet</li>
                             <li>Application will be deployed on the Boise State VM</li>
+                            {/* <li>ඞ</li> */}
                         </ol>
                     </p>
                 </div>
@@ -447,7 +448,9 @@ function About() {
                         that Healthy Idaho provides.
                     </p>
                 </div>
-
+            </div>
+            <div>
+                <text style={{}}>ඞ</text>
             </div>
         </div>
     );
