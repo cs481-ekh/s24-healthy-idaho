@@ -92,7 +92,7 @@ if (feature.properties && colorData) {
         layer.bindPopup(
             "<div style='text-align: center;'><b>Tract Info</b></div>" +
             createPopupInfo("FIPS", feature.properties.FIPS) +
-            (fipsObject.value ? createPopupInfo(variableName, Math.round((parseFloat(fipsObject.value) + Number.EPSILON) * 100) / 100) : + "") +
+            createPopupInfo(variableName, fipsObject.value ? (Math.round((parseFloat(fipsObject.value) + Number.EPSILON) * 100) / 100) : "No Value" ) +
             createPopupInfo("County", feature.properties.COUNTY) + 
             (feature.properties.AREA_SQMI ? createPopupInfo("Area (sq. mi)", Math.round((feature.properties.AREA_SQMI + Number.EPSILON) * 100) / 100) : "") +
             (feature.properties.LOCATION ? createPopupInfo("Location", feature.properties.LOCATION) : "")
@@ -153,7 +153,7 @@ useEffect(() => {
 
             let max = Math.max.apply(null, data.map((item) => item.value));
             let min = Math.min.apply(null, data.map((item) => item.value));
-            if( activeTract?.selectedDataMode ) {
+            if( activeTract?.selectedDataMode && max != min) {
                 // using percentiles
                 let i = 0, j = 0;
                 let n;
@@ -178,7 +178,7 @@ useEffect(() => {
                 });
             }
             else {
-                data = data.map((item) => {item.color = ColorIt.colorItNDiv(item.value, min, max, 9, activeTract?.selectedColor); return item;})
+                data = data.map((item) => {item.color = ColorIt.colorItNDiv(item.value, min, max, 9, activeTract?.selectedColor[8]); return item;})
             }
             setColorData(data);
             setIsColorDataLoaded(true);
