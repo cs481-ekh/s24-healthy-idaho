@@ -63,6 +63,10 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
         setSelectedVariable(selectedVariable);
     };
 
+    function getDescr() {
+      return <p id="getme">{selectedVariable}: {getVariableDescription(selectedVariable)}</p>
+    }
+
     const handleDownload = () => {
         const baseApiUrl=`${process.env.REACT_APP_API_ROOT ?? 'http://localhost:8001/s24-healthy-idaho/api'}`
         console.log('Download clicked');
@@ -209,6 +213,9 @@ const FilterBar = ({ yearOptions, variableOptions, colorOptions, activeTract, se
             <div className="download-section">
                 {/* Download Button */}
                 <button onClick={handleDownload}>Download Data Subset</button>
+            </div>
+            <div>
+              {getDescr()}
             </div>
         </div>
     );

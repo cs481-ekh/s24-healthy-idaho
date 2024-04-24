@@ -185,6 +185,10 @@ body {
     color: black;
 }
 
+#getme {
+  font-size: 12pt;
+}
+
 .error-message {
     background-color: red;
     color: white;
