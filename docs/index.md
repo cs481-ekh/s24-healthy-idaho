@@ -3,7 +3,6 @@
 - Clara Arnold
 - Anothony Diep
 - Joshua Corrales
-- Braeden Lacombe
 
 ## Project Abstract:
 The impact of climate change in the Western US, particularly in Idaho, calls for the need of a portal where residents 
