@@ -46,7 +46,7 @@ function About() {
                         under supervision of Dr. Eric Henderson.
                         <br></br>
                         <br></br>
-                        <b>Team Fire Tree Fire Members:</b> Joshua Corrales; Anthony Diep; Braeden Lacombe; Clara Arnold (CS 481 - Spring 2024)
+                        <b>Team Fire Tree Fire Members:</b> Joshua Corrales; Anthony Diep; Clara Arnold (CS 481 - Spring 2024)
                         <br></br>
                         <br></br>
                         <b>Healthy Idaho project investigators:</b> Dr. Mojtaba Sadegh (mojtabasadegh@boisestate.edu; Boise State University);

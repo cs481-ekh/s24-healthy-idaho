@@ -6,7 +6,6 @@
 
 ## Team Members
 
-- Braeden LaCombe - <braedenlacombe@u.boisestate.edu>
 - Clara Arnold - <claraarnold@u.boisestate.edu>
 - Anthony Diep - <anthonydiep@u.boisestate.edu>
 - Joshua Corrales - <joshuacorrales930@u.boisestate.edu>
@@ -20,7 +19,6 @@
 
 Before starting the application, you must have the following installed.
 
-- python3
 - docker
 - docker-compose
 
