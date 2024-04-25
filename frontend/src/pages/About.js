@@ -20,7 +20,7 @@ function About() {
                 }}>
                     <Typography variant='h2' sx={{ fontFamily: 'Arial, sans-serif' }}>
                         <br />
-                        Interactive Visualization Portal for Healthy Idaho Project
+                        Interactive Visualization Portal for Healthy Idaho Project<span style={{fontSize:"large"}}>(1.0)</span>
                         <br />
                     </Typography>
                 </Card>
